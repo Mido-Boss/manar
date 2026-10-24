@@ -192,6 +192,97 @@ footer{max-width:min(calc(880px*var(--zoom)),100%);margin:0 auto;padding:0 18px 
   .navbtn{padding:6px 8px;font-size:.84em}
 }
 :focus-visible{outline:2px solid var(--maj);outline-offset:2px}
+/* ---- leçons en classe (projection) ---- */
+.ccours{display:grid;gap:14px;margin-top:10px}
+.ccourscard{padding:26px 28px;background:linear-gradient(135deg,var(--maj) 0%,#1B2F87 100%);color:#fff;border:none}
+.ccourscard .badge{background:rgba(255,255,255,.18);color:#fff}
+.ccourstitle{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+.ccourstitle .ar{font-size:2.4em;font-weight:700;line-height:1.3}
+.ccourstitle h2{font-size:1.6em}
+.ccourscard p{color:rgba(255,255,255,.85)!important;margin-top:6px}
+.homeles{margin-top:22px}
+.homeles h2.gpart{margin-top:0}
+.classroom{font-size:1.12em}
+.chead{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:6px}
+.csteps{display:flex;gap:5px;flex-wrap:wrap}
+.cstep{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--line);background:var(--panel);color:var(--ink2);font:inherit;font-weight:700;font-size:.8em;cursor:pointer}
+.cstep.past{background:var(--maj-soft);color:var(--maj);border-color:transparent}
+.cstep.active{background:var(--maj);color:#fff;border-color:var(--maj)}
+.cstephead{display:grid;grid-template-columns:1fr auto;align-items:start;gap:16px;margin:18px 0 10px}
+#app:has(.classroom){max-width:min(calc(1180px*var(--zoom)),100%)}
+.classroom .say{font-size:.75em;padding:5px 9px}
+.cpara-h .say{font-size:1em}
+.cstephead h1{font-size:1.9em;line-height:1.2}
+.cstephead h1 .ar{display:block;color:var(--maj);font-size:1.25em;line-height:1.5;text-align:left}
+.cstepnum{color:var(--ink2);font-weight:700;font-size:.78em;letter-spacing:.08em;text-transform:uppercase}
+.ctimer{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:8px 12px;text-align:center;box-shadow:var(--shadow)}
+.ctime{font-family:"Fraunces",serif;font-size:2em;font-weight:700;color:var(--maj);font-variant-numeric:tabular-nums}
+.ctime.over{color:var(--grenat)}
+.ctimer .btn-ghost{padding:4px 12px}
+.cbody h3{margin:24px 0 10px;color:var(--maj)}
+.cbig,.classroom .ccard .ar.cbig{font-size:1.65em;line-height:1.7}
+.ccard{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;margin:10px 0}
+.ccenter{text-align:center}
+.crow{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.cgrid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cgrid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.cgrid2>.ccard,.cgrid3>.ccard{margin:0}
+.cpair{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;text-align:center}
+.carrow{color:var(--ink2);font-weight:700}
+.cfr{color:var(--ink2);font-size:.92em}
+.cbigfr{font-family:"Fraunces",serif;font-size:1.3em;font-weight:600}
+.cans{margin-top:8px}
+.rv{display:inline-block;cursor:pointer;filter:blur(9px);user-select:none;transition:filter .25s;padding:2px 6px;border-radius:8px;background:var(--oasis-soft)}
+.rv.on{filter:none;user-select:auto}
+.rv:not(.on)::after{content:" 👁";filter:none}
+.cask,.cteam{display:flex;gap:12px;align-items:flex-start;border-radius:12px;padding:14px 16px;margin:14px 0;font-size:1.05em}
+.cask{background:var(--safran-soft);border-right:5px solid var(--safran)}
+.cteam{background:var(--oasis-soft);border-right:5px solid var(--oasis)}
+.cask-i{font-size:1.5em;line-height:1}
+.cnote{margin:18px 0;background:var(--bg);border:1px dashed var(--line);border-radius:12px;padding:10px 14px;font-size:.88em;color:var(--ink2)}
+.cnote summary{cursor:pointer;font-weight:700;color:var(--ink)}
+.cnote p{margin:8px 0}
+.ctoggle{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0}
+.cstory{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px 20px;margin:12px 0}
+.cread{font-size:1.75em;line-height:2.1;text-align:right}
+.cpara{padding:10px 0;border-bottom:1px solid var(--line)}
+.cpara:last-child{border-bottom:none}
+.cpara-h{display:flex;align-items:center;gap:10px}
+.cpara-h .badge{margin:0}
+.croles{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.crole{border:2px solid var(--c);color:var(--c);border-radius:999px;padding:3px 10px;font-weight:700;font-size:.8em}
+.cline{display:grid;grid-template-columns:150px 1fr;gap:12px;align-items:center;border-right:5px solid var(--c);padding:2px 12px;margin:6px 0}
+.cwho{font-weight:700;color:var(--c,var(--maj));font-size:.85em}
+.csep{border:none;border-top:1px dashed var(--line);margin:10px 0}
+.chunts{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.chunt{border:2px solid var(--c);background:var(--panel);color:var(--c);font:inherit;font-weight:700;padding:8px 14px;border-radius:10px;cursor:pointer}
+.chunt.on{background:var(--c);color:#fff}
+.hl-al{background:#2B4BC933;outline:2px solid #2B4BC9}
+.hl-ta{background:#B3382F33;outline:2px solid #B3382F}
+.hl-pr{background:#2E7D5B33;outline:2px solid #2E7D5B}
+.cpause{text-align:center;padding:26px 0}
+.cpause-i{font-size:4em}
+.cdlg{display:flex;align-items:center;gap:10px;padding:4px 0;border-bottom:1px dashed var(--line)}
+.cdlg .cwho{width:22px}
+.cword{padding:3px 0}
+.cchips{display:flex;flex-wrap:wrap;gap:6px}
+.cchip{background:var(--maj-soft);border-radius:999px;padding:3px 10px;font-size:.88em}
+.cscores{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:8px 0}
+.cteamscore{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:14px;text-align:center}
+.cteamname{font-weight:700}
+.cscore{font-family:"Fraunces",serif;font-size:3em;font-weight:700;color:var(--maj);line-height:1.2}
+.cgame{text-align:center;padding:26px}
+.cgameq{font-size:1.5em;font-weight:600;margin:10px 0 16px}
+.cgameq .ar,.cgamea .ar{font-size:1.25em}
+.cgamea{font-size:1.5em;color:var(--oasis);font-weight:700}
+.cchecks{display:grid;gap:8px;margin:10px 0}
+.ccheck{display:flex;gap:12px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px;cursor:pointer}
+.cbox{width:24px;height:24px;border:2px solid var(--line);border-radius:6px;flex:none}
+.ccheck.on .cbox{background:var(--oasis);border-color:var(--oasis)}
+.ccheck.on .cbox::after{content:"✓";color:#fff;display:block;text-align:center;font-weight:700;line-height:20px}
+.exnav .btn:disabled,.exnav .btn-ghost:disabled{opacity:.4;cursor:default}
+@media(max-width:760px){.cstephead{grid-template-columns:1fr}.ctimer{justify-self:start}.cgrid2,.cgrid3,.cscores{grid-template-columns:1fr}.cline{grid-template-columns:1fr}.cread{font-size:1.45em}.cstephead h1{font-size:1.5em}}
+
 </style>
 </head>
 <body>
@@ -200,6 +291,7 @@ footer{max-width:min(calc(880px*var(--zoom)),100%);margin:0 auto;padding:0 18px 
   <div class="logo" onclick="go('home')"><small>Mosquée de Voiron ·</small><span class="kufi">مَنَار</span></div>
   <nav>
     <button class="navbtn" data-nav="home" onclick="go('home')">Accueil</button>
+    <button class="navbtn" data-nav="cours" onclick="go('cours')">Leçons</button>
     <button class="navbtn" data-nav="grammar" onclick="go('grammar')">Grammaire</button>
     <button class="navbtn" data-nav="texts" onclick="go('texts')">Textes</button>
   </nav>
@@ -3259,7 +3351,7 @@ function openSheet(raw){
   /* mot tel qu'il apparaît dans le texte (vocalisé si le mode voyelles est actif) */
   const tok=raw.replace(/[،.؟!:«»"()؛…]/g,'');
   const vz=vocMix;
-  if(!r){sheet.innerHTML='<div class="grab"></div><div class="word kufi">'+esc(vz(tok))+'</div><p style="text-align:center;color:var(--ink2)">Mot introuvable dans le dictionnaire de l\'app.</p>';}
+  if(!r){sheet.innerHTML='<div class="grab"></div><div class="word kufi">'+esc(vz(tok))+'</div><p style="text-align:center;color:var(--ink2)">Mot introuvable dans le dictionnaire de l\'app.</p><div style="text-align:center;margin-top:6px"><button class="tab" onclick="sayWord('+esc(JSON.stringify(tok))+',this)">🔊 Écouter</button></div>';}
   else{
     const [trad,type,lab,val]=r.e;
     let rows='<div class="row"><span class="lab">Type</span><span>'+esc(vz(type))+'</span></div>';
@@ -3309,6 +3401,7 @@ function render(){
   if(view.name==='home')home();
   else if(view.name==='grammar')grammarList();
   else if(view.name==='lesson')lesson(view.arg);
+  else if(view.name==='cours'){if(view.arg===undefined)coursList();else cours(view.arg);}
   else if(view.name==='texts')textList();
   else if(view.name==='text')textView(view.arg);
   applyVocalDOM();
@@ -3324,12 +3417,238 @@ function home(){
     <h1><span class="ar kufi">${dv('منار','مَنَار')}</span>Apprendre l'arabe, un texte à la fois.</h1>
     <p>50 textes courts de niveau A1–A2, classés en cinq thèmes. Chaque mot arabe est cliquable : traduction, type, pluriel ou singulier. Après chaque texte, cinq exercices auto-corrigés. Avant de commencer, un rappel de grammaire de base est disponible.</p>
   </div>
+  <div class="homeles"><h2 class="gpart">Leçons en classe</h2>${coursCards()}</div>
   <div class="homegrid">
     <div class="card" onclick="go('grammar')"><span class="badge">1 · Bases</span><span class="ar kufi">${dv('القواعد','الْقَوَاعِد')}</span><span class="fr">${GRAMMAR.length} leçons de grammaire progressives, de la lecture des voyelles aux phrases complexes, avec exercices.</span></div>
     <div class="card" onclick="go('texts')"><span class="badge">2 · Pratique</span><span class="ar kufi">${dv('النصوص','النُّصُوص')}</span><span class="fr">50 compréhensions écrites avec dictionnaire intégré et exercices.</span></div>
   </div>
   ${n?'<div class="score" style="margin-top:18px">Progression : '+n+' / 50 textes terminés</div>':''}`;
 }
+
+/* ================= leçons en classe (projection) =================
+   Une leçon = une suite d'étapes chronométrées, pensées pour être projetées :
+   gros caractères, voyelles toujours affichées, réponses floutées qu'on révèle d'un clic,
+   notes pour l'animateur repliées. Flèches ← → du clavier pour changer d'étape. */
+const SPK={n:['Narrateur','الرَّاوِي','#5A6072'],o:['Le professeur Omar','الْأُسْتَاذُ عُمَرُ','#2B4BC9'],y:['Youssef','يُوسُفُ','#2E7D5B'],m:['Mariam','مَرْيَمُ','#B3382F'],k:['Karim','كَرِيمٌ','#8A5A00'],s:['Sara','سَارَةُ','#7A3FB0'],f:['Fatima','فَاطِمَةُ','#C2410C'],t:['Tous les élèves','الطُّلَّابُ','#0E7490']};
+/* l'histoire : un paragraphe = des segments [locuteur, texte] ; le narrateur introduit les répliques */
+const STORY=[
+{l:[['n','هَذَا مَسْجِدٌ كَبِيرٌ وَجَمِيلٌ فِي مَدِينَةِ فُوَارُون. فِي الْمَسْجِدِ صَفٌّ صَغِيرٌ لِلُّغَةِ الْعَرَبِيَّةِ. الصَّفُّ جَدِيدٌ، وَالطُّلَّابُ جُدُدٌ. الْيَوْمُ هُوَ الْيَوْمُ الْأَوَّلُ!']],
+ fr:"C'est une grande et belle mosquée, dans la ville de Voiron. Dans la mosquée, il y a une petite classe de langue arabe. La classe est nouvelle, et les élèves sont nouveaux. Aujourd'hui, c'est le premier jour !"},
+{l:[['n','الْأُسْتَاذُ عُمَرُ فِي الصَّفِّ. هُوَ مُعَلِّمُ اللُّغَةِ الْعَرَبِيَّةِ. يَقُولُ الْأُسْتَاذُ:'],['o','السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللَّهِ! أَهْلًا وَسَهْلًا!'],['n','يَقُولُ الطُّلَّابُ:'],['t','وَعَلَيْكُمُ السَّلَامُ وَرَحْمَةُ اللَّهِ!']],
+ fr:"Le professeur Omar est dans la classe. C'est le professeur de langue arabe. Le professeur dit : « Que la paix soit sur vous, ainsi que la miséricorde de Dieu ! Bienvenue ! » Les élèves répondent : « Et sur vous la paix et la miséricorde de Dieu ! »"},
+{l:[['n','يَقُولُ الْأُسْتَاذُ:'],['o','أَنَا عُمَرُ. أَنَا مِنَ الْمَغْرِبِ، مِنْ مَدِينَةِ فَاسَ. أَنَا مُعَلِّمٌ هُنَا فِي الْمَسْجِدِ. وَأَنْتَ يَا شَابُّ؟ مَا اسْمُكَ؟']],
+ fr:"Le professeur dit : « Je suis Omar. Je suis du Maroc, de la ville de Fès. Je suis enseignant ici, à la mosquée. Et toi, jeune homme ? Comment t'appelles-tu ? »"},
+{l:[['n','يَقُولُ شَابٌّ:'],['y','اِسْمِي يُوسُفُ. أَنَا طَالِبٌ فِي الْجَامِعَةِ. أَنَا مِنْ غُرُونُوبْل، وَأَبِي مِنَ الْجَزَائِرِ.']],
+ fr:"Un jeune homme dit : « Je m'appelle Youssef. Je suis étudiant à l'université. Je suis de Grenoble, et mon père est d'Algérie. »"},
+{l:[['n','يَقُولُ الْأُسْتَاذُ:'],['o','أَهْلًا يَا يُوسُفُ! وَأَنْتِ يَا أُخْتِي؟ مَا اسْمُكِ؟'],['n','تَقُولُ امْرَأَةٌ:'],['m','اِسْمِي مَرْيَمُ. أَنَا طَبِيبَةٌ فِي الْمُسْتَشْفَى. أَنَا مِنْ لِيُون.']],
+ fr:"Le professeur dit : « Bienvenue, Youssef ! Et toi, ma sœur ? Comment t'appelles-tu ? » Une femme dit : « Je m'appelle Mariam. Je suis médecin à l'hôpital. Je suis de Lyon. »"},
+{l:[['n','يَقُولُ رَجُلٌ:'],['k','أَنَا كَرِيمٌ، وَهَذِهِ أُخْتِي سَارَةُ. أَنَا مُهَنْدِسٌ، وَسَارَةُ طَالِبَةٌ فِي الْمَدْرَسَةِ. نَحْنُ مِنْ تُونِسَ.'],['n','يَقُولُ الْأُسْتَاذُ:'],['o','مَرْحَبًا يَا سَارَةُ! كَيْفَ حَالُكِ؟'],['n','تَقُولُ سَارَةُ:'],['s','بِخَيْرٍ، وَالْحَمْدُ لِلَّهِ!']],
+ fr:"Un homme dit : « Je suis Karim, et voici ma sœur Sara. Je suis ingénieur, et Sara est élève à l'école. Nous sommes de Tunisie. » Le professeur dit : « Bonjour Sara ! Comment vas-tu ? » Sara dit : « Bien, louange à Dieu ! »"},
+{l:[['n','فِي الصَّفِّ امْرَأَةٌ كَبِيرَةٌ، اسْمُهَا فَاطِمَةُ. تَقُولُ فَاطِمَةُ:'],['f','أَنَا جَدَّةٌ، وَبَيْتِي قَرِيبٌ مِنَ الْمَسْجِدِ. أَنَا سَعِيدَةٌ جِدًّا، فَالْعَرَبِيَّةُ لُغَةٌ جَمِيلَةٌ!']],
+ fr:"Dans la classe, il y a une dame âgée, elle s'appelle Fatima. Fatima dit : « Je suis grand-mère, et ma maison est près de la mosquée. Je suis très heureuse, car l'arabe est une belle langue ! »"},
+{l:[['n','يَسْأَلُ الْأُسْتَاذُ:'],['o','يَا يُوسُفُ، مَنْ هَذِهِ؟'],['n','يَقُولُ يُوسُفُ:'],['y','هَذِهِ مَرْيَمُ. هِيَ طَبِيبَةٌ.'],['o','وَمَنْ هَذَا؟'],['y','هَذَا كَرِيمٌ. هُوَ مُهَنْدِسٌ مِنْ تُونِسَ.'],['o','مُمْتَازٌ!']],
+ fr:"Le professeur demande : « Youssef, qui est-ce ? » Youssef dit : « C'est Mariam. Elle est médecin. » — « Et qui est-ce ? » — « C'est Karim. Il est ingénieur, de Tunisie. » — « Excellent ! »"},
+{l:[['n','يَكْتُبُ الْأُسْتَاذُ عَلَى السَّبُّورَةِ: أَنَا، أَنْتَ، أَنْتِ، هُوَ، هِيَ. ثُمَّ يَقُولُ:'],['o','هَذَا هُوَ الدَّرْسُ الْأَوَّلُ!'],['n','تَقُولُ سَارَةُ:'],['s','الدَّرْسُ سَهْلٌ!'],['n','يَضْحَكُ الْأُسْتَاذُ:'],['o','نَعَمْ، الْعَرَبِيَّةُ سَهْلَةٌ وَجَمِيلَةٌ!']],
+ fr:"Le professeur écrit au tableau : أَنَا، أَنْتَ، أَنْتِ، هُوَ، هِيَ. Puis il dit : « Voici la première leçon ! » Sara dit : « La leçon est facile ! » Le professeur rit : « Oui, l'arabe est facile et beau ! »"},
+{l:[['n','فِي نِهَايَةِ الدَّرْسِ، يَقُولُ الطُّلَّابُ:'],['t','شُكْرًا يَا أُسْتَاذُ!'],['n','يَقُولُ الْأُسْتَاذُ:'],['o','عَفْوًا! إِلَى اللِّقَاءِ، مَعَ السَّلَامَةِ!'],['n','الْيَوْمُ الْأَوَّلُ يَوْمٌ سَعِيدٌ.']],
+ fr:"À la fin de la leçon, les élèves disent : « Merci, professeur ! » Le professeur répond : « De rien ! Au revoir, à bientôt ! » Le premier jour est un jour heureux."}
+];
+function storyPara(p){return p.l.map(([s,t])=>s==='n'?t:'«'+t+'»').join(' ');}
+
+/* petits outils de mise en page */
+const cA=(s,big)=>'<span class="ar'+(big?' cbig':'')+'">'+esc(s)+'</span>';
+const cSay=t=>'<button class="say" title="Écouter" data-t="'+esc(t)+'" onclick="say(this.dataset.t,{rate:0.8,el:this.parentElement})">🔊</button>';
+const cRv=(html)=>'<span class="rv" title="Toucher pour révéler" onclick="this.classList.add(\'on\')">'+html+'</span>';
+const cNote=html=>'<details class="cnote"><summary>👩‍🏫 Notes pour l\'animateur</summary>'+html+'</details>';
+const cAsk=html=>'<div class="cask"><span class="cask-i">❓</span><div>'+html+'</div></div>';
+const cTeam=html=>'<div class="cteam"><span class="cask-i">👥</span><div>'+html+'</div></div>';
+
+const COURS=[{
+  id:'jour1',ta:'الْيَوْمُ الْأَوَّلُ',t:'Le premier jour',
+  sub:'Saluer, se présenter, dire d\'où l\'on vient et ce que l\'on fait ; je, tu, il, elle ; le féminin en ة.',
+  steps:[
+  {ar:'مَرْحَبًا!',t:'Accueil : les salutations',min:10,h:()=>{
+    const G=[['السَّلَامُ عَلَيْكُمْ','Que la paix soit sur vous (bonjour)','وَعَلَيْكُمُ السَّلَامُ','Et sur vous la paix (réponse)'],
+      ['مَرْحَبًا','Bonjour, salut','أَهْلًا وَسَهْلًا','Bienvenue'],
+      ['كَيْفَ حَالُكَ؟','Comment vas-tu ? (à un homme ; à une femme : كَيْفَ حَالُكِ؟)','بِخَيْرٍ، وَالْحَمْدُ لِلَّهِ','Bien, louange à Dieu'],
+      ['شُكْرًا','Merci','عَفْوًا','De rien'],
+      ['إِلَى اللِّقَاءِ','Au revoir (à la prochaine)','مَعَ السَّلَامَةِ','Au revoir (va en paix)']];
+    return cAsk('Avant tout : <strong>quels mots arabes connaissez-vous déjà ?</strong> Chacun en propose un ; on les note au tableau.')+
+    '<div class="cgrid2">'+G.map(g=>'<div class="ccard"><div class="cpair"><div>'+cSay(g[0])+cA(g[0],1)+'<div class="cfr">'+g[1]+'</div></div><div class="carrow">↔</div><div>'+cSay(g[2])+cA(g[2],1)+'<div class="cfr">'+g[3]+'</div></div></div></div>').join('')+'</div>'+
+    cTeam('<strong>Tour de salle :</strong> chacun se lève et salue deux voisins. L\'un dit <span class="ar">السَّلَامُ عَلَيْكُمْ</span>, l\'autre répond <span class="ar">وَعَلَيْكُمُ السَّلَامُ</span>, puis <span class="ar">كَيْفَ حَالُكَ؟</span> — <span class="ar">بِخَيْرٍ، وَالْحَمْدُ لِلَّهِ</span>.')+
+    cAsk('Pourquoi dit-on <span class="ar">حَالُكَ</span> à un homme et <span class="ar">حَالُكِ</span> à une femme ? Qu\'est-ce qui change ? '+cRv('Seule la petite voyelle sur le ك change : ـكَ (« ka ») pour un homme, ـكِ (« ki ») pour une femme. L\'arabe distingue souvent masculin et féminin, même pour « tu » !'))+
+    cNote('<p>Objectif : mettre tout le monde à l\'aise et faire parler chacun dès la première minute. Faites écouter chaque formule avec 🔊, faites répéter en chœur deux fois, puis lancez le tour de salle (3–4 min). Gardez la question sur ـكَ / ـكِ pour la fin : elle prépare la grammaire de l\'étape 5.</p>');}},
+
+  {ar:'الْيَوْمُ الْأَوَّلُ',t:'Le texte : on lit ensemble',min:20,h:()=>{
+    const theatre=CL.theatre;
+    let body;
+    if(!theatre){
+      body=STORY.map((p,i)=>'<div class="cpara"><div class="cpara-h"><span class="badge">Lecteur '+(i+1)+'</span>'+cSay(storyPara(p))+'</div><p class="ar cread">'+renderAr(storyPara(p))+'</p><div class="cfr">'+cRv('🇫🇷 '+esc(p.fr))+'</div></div>').join('');
+    }else{
+      const roles=Object.keys(SPK).map(k=>'<span class="crole" style="--c:'+SPK[k][2]+'">'+SPK[k][0]+' · <span class="ar">'+SPK[k][1]+'</span></span>').join('');
+      body='<div class="croles">'+roles+'</div>'+STORY.map(p=>p.l.map(([s,t])=>'<div class="cline" style="--c:'+SPK[s][2]+'"><span class="cwho">'+SPK[s][0]+'</span><span class="ar cread">'+renderAr(t)+'</span></div>').join('')).join('<hr class="csep">');
+    }
+    return '<div class="ctoggle"><button class="'+(theatre?'btn-ghost':'btn')+'" onclick="CL.theatre=false;coursStep()">📖 Lecture par paragraphes</button><button class="'+(theatre?'btn':'btn-ghost')+'" onclick="CL.theatre=true;coursStep()">🎭 Lecture théâtrale (rôles)</button></div>'+
+    cAsk('<strong>Avant de lire :</strong> regardez le texte sans le lire. Combien y a-t-il de paragraphes ? Repérez les guillemets « » : que nous disent-ils ? '+cRv('10 paragraphes. Les guillemets « » montrent que quelqu\'un parle : il y a donc des dialogues, comme au théâtre.'))+
+    '<div class="cstory">'+body+'</div>'+
+    cAsk('Quel est le titre de l\'histoire ? Que veut dire <span class="ar">الْأَوَّلُ</span> ? Devinez à partir du texte. '+cRv('<span class="ar">الْيَوْمُ الْأَوَّلُ</span> = « le premier jour ».'));
+  },note:'<p><strong>1re lecture (≈ 10 min), par paragraphes :</strong> pour chaque paragraphe, faites d\'abord écouter avec 🔊, puis un élève différent le lit à voix haute (Lecteur 1, Lecteur 2…). Avant de révéler la traduction, demandez à la classe ce qu\'elle a compris : des noms ? des villes ? des métiers ?</p><p><strong>2e lecture (≈ 10 min), théâtrale :</strong> distribuez les 8 rôles (le narrateur, le professeur Omar, Youssef, Mariam, Karim, Sara, Fatima, et « tous les élèves » pour la classe entière). Chacun ne lit que ses répliques, en jouant le ton. Les mots du texte se touchent pour afficher leur traduction.</p>'},
+
+  {ar:'هَلْ فَهِمْتُمْ؟',t:'Avez-vous compris ?',min:15,h:()=>{
+    const qui=[['هِيَ طَبِيبَةٌ مِنْ لِيُون.','مَرْيَمُ'],['هُوَ مِنَ الْمَغْرِبِ، مِنْ مَدِينَةِ فَاسَ.','الْأُسْتَاذُ عُمَرُ'],['هُوَ طَالِبٌ فِي الْجَامِعَةِ.','يُوسُفُ'],['هِيَ جَدَّةٌ، وَبَيْتُهَا قَرِيبٌ مِنَ الْمَسْجِدِ.','فَاطِمَةُ'],['هُوَ مُهَنْدِسٌ مِنْ تُونِسَ.','كَرِيمٌ'],['هِيَ طَالِبَةٌ فِي الْمَدْرَسَةِ.','سَارَةُ']];
+    const vf=[['يُوسُفُ مُهَنْدِسٌ.',0,'Faux : يُوسُفُ طَالِبٌ.'],['الْأُسْتَاذُ مِنَ الْمَغْرِبِ.',1,'Vrai.'],['سَارَةُ أُخْتُ كَرِيمٍ.',1,'Vrai : « وَهَذِهِ أُخْتِي سَارَةُ ».'],['فَاطِمَةُ طَبِيبَةٌ.',0,'Faux : فَاطِمَةُ جَدَّةٌ. La médecin, c\'est مَرْيَمُ.'],['مَرْيَمُ مِنْ تُونِسَ.',0,'Faux : مَرْيَمُ مِنْ لِيُون.'],['الصَّفُّ فِي الْمَسْجِدِ.',1,'Vrai.']];
+    const qs=[['مَا اسْمُ الْأُسْتَاذِ؟','Comment s\'appelle le professeur ?','اِسْمُهُ عُمَرُ.'],['مِنْ أَيْنَ مَرْيَمُ؟','D\'où vient Mariam ?','هِيَ مِنْ لِيُون.'],['مَنْ سَارَةُ؟','Qui est Sara ?','هِيَ أُخْتُ كَرِيمٍ، وَهِيَ طَالِبَةٌ.'],['كَيْفَ الدَّرْسُ؟','Comment est la leçon ?','الدَّرْسُ سَهْلٌ!']];
+    return '<h3>1. Qui est-ce ? <span class="ar">مَنْ هَذَا؟ مَنْ هَذِهِ؟</span></h3><div class="cgrid3">'+qui.map(q=>'<div class="ccard">'+cSay(q[0])+cA(q[0],1)+'<div class="cans">→ '+cRv(cA(q[1],1))+'</div></div>').join('')+'</div>'+
+    '<h3>2. Vrai ou faux ? <span class="ar">صَحِيحٌ أَمْ خَطَأٌ؟</span></h3><p class="cfr">Toute la classe vote : ✋ main levée = vrai, ✊ poing fermé = faux. Puis on révèle.</p><div class="cgrid2">'+vf.map(v=>'<div class="ccard">'+cA(v[0],1)+'<div class="cans">'+cRv((v[1]?'✅ ':'❌ ')+esc(v[2]))+'</div></div>').join('')+'</div>'+
+    '<h3>3. Questions en arabe</h3>'+cTeam('Par deux : lisez la question, cherchez la réponse dans le texte, puis répondez <strong>en arabe</strong> à voix haute.')+
+    qs.map(q=>'<div class="ccard crow">'+cSay(q[0])+cA(q[0],1)+'<span class="cfr">'+q[1]+'</span><div class="cans">'+cRv(cA(q[2],1))+'</div></div>').join('');
+  },note:'<p>« Qui est-ce ? » : lisez la phrase, laissez la salle crier le prénom, puis révélez. Pour le vrai / faux, demandez à un élève qui a voté « faux » de corriger la phrase en arabe. Les questions de la partie 3 se font en binômes (5 min), puis on corrige ensemble : les réponses n\'ont qu\'à reprendre des morceaux du texte.</p>'},
+
+  {ar:'لُعْبَةُ الْبَحْثِ',t:'La chasse aux indices',min:10,h:()=>{
+    const all=STORY.map(storyPara).join(' ');
+    const btn=(k,lab,col)=>'<button class="chunt" style="--c:'+col+'" onclick="huntHL(\''+k+'\',this)">'+lab+'</button>';
+    return cTeam('<strong>Par équipes de deux ou trois.</strong> Cherchez dans le texte, comptez, puis comparez avec les autres équipes. L\'animateur vérifie en surlignant.')+
+    '<div class="chunts">'+btn('al','1. Les mots qui commencent par الْـ','#2B4BC9')+btn('ta','2. Les mots qui finissent par ة','#B3382F')+btn('pr','3. Les petits mots أَنَا، أَنْتَ، أَنْتِ، هُوَ، هِيَ، نَحْنُ','#2E7D5B')+'</div><div id="huntRes" class="cfr"></div>'+
+    '<div class="cstory ar cread" id="huntText">'+renderAr(all)+'</div>'+
+    cAsk('<strong>1.</strong> <span class="ar">الْـ</span> au début d\'un mot : à votre avis, que veut-il dire ? Indice : <span class="ar">مَسْجِدٌ</span> / <span class="ar">الْمَسْجِدُ</span>. '+cRv('C\'est l\'article « le / la » : <span class="ar">مَسْجِدٌ</span> = une mosquée, <span class="ar">الْمَسْجِدُ</span> = la mosquée. Le petit « n » final (ـٌ) de <span class="ar">مَسْجِدٌ</span> disparaît avec l\'article.'))+
+    cAsk('<strong>2.</strong> Regardez les mots en <span class="ar">ة</span> : <span class="ar">طَبِيبَةٌ، طَالِبَةٌ، جَدَّةٌ، سَعِيدَةٌ</span>. Qui parle quand on les entend ? '+cRv('Toujours une <strong>femme</strong> (Mariam, Sara, Fatima) ! Le <span class="ar">ة</span> est la marque du féminin. Nous allons l\'utiliser à l\'étape 7.'))+
+    cAsk('<strong>4.</strong> Trouvez les 4 métiers du texte. '+cRv('<span class="ar">مُعَلِّمٌ</span> (enseignant) · <span class="ar">طَالِبٌ / طَالِبَةٌ</span> (étudiant·e, élève) · <span class="ar">طَبِيبَةٌ</span> (médecin) · <span class="ar">مُهَنْدِسٌ</span> (ingénieur)'));
+  },note:'<p>Laissez 5 min de recherche, puis cliquez sur chaque bouton pour surligner les réponses dans le texte et afficher le total. L\'équipe la plus proche gagne un point pour le grand jeu de l\'étape 9 (notez-le). Ne donnez pas encore de règle : on découvre, la grammaire vient juste après.</p>'},
+
+  {ar:'أَنَا، أَنْتَ، أَنْتِ، هُوَ، هِيَ',t:'Grammaire 1 : je, tu, il, elle',min:15,h:()=>{
+    const P=[['أَنَا','je','👆 on se montre soi-même'],['أَنْتَ','tu (à un homme)','👉 on montre un homme en face'],['أَنْتِ','tu (à une femme)','👉 on montre une femme en face'],['هُوَ','il','👈 on montre un homme sur le côté'],['هِيَ','elle','👈 on montre une femme sur le côté'],['نَحْنُ','nous','🫂 on montre tout le groupe']];
+    const ex=[['يُوسُفُ ← ؟','هُوَ'],['مَرْيَمُ ← ؟','هِيَ'],['(à Karim) ؟ مُهَنْدِسٌ.','أَنْتَ مُهَنْدِسٌ.'],['(à Sara) ؟ طَالِبَةٌ.','أَنْتِ طَالِبَةٌ.'],['(Fatima parle) ؟ جَدَّةٌ.','أَنَا جَدَّةٌ.'],['كَرِيمٌ وَسَارَةُ (nous) : ؟ مِنْ تُونِسَ.','نَحْنُ مِنْ تُونِسَ.']];
+    return cAsk('<strong>Enquête dans le texte :</strong> le professeur dit à Youssef <span class="ar">وَأَنْتَ؟ مَا اسْمُكَ؟</span> et à Mariam <span class="ar">وَأَنْتِ؟ مَا اسْمُكِ؟</span>. Trouvez les différences. Pourquoi ? '+cRv('<span class="ar">أَنْتَ</span> / <span class="ar">أَنْتِ</span> et <span class="ar">ـكَ</span> / <span class="ar">ـكِ</span> : fatḥa (« a ») pour un homme, kasra (« i ») pour une femme. En arabe, « tu » n\'est pas le même selon qu\'on parle à un homme ou à une femme.'))+
+    '<div class="cgrid3">'+P.map(p=>'<div class="ccard ccenter">'+cSay(p[0])+'<div>'+cA(p[0],1)+'</div><div class="cbigfr">'+p[1]+'</div><div class="cfr">'+p[2]+'</div></div>').join('')+'</div>'+
+    cTeam('<strong>Le jeu du doigt :</strong> l\'animateur montre quelqu\'un (lui-même, un homme, une femme, le groupe…) ; la classe crie le bon mot. Puis un élève prend la place de l\'animateur.')+
+    '<h3>Complétez avec le bon pronom</h3><div class="cgrid2">'+ex.map(e=>'<div class="ccard">'+cA(e[0],1)+'<div class="cans">'+cRv(cA(e[1],1))+'</div></div>').join('')+'</div>'+
+    '<div class="gnote">À retenir : <span class="ar">أَنَا</span> je · <span class="ar">أَنْتَ</span> tu (homme) · <span class="ar">أَنْتِ</span> tu (femme) · <span class="ar">هُوَ</span> il · <span class="ar">هِيَ</span> elle · <span class="ar">نَحْنُ</span> nous. Il n\'y a pas de « vous » de politesse : on dit <span class="ar">أَنْتَ</span> à tout le monde, même au professeur.</div>';
+  },note:'<p>Commencez par l\'enquête (laissez les élèves trouver la différence a / i), puis présentez les six cartes avec les gestes : faites répéter chaque mot avec son geste. Le jeu du doigt doit être rapide et bruyant (3 min). Les exercices se font à l\'oral : un élève répond, la classe valide, puis on révèle.</p>'},
+
+  {ar:'اِسْتِرَاحَةٌ',t:'Pause',min:10,h:()=>
+    '<div class="cpause"><div class="cpause-i">☕</div>'+cA('اِسْتِرَاحَةٌ',1)+'<p class="cbigfr">Pause de 10 minutes</p></div>'+
+    cAsk('<strong>Défi de la pause :</strong> essayez d\'écrire votre prénom en lettres arabes sur un papier. Au retour, quelques volontaires l\'écrivent au tableau !')+
+    '<div class="ccard ccenter"><div class="cfr">Exemples</div>'+cA('يُوسُفُ · مَرْيَمُ · سَارَةُ · كَرِيمٌ · فَاطِمَةُ',1)+'</div>',
+   note:'<p>Lancez le minuteur. Pendant la pause, passez voir ceux qui écrivent leur prénom et aidez-les pour les voyelles longues (ا، و، ي).</p>'},
+
+  {ar:'أَنَا طَالِبٌ — أَنَا طَالِبَةٌ',t:'Grammaire 2 : « je suis » et le féminin',min:10,h:()=>{
+    const F=[['طَالِبٌ','طَالِبَةٌ','étudiant·e'],['مُعَلِّمٌ','مُعَلِّمَةٌ','enseignant·e'],['طَبِيبٌ','طَبِيبَةٌ','médecin'],['مُهَنْدِسٌ','مُهَنْدِسَةٌ','ingénieur·e'],['سَعِيدٌ','سَعِيدَةٌ','heureux / heureuse'],['جَدِيدٌ','جَدِيدَةٌ','nouveau / nouvelle']];
+    const err=[['هِيَ طَالِبٌ.','هِيَ طَالِبَةٌ.'],['هُوَ مُعَلِّمَةٌ.','هُوَ مُعَلِّمٌ.'],['(à Mariam) أَنْتِ طَبِيبٌ.','أَنْتِ طَبِيبَةٌ.'],['أَنَا فَاطِمَةُ، أَنَا سَعِيدٌ.','أَنَا فَاطِمَةُ، أَنَا سَعِيدَةٌ.']];
+    return cAsk('<span class="ar cbig">أَنَا طَالِبٌ.</span> = « Je suis étudiant. » Comptez les mots : 2 en arabe, 3 en français. <strong>Où est passé « suis » ?</strong> '+cRv('Il n\'existe pas ! Au présent, l\'arabe n\'a pas besoin du verbe « être » : <span class="ar">أَنَا طَالِبٌ</span> = « moi étudiant ». De même <span class="ar">هِيَ طَبِيبَةٌ</span> = elle (est) médecin, <span class="ar">الدَّرْسُ سَهْلٌ</span> = la leçon (est) facile.'))+
+    '<h3>Du masculin au féminin : on ajoute ة</h3><div class="cgrid3">'+F.map(f=>'<div class="ccard ccenter">'+cA(f[0],1)+'<div class="carrow">↓ + ة</div>'+cRv(cA(f[1],1))+'<div class="cfr">'+f[2]+'</div></div>').join('')+'</div>'+
+    '<h3>Chasse à l\'erreur 🔎</h3>'+cTeam('Chaque phrase contient une erreur. Par deux, trouvez-la et corrigez-la.')+
+    '<div class="cgrid2">'+err.map(e=>'<div class="ccard">'+cA('❌ '+e[0],1)+'<div class="cans">'+cRv(cA('✅ '+e[1],1))+'</div></div>').join('')+'</div>';
+  },note:'<p>Faites deviner chaque féminin avant de le révéler : la règle « + ة » se découvre dès le deuxième mot. Pour la chasse à l\'erreur, la question clé est toujours : « qui parle, ou de qui parle-t-on ? un homme ou une femme ? »</p>'},
+
+  {ar:'تَعَارُفٌ',t:'Atelier en binômes : faisons connaissance',min:15,h:()=>{
+    const D=[['أ','السَّلَامُ عَلَيْكُمْ!'],['ب','وَعَلَيْكُمُ السَّلَامُ!'],['أ','مَا اسْمُكَ؟ / مَا اسْمُكِ؟'],['ب','اِسْمِي …'],['أ','مِنْ أَيْنَ أَنْتَ؟ / مِنْ أَيْنَ أَنْتِ؟'],['ب','أَنَا مِنْ …'],['أ','هَلْ أَنْتَ طَالِبٌ؟ / هَلْ أَنْتِ طَالِبَةٌ؟'],['ب','نَعَمْ، أَنَا … / لَا، أَنَا …'],['أ','تَشَرَّفْنَا!'],['ب','تَشَرَّفْنَا!']];
+    const jobs=['طَالِبٌ / طَالِبَةٌ','مُعَلِّمٌ / مُعَلِّمَةٌ','طَبِيبٌ / طَبِيبَةٌ','مُهَنْدِسٌ / مُهَنْدِسَةٌ','مُوَظَّفٌ / مُوَظَّفَةٌ','عَامِلٌ / عَامِلَةٌ','تَاجِرٌ / تَاجِرَةٌ','مُتَقَاعِدٌ / مُتَقَاعِدَةٌ'];
+    const jobsFr=['étudiant·e, élève','enseignant·e','médecin','ingénieur·e','employé·e','ouvrier·ère','commerçant·e','retraité·e'];
+    const pays=[['فَرَنْسَا','France'],['الْمَغْرِبُ','Maroc'],['الْجَزَائِرُ','Algérie'],['تُونِسُ','Tunisie'],['تُرْكِيَا','Turquie'],['السِّنِغَالُ','Sénégal'],['مِصْرُ','Égypte'],['فُوَارُون','Voiron']];
+    return '<div class="cgrid2"><div class="ccard"><h3>Le dialogue</h3>'+D.map(d=>'<div class="cdlg"><span class="cwho">'+(d[0]==='أ'?'A':'B')+'</span>'+cSay(d[1].split(' / ')[0].replace('…',''))+cA(d[1],1)+'</div>').join('')+
+    '<p class="cfr">tu (homme) ـكَ / أَنْتَ · tu (femme) ـكِ / أَنْتِ · <span class="ar">تَشَرَّفْنَا</span> = enchanté(e) · <span class="ar">نَعَمْ</span> oui · <span class="ar">لَا</span> non · <span class="ar">هَلْ</span> = est-ce que</p></div>'+
+    '<div class="ccard"><h3>Banque de mots</h3><p class="cfr">Métiers (masculin / féminin)</p>'+jobs.map((j,i)=>'<div class="cword">'+cA(j)+' <span class="cfr">'+jobsFr[i]+'</span></div>').join('')+
+    '<p class="cfr" style="margin-top:10px">Pays et villes (<span class="ar">أَنَا مِنْ …</span>)</p><div class="cchips">'+pays.map(p=>'<span class="cchip">'+cA(p[0])+' '+p[1]+'</span>').join('')+'</div></div></div>'+
+    cTeam('<strong>1. (7 min)</strong> Par deux, jouez le dialogue avec vos vraies informations, puis échangez les rôles A et B. Attention au masculin / féminin !')+
+    cTeam('<strong>2. (8 min)</strong> Chacun présente son binôme à la classe, avec <span class="ar">هُوَ</span> ou <span class="ar">هِيَ</span> :<br>'+cA('هَذَا صَدِيقِي. اِسْمُهُ … هُوَ مِنْ … هُوَ …',1)+'<br>'+cA('هَذِهِ صَدِيقَتِي. اِسْمُهَا … هِيَ مِنْ … هِيَ …',1)+'<br><span class="cfr">Voici mon ami / mon amie. Il / elle s\'appelle… Il / elle est de… Il / elle est…</span>');
+  },note:'<p>Faites d\'abord jouer le dialogue par deux volontaires devant la classe. Pendant le travail en binômes, circulez et corrigez surtout le genre (ـكَ / ـكِ, ة). Pour les présentations, encouragez les applaudissements ! Si un élève n\'a pas de métier dans la liste, donnez-lui le mot au tableau.</p>'},
+
+  {ar:'الْمُسَابَقَةُ الْكُبْرَى',t:'Le grand jeu : équipe Soleil contre équipe Lune',min:10,h:()=>gameHTML(),
+   note:'<p>Divisez la classe en deux équipes : <span class="ar">الشَّمْسُ</span> (le Soleil) et <span class="ar">الْقَمَرُ</span> (la Lune). Les équipes répondent à tour de rôle ; si une équipe se trompe, l\'autre peut « voler » la question. Cliquez sur « Réponse » pour vérifier, puis donnez le point avec les boutons +1. Pensez au point gagné pendant la chasse aux indices !</p>'},
+
+  {ar:'مَاذَا تَعَلَّمْنَا؟',t:'Bilan : qu\'avons-nous appris ?',min:5,h:()=>{
+    const C=['Je sais saluer et répondre : <span class="ar">السَّلَامُ عَلَيْكُمْ — وَعَلَيْكُمُ السَّلَامُ</span>','Je sais dire mon nom : <span class="ar">اِسْمِي …</span>','Je sais dire d\'où je viens : <span class="ar">أَنَا مِنْ …</span>','Je sais dire ce que je fais : <span class="ar">أَنَا طَالِبٌ / طَالِبَةٌ …</span>','Je connais <span class="ar">أَنَا، أَنْتَ، أَنْتِ، هُوَ، هِيَ، نَحْنُ</span>','Je sais mettre un mot au féminin avec <span class="ar">ة</span>','Je sais qu\'on ne dit pas « être » au présent : <span class="ar">أَنَا طَالِبٌ</span>'];
+    return '<div class="cchecks">'+C.map(c=>'<div class="ccheck" onclick="this.classList.toggle(\'on\')"><span class="cbox"></span><span>'+c+'</span></div>').join('')+'</div>'+
+    '<div class="ccard"><h3>📝 Pour la prochaine fois</h3><p>1. Écrivez <strong>4 phrases</strong> sur vous : '+cA('اِسْمِي … · أَنَا مِنْ … · أَنَا … · أَنَا سَعِيدٌ / سَعِيدَةٌ.')+'</p><p>2. Présentez un membre de votre famille en <strong>2 phrases</strong>, avec '+cA('هُوَ')+' ou '+cA('هِيَ')+'.</p><p>3. Relisez l\'histoire <span class="ar">الْيَوْمُ الْأَوَّلُ</span> à la maison, avec le bouton 🔊.</p></div>'+
+    '<div class="cpause"><div class="cpause-i">👋</div>'+cA('شُكْرًا، وَإِلَى اللِّقَاءِ!',1)+'<p class="cbigfr">Merci, et à la prochaine !</p></div>';
+  },note:'<p>Lisez chaque phrase de la liste : la classe répond « oui » à voix haute et vous cochez. S\'il reste un point fragile, faites un dernier exemple oral. Terminez comme le professeur Omar dans l\'histoire : la classe dit <span class="ar">شُكْرًا يَا أُسْتَاذُ</span>, vous répondez <span class="ar">عَفْوًا، مَعَ السَّلَامَةِ</span>.</p>'}
+  ]}];
+
+/* questions du grand jeu */
+const GAMEQ=[
+ ['Dites « bonjour » en arabe, de deux façons.','السَّلَامُ عَلَيْكُمْ · مَرْحَبًا'],
+ ['Répondez : كَيْفَ حَالُكَ؟','بِخَيْرٍ، وَالْحَمْدُ لِلَّهِ'],
+ ['Quel est le féminin de طَالِبٌ ?','طَالِبَةٌ'],
+ ['Traduisez : « Elle est médecin. »','هِيَ طَبِيبَةٌ.'],
+ ['Qui a dit « أَنَا جَدَّةٌ » dans l\'histoire ?','فَاطِمَةُ'],
+ ['Demandez son nom à une femme.','مَا اسْمُكِ؟'],
+ ['Traduisez : « Je suis de Lyon. »','أَنَا مِنْ لِيُون.'],
+ ['Quel est le masculin de مُعَلِّمَةٌ ?','مُعَلِّمٌ'],
+ ['On vous dit شُكْرًا : que répondez-vous ?','عَفْوًا'],
+ ['Mimez, sans parler : هُوَ — أَنْتِ — نَحْنُ','👈 un homme sur le côté · 👉 une femme en face · 🫂 tout le groupe'],
+ ['D\'où vient le professeur Omar ? Répondez en arabe.','هُوَ مِنَ الْمَغْرِبِ.'],
+ ['Traduisez : « Nous sommes de Voiron. »','نَحْنُ مِنْ فُوَارُون.'],
+ ['Comment dit-on « au revoir » ? (deux façons)','مَعَ السَّلَامَةِ · إِلَى اللِّقَاءِ'],
+ ['Corrigez : هُوَ طَالِبَةٌ.','هُوَ طَالِبٌ. (ou : هِيَ طَالِبَةٌ.)']
+];
+function gameHTML(){
+  const G=CL.game,q=GAMEQ[G.q];
+  const team=(i,n,ar,ic)=>'<div class="cteamscore"><div class="cteamname">'+ic+' '+n+' · <span class="ar">'+ar+'</span></div><div class="cscore">'+G.s[i]+'</div><div><button class="btn-ghost" onclick="gameScore('+i+',-1)">−1</button> <button class="btn" onclick="gameScore('+i+',1)">+1</button></div></div>';
+  return '<div class="cscores">'+team(0,'Soleil','الشَّمْسُ','☀️')+team(1,'Lune','الْقَمَرُ','🌙')+'</div>'+
+  '<div class="ccard cgame"><div class="cfr">Question '+(G.q+1)+' / '+GAMEQ.length+'</div><div class="cgameq">'+arSpans(q[0])+'</div>'+
+  (G.show?'<div class="cgamea">'+arSpans(q[1])+'</div>':'<button class="btn" onclick="CL.game.show=true;coursStep()">👁 Réponse</button>')+'</div>'+
+  '<div class="exnav"><button class="btn-ghost" onclick="gameNav(-1)" '+(G.q?'':'disabled')+'>← Question précédente</button><button class="btn" onclick="gameNav(1)" '+(G.q<GAMEQ.length-1?'':'disabled')+'>Question suivante →</button></div>';
+}
+function gameScore(i,d){CL.game.s[i]=Math.max(0,CL.game.s[i]+d);coursStep();}
+function gameNav(d){CL.game.q=Math.min(GAMEQ.length-1,Math.max(0,CL.game.q+d));CL.game.show=false;coursStep();}
+function huntHL(k,btn){
+  const box=$('#huntText');if(!box)return;
+  const on=!btn.classList.contains('on');btn.classList.toggle('on',on);
+  let n=0;
+  box.querySelectorAll('.w').forEach(w=>{
+    const t=norm(w.dataset.w),b=t.replace(/^[وف](?=ال|أن|ه|نح)/,'');
+    const hit=k==='al'?(/^(ال|لل|بال)/.test(b)&&!/^(الله|لله)$/.test(b)):k==='ta'?/ة$/.test(t):['أنا','أنت','هو','هي','نحن'].includes(b);
+    if(hit){w.classList.toggle('hl-'+k,on);n++;}
+  });
+  $('#huntRes').innerHTML=on?btn.textContent.replace(/^\d\.\s*/,'')+' : <strong>'+n+'</strong> trouvés.':'';
+}
+
+/* état de la leçon projetée : étape, mode de lecture, jeu, minuteur */
+let CL={c:0,step:0,theatre:false,game:{q:0,show:false,s:[0,0]}};
+let CTIMER={left:0,run:false,h:null};
+function coursList(){
+  setNav('cours');
+  app.innerHTML='<div class="hero"><div class="eyebrow"><span class="kufi">الدُّرُوسُ</span> leçons en classe</div><h1>Les leçons à projeter.</h1><p>Chaque leçon se déroule en étapes chronométrées, avec texte à lire à plusieurs, questions à poser à la classe, travail en groupes et jeux. Mets le plein écran ⛶ et utilise les flèches du clavier pour avancer.</p></div>'+coursCards();
+}
+function coursCards(){
+  return '<div class="ccours">'+COURS.map((c,i)=>{const tot=c.steps.reduce((a,s)=>a+s.min,0);
+    return '<div class="bigcard ccourscard" onclick="go(\'cours\','+i+')"><span class="badge">Leçon '+(i+1)+' · '+Math.floor(tot/60)+' h'+(tot%60?' '+(tot%60):'')+' · '+c.steps.length+' étapes</span><div class="ccourstitle"><span class="ar">'+c.ta+'</span><h2>'+esc(c.t)+'</h2></div><p>'+esc(c.sub)+'</p></div>';}).join('')+'</div>';
+}
+function cours(i){
+  setNav('cours');
+  if(CL.c!==i)CL={c:i,step:0,theatre:false,game:{q:0,show:false,s:[0,0]}};
+  const c=COURS[i];
+  app.innerHTML='<div class="classroom keepv"><div class="chead"><div><div class="eyebrow">Leçon '+(i+1)+' · '+esc(c.t)+'</div></div>'+
+  '<div class="csteps">'+c.steps.map((s,k)=>'<button class="cstep" data-k="'+k+'" onclick="coursGo('+k+')" title="'+esc(s.t)+'">'+(k+1)+'</button>').join('')+'</div></div><div id="cstepbody"></div></div>';
+  coursStep(true);
+}
+function coursGo(k){const n=COURS[CL.c].steps.length;if(k<0||k>=n)return;CL.step=k;coursStep(true);window.scrollTo({top:0});}
+function coursStep(resetTimer){
+  const c=COURS[CL.c],k=CL.step,s=c.steps[k];
+  document.querySelectorAll('.cstep').forEach(b=>{const j=+b.dataset.k;b.classList.toggle('active',j===k);b.classList.toggle('past',j<k);});
+  if(resetTimer){stopSay();timerSet(s.min*60);}
+  const before=c.steps.slice(0,k).reduce((a,x)=>a+x.min,0);
+  const last=k===c.steps.length-1;
+  $('#cstepbody').innerHTML='<div class="cstephead"><div><div class="cstepnum">Étape '+(k+1)+' / '+c.steps.length+' · de '+fmtMin(before)+' à '+fmtMin(before+s.min)+'</div><h1><span class="ar">'+s.ar+'</span>'+esc(s.t)+'</h1></div>'+
+  '<div class="ctimer"><div id="ctime" class="ctime">'+fmtSec(CTIMER.left)+'</div><div><button class="btn-ghost" onclick="timerToggle()" id="ctbtn">'+(CTIMER.run?'⏸':'▶')+'</button> <button class="btn-ghost" onclick="timerSet('+s.min*60+')">↺</button></div></div></div>'+
+  '<div class="cbody">'+s.h()+'</div>'+(s.note?cNote(s.note):'')+
+  '<div class="exnav"><button class="btn-ghost" onclick="coursGo('+(k-1)+')" '+(k?'':'disabled')+'>← Étape précédente</button><button class="btn" onclick="'+(last?'go(\'home\')':'coursGo('+(k+1)+')')+'">'+(last?'Terminer la leçon':'Étape suivante : '+esc(c.steps[k+1].t)+' →')+'</button></div>';
+  /* les notes de l'étape peuvent aussi être dans le corps (fonction note) */
+}
+const fmtMin=m=>Math.floor(m/60)+'h'+String(m%60).padStart(2,'0');
+const fmtSec=s=>(s<0?'−':'')+Math.floor(Math.abs(s)/60)+':'+String(Math.abs(s)%60).padStart(2,'0');
+function timerSet(sec){clearInterval(CTIMER.h);CTIMER={left:sec,run:false,h:null};timerShow();}
+function timerToggle(){
+  if(CTIMER.run){clearInterval(CTIMER.h);CTIMER.run=false;}
+  else{CTIMER.run=true;CTIMER.h=setInterval(()=>{CTIMER.left--;timerShow();},1000);}
+  timerShow();
+}
+function timerShow(){const t=$('#ctime');if(t){t.textContent=fmtSec(CTIMER.left);t.classList.toggle('over',CTIMER.left<=0);}const b=$('#ctbtn');if(b)b.textContent=CTIMER.run?'⏸':'▶';}
+document.addEventListener('keydown',e=>{
+  if(view.name!=='cours'||e.target.closest('input,textarea,select')||e.altKey||e.ctrlKey||e.metaKey)return;
+  if(e.key==='ArrowRight'||e.key==='PageDown'){e.preventDefault();coursGo(CL.step+1);}
+  else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();coursGo(CL.step-1);}
+});
 
 /* ================= grammaire ================= */
 function grammarList(){
