@@ -98,6 +98,13 @@ h1,h2,h3{font-family:"Fraunces",serif}
 .gex .ar{font-size:1.4em;display:block}
 .gex .fr{color:var(--ink2);font-size:.9em}
 .lesson h3{margin:22px 0 6px;color:var(--maj)}
+.audiobar{display:flex;gap:8px;flex-wrap:wrap;margin:4px 0 16px}
+.say{border:none;background:var(--maj-soft);color:var(--maj);border-radius:8px;font-size:.55em;padding:3px 7px;cursor:pointer;vertical-align:middle}
+.sayable{cursor:pointer;border-radius:4px}
+.sayable:hover{background:var(--maj-soft)}
+.saying{background:var(--safran-soft)!important;border-radius:6px}
+#toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,40px);opacity:0;max-width:min(520px,calc(100% - 32px));background:var(--ink);color:var(--bg);padding:12px 16px;border-radius:12px;font-size:.9em;z-index:120;transition:opacity .2s,transform .2s;pointer-events:none}
+#toast.show{opacity:1;transform:translate(-50%,0)}
 .lesson a.lref{color:var(--maj);font-weight:600;text-decoration:underline dotted;text-underline-offset:3px}
 .hero h1 .ari{display:inline;font-size:1em;color:inherit;margin:0;line-height:inherit}
 .gpart{margin:30px 0 4px;color:var(--maj);font-size:1.25em}
@@ -198,7 +205,7 @@ footer{max-width:min(calc(880px*var(--zoom)),100%);margin:0 auto;padding:0 18px 
   <button class="iconbtn" id="fsBtn" onclick="toggleFS()" title="Plein écran">⛶</button>
 </header>
 <main class="wrap" id="app"></main>
-<footer><strong>مَنَار — Manār</strong> · Cours d'arabe de la Mosquée de Voiron (AVEC) — 50 textes · <span id="nlessons">29</span> leçons de grammaire · exercices auto-corrigés.<br>Toucher un mot arabe affiche sa traduction, son type et son pluriel (ou singulier).</footer>
+<footer><strong>مَنَار — Manār</strong> · Cours d'arabe de la Mosquée de Voiron (AVEC) — 50 textes · <span id="nlessons">29</span> leçons de grammaire · exercices auto-corrigés.<br>Toucher un mot arabe affiche sa traduction, son type et son pluriel (ou singulier). Le bouton 🔊 lit les textes et les mots à voix haute.</footer>
 <div class="sheetbg" id="sheetbg" onclick="closeSheet()"></div>
 <div class="sheet" id="sheet" role="dialog" aria-modal="true"></div>
 <script>
@@ -3169,6 +3176,73 @@ function lookup(raw){
 }
 function fin(h,notes){if(h.pl)notes.unshift('Forme plurielle — voir le singulier ci-dessous');return{key:h.key,e:h.e,notes,pl:h.pl,plForm:h.plForm};}
 
+/* ================= audio =================
+   Lecture à voix haute par la synthèse vocale du navigateur (voix arabe de l'appareil).
+   Pour remplacer la voix de synthèse par un vrai enregistrement, ajouter une entrée à AUDIO :
+   clé 'texte-N' (texte entier), 'texte-N-p' + numéro de paragraphe (à partir de 1),
+   ou le mot sans voyelles ; valeur = chemin du fichier publié à côté de la page.
+   ex. AUDIO={'texte-1':'audio/texte-1.mp3','texte-1-p2':'audio/texte-1-p2.mp3'} */
+const AUDIO={};
+const TTS=typeof window!=='undefined'&&'speechSynthesis' in window?window.speechSynthesis:null;
+let arVoice=null,voicesChecked=false,curAudio=null;
+function pickVoice(){
+  if(!TTS)return;
+  const vs=TTS.getVoices();if(!vs.length)return;
+  voicesChecked=true;
+  const ar=vs.filter(v=>/^ar(\b|[-_])/i.test(v.lang));
+  /* préférence : arabe standard (Arabie saoudite, Égypte…), voix locale plutôt qu'en ligne */
+  arVoice=ar.find(v=>/ar[-_]SA/i.test(v.lang)&&v.localService)||ar.find(v=>/ar[-_]SA/i.test(v.lang))||ar.find(v=>v.localService)||ar[0]||null;
+}
+if(TTS){pickVoice();TTS.addEventListener?TTS.addEventListener('voiceschanged',pickVoice):(TTS.onvoiceschanged=pickVoice);}
+function toast(msg){
+  let t=$('#toast');if(!t){t=document.createElement('div');t.id='toast';document.body.appendChild(t);}
+  t.textContent=msg;t.classList.add('show');clearTimeout(toast._h);toast._h=setTimeout(()=>t.classList.remove('show'),6000);
+}
+function stopSay(){
+  if(TTS)TTS.cancel();
+  if(curAudio){curAudio.pause();curAudio=null;}
+  document.querySelectorAll('.saying').forEach(e=>e.classList.remove('saying'));
+}
+/* lit un texte arabe (de préférence vocalisé) ; el = élément à surligner pendant la lecture */
+function say(text,opts){
+  opts=opts||{};stopSay();
+  const src=opts.key&&AUDIO[opts.key];
+  if(src){
+    curAudio=new Audio(src);curAudio.playbackRate=opts.rate||1;
+    if(opts.el){opts.el.classList.add('saying');curAudio.onended=()=>opts.el.classList.remove('saying');}
+    curAudio.play().catch(()=>{curAudio=null;sayTTS(text,opts);});
+    return;
+  }
+  sayTTS(text,opts);
+}
+function sayTTS(text,opts){
+  if(!TTS){toast('Ce navigateur ne sait pas lire à voix haute. Essaie avec Chrome, Edge ou Safari.');return;}
+  if(!arVoice)pickVoice();
+  if(!arVoice&&voicesChecked){toast('Aucune voix arabe n\'est installée sur cet appareil. Sur Windows : Paramètres › Heure et langue › Voix › ajouter l\'arabe. Sur Android : installe « Services de synthèse vocale Google » et la langue arabe.');return;}
+  const clean=text.replace(/ـ/g,'').replace(/[«»"()]/g,' ').trim();
+  /* une phrase par énoncé : évite que les longues lectures soient coupées (Chrome) */
+  const parts=(clean.match(/[^.؟!:]+[.؟!:]*/g)||[]).map(x=>x.trim()).filter(x=>/[\u0621-\u064A]/.test(x));
+  if(!parts.length)return;
+  parts.forEach((p,i)=>{
+    const u=new SpeechSynthesisUtterance(p);
+    u.lang=arVoice?arVoice.lang:'ar-SA';if(arVoice)u.voice=arVoice;
+    u.rate=opts.rate||0.9;
+    if(opts.el){if(i===0)u.onstart=()=>opts.el.classList.add('saying');if(i===parts.length-1){u.onend=u.onerror=()=>opts.el.classList.remove('saying');}}
+    TTS.speak(u);
+  });
+}
+/* forme vocalisée d'un texte : les textes ont leur version VOCAL, les mots isolés passent par vf */
+function sayParagraphs(id,rate){
+  const t=TEXTS.find(x=>x.id===id),V=(typeof VOCAL!=='undefined'&&VOCAL[id])||null;
+  const ps=V?V.p:t.p;
+  say((V?V.ta:t.ta)+'. '+ps.join(' '),{rate,key:'texte-'+id,el:$('.prose')});
+}
+function sayPara(id,i,btn){
+  const t=TEXTS.find(x=>x.id===id),V=(typeof VOCAL!=='undefined'&&VOCAL[id])||null;
+  say((V?V.p:t.p)[i],{key:'texte-'+id+'-p'+(i+1),el:btn.closest('p')});
+}
+function sayWord(w,el){const n=norm(w);say(HARAKAT_RE.test(w)?w:((typeof VMAP!=='undefined'&&VMAP[n])||vf(w)),{key:n,rate:0.8,el});}
+
 /* ================= bottom-sheet ================= */
 function openSheet(raw){
   const r=lookup(raw);
@@ -3185,11 +3259,12 @@ function openSheet(raw){
     const plv=r.pl&&val?val.split('—')[0].split('/')[0].trim():''; /* le pluriel vocalisé est noté dans l'entrée du singulier */
     const shown=r.pl?vz(norm(plv)===r.plForm?plv:vf(r.plForm)):vz(tok);
     const baseLine=(r.pl||norm(raw)!==r.key)?'<div style="text-align:center;color:var(--ink2);font-size:.9em;margin-top:2px">forme de base : <b class="ar kufi" style="font-size:1.3em">'+esc(dv(r.key,vf(r.key)))+'</b></div>':'';
-    sheet.innerHTML='<div class="grab"></div><div class="word">'+esc(shown)+'</div>'+baseLine+'<div class="trad">'+esc(trad)+'</div><div class="meta">'+rows+'</div>'+notes;
+    const sayBtn='<div style="text-align:center;margin-top:6px"><button class="tab" onclick="sayWord('+esc(JSON.stringify(tok))+',this)">🔊 Écouter</button></div>';
+    sheet.innerHTML='<div class="grab"></div><div class="word">'+esc(shown)+'</div>'+baseLine+sayBtn+'<div class="trad">'+esc(trad)+'</div><div class="meta">'+rows+'</div>'+notes;
   }
   sheet.classList.add('open');$('#sheetbg').classList.add('open');
 }
-function closeSheet(){$('#sheet').classList.remove('open');$('#sheetbg').classList.remove('open');document.querySelectorAll('.w.on').forEach(x=>x.classList.remove('on'));}
+function closeSheet(){stopSay();$('#sheet').classList.remove('open');$('#sheetbg').classList.remove('open');document.querySelectorAll('.w.on').forEach(x=>x.classList.remove('on'));}
 
 /* ================= rendu du texte arabe cliquable ================= */
 function renderAr(s){
@@ -3200,6 +3275,8 @@ function renderAr(s){
   }).join(' ');
 }
 app.addEventListener('click',e=>{
+  const sy=e.target.closest('.lesson .sayable');
+  if(sy){say(sy.dataset.say,{rate:0.8,el:sy});return;}
   const w=e.target.closest('.w');
   if(w){document.querySelectorAll('.w.on').forEach(x=>x.classList.remove('on'));w.classList.add('on');openSheet(w.dataset.w);}
 });
@@ -3208,6 +3285,7 @@ app.addEventListener('click',e=>{
 let view={name:'home'};
 const HIST=[];
 function go(name,arg,isBack){
+  stopSay();
   if(!isBack&&(view.name!==name||view.arg!==arg))HIST.push({...view});
   view={name,arg};closeSheet();render();window.scrollTo({top:0});
 }
@@ -3272,8 +3350,12 @@ function lesson(i){
   const prev=i>0?'<button class="tab" onclick="go(\'lesson\','+(i-1)+')">← Leçon '+i+'</button>':'';
   const next=i<GRAMMAR.length-1?'<button class="tab" onclick="go(\'lesson\','+(i+1)+')">Leçon '+(i+2)+' →</button>':'';
   const quiz=LQ.items.length?'<h2 class="gpart">Exercices</h2><p style="color:var(--ink2)">Vérifie que tu as compris la leçon.</p><div id="lquiz">'+lessonQuizHTML()+'</div>':'';
-  app.innerHTML='<div class="hero"><div class="eyebrow"><span class="kufi">'+esc(dv(g.ta,g.tav))+'</span> leçon '+(i+1)+' / '+GRAMMAR.length+'</div><h1>'+arSpans(g.t)+'</h1></div><div class="lesson">'+lessonRefs(g.h)+'</div>'+quiz+'<div class="tabs">'+prev+'<button class="tab" onclick="go(\'grammar\')">Toutes les leçons</button>'+next+'</div>';
+  stopSay();
+  app.innerHTML='<div class="hero"><div class="eyebrow"><span class="kufi">'+esc(dv(g.ta,g.tav))+'</span> leçon '+(i+1)+' / '+GRAMMAR.length+'</div><h1>'+arSpans(g.t)+'</h1></div><div class="lesson">'+'<p class="hint">Touche un mot ou une phrase arabe de la leçon pour l\'entendre.</p>'+lessonRefs(g.h)+'</div>'+quiz+'<div class="tabs">'+prev+'<button class="tab" onclick="go(\'grammar\')">Toutes les leçons</button>'+next+'</div>';
+  markSayable($('.lesson'));
 }
+/* mémorise la forme vocalisée de chaque passage arabe avant que le mode sans voyelles ne la retire */
+function markSayable(root){root.querySelectorAll('.ar').forEach(e=>{const tx=e.textContent.split('—')[0].replace(/[A-Za-zÀ-ÿ'’;…]+/g,' ').replace(/\s+/g,' ').trim();if(!e.closest('.nov')&&!e.querySelector('.ar')&&/[\u0621-\u064A]{2}/.test(stripHarakat(tx).replace(/\u0640/g,''))){e.dataset.say=tx;e.classList.add('sayable');}});}
 function lessonQuizHTML(){
   let right=0,done=0;
   const body=LQ.items.map((it,qi)=>{
@@ -3323,8 +3405,9 @@ function textView(id){
   const s=srcOf(t);
   EX=(EX&&EX.t&&EX.t.id===id)?EX:buildExercises(t);
   const prev=TEXTS.find(x=>x.id===id-1),next=TEXTS.find(x=>x.id===id+1);
-  app.innerHTML='<div class="hero"><div class="eyebrow"><span class="kufi">'+esc(THEMES[t.th])+'</span> texte '+t.id+' / 50</div><h1><span class="ar kufi">'+renderAr(s.ta)+'</span>'+esc(t.tf_)+'</h1><p>Touche n\'importe quel mot arabe pour voir sa carte de vocabulaire. Le bouton ـَـّ en haut affiche ou masque les voyelles.</p></div>'+
-  '<div class="prose ar" dir="rtl">'+s.p.map(p=>'<p>'+renderAr(p)+'</p>').join('')+'</div>'+
+  app.innerHTML='<div class="hero"><div class="eyebrow"><span class="kufi">'+esc(THEMES[t.th])+'</span> texte '+t.id+' / 50</div><h1><span class="ar kufi">'+renderAr(s.ta)+'</span>'+esc(t.tf_)+'</h1><p>Touche n\'importe quel mot arabe pour voir sa carte de vocabulaire. Le bouton ـَـّ en haut affiche ou masque les voyelles ; le bouton 🔊 devant chaque paragraphe le lit à voix haute.</p></div>'+
+  '<div class="audiobar"><button class="btn" onclick="sayParagraphs('+id+',0.9)">🔊 Écouter le texte</button><button class="tab" onclick="sayParagraphs('+id+',0.65)">🐢 Lentement</button><button class="tab" onclick="stopSay()">⏹ Arrêter</button></div>'+
+  '<div class="prose ar" dir="rtl">'+s.p.map((p,i)=>'<p><button class="say" title="Écouter ce paragraphe" onclick="sayPara('+id+','+i+',this)">🔊</button> '+renderAr(p)+'</p>').join('')+'</div>'+
   '<div class="tabs" id="extabs">'+['Vocabulaire','Association','Texte à trous','Grammaire','Vrai ou faux'].map((n,i)=>'<button class="tab'+(i===0?' active':'')+'" onclick="showEx('+i+')">'+(i+1)+' · '+n+'</button>').join('')+'</div>'+
   '<div id="exbody"></div>'+
   '<div class="tabs" style="margin-top:30px">'+(prev?'<button class="tab" onclick="go(\'text\','+prev.id+')">← Texte '+prev.id+'</button>':'')+'<button class="tab" onclick="go(\'texts\')">Tous les textes</button>'+(next?'<button class="tab" onclick="go(\'text\','+next.id+')">Texte '+next.id+' →</button>':'')+'</div>';
