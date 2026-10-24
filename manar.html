@@ -3215,10 +3215,13 @@ function say(text,opts){
   }
   sayTTS(text,opts);
 }
+function ttsFail(err){
+  const vs=TTS?TTS.getVoices():[];
+  toast('La lecture en arabe a échoué ('+err+'). Voix détectées : '+(vs.length?vs.map(v=>v.lang).filter((x,i,a)=>a.indexOf(x)===i).slice(0,12).join(', '):'aucune')+'. Vérifie dans les réglages de l\'appareil qu\'une voix arabe est installée (Android : Synthèse vocale Google › Installer les données vocales › Arabe).');
+}
 function sayTTS(text,opts){
   if(!TTS){toast('Ce navigateur ne sait pas lire à voix haute. Essaie avec Chrome, Edge ou Safari.');return;}
   if(!arVoice)pickVoice();
-  if(!arVoice&&voicesChecked){toast('Aucune voix arabe n\'est installée sur cet appareil. Sur Windows : Paramètres › Heure et langue › Voix › ajouter l\'arabe. Sur Android : installe « Services de synthèse vocale Google » et la langue arabe.');return;}
   const clean=text.replace(/ـ/g,'').replace(/[«»"()]/g,' ').trim();
   /* une phrase par énoncé : évite que les longues lectures soient coupées (Chrome) */
   const parts=(clean.match(/[^.؟!:]+[.؟!:]*/g)||[]).map(x=>x.trim()).filter(x=>/[\u0621-\u064A]/.test(x));
@@ -3227,7 +3230,8 @@ function sayTTS(text,opts){
     const u=new SpeechSynthesisUtterance(p);
     u.lang=arVoice?arVoice.lang:'ar-SA';if(arVoice)u.voice=arVoice;
     u.rate=opts.rate||0.9;
-    if(opts.el){if(i===0)u.onstart=()=>opts.el.classList.add('saying');if(i===parts.length-1){u.onend=u.onerror=()=>opts.el.classList.remove('saying');}}
+    u.onerror=ev=>{if(opts.el)opts.el.classList.remove('saying');if(ev&&ev.error&&ev.error!=='interrupted'&&ev.error!=='canceled')ttsFail(ev.error);};
+    if(opts.el){if(i===0)u.onstart=()=>opts.el.classList.add('saying');if(i===parts.length-1){u.onend=()=>opts.el.classList.remove('saying');}}
     TTS.speak(u);
   });
 }
