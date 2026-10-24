@@ -136,6 +136,11 @@ h1,h2,h3{font-family:"Fraunces",serif}
 .score{background:var(--maj-soft);color:var(--maj);font-weight:700;border-radius:10px;padding:12px 16px;margin-top:8px}
 .btn{border:none;background:var(--maj);color:#fff;font:inherit;font-weight:700;padding:10px 18px;border-radius:10px;cursor:pointer}
 .btn:hover{filter:brightness(1.08)}
+.btn-ghost{border:1.5px solid var(--line);background:transparent;color:var(--ink);font:inherit;font-weight:700;padding:10px 18px;border-radius:10px;cursor:pointer}
+.btn-ghost:hover{border-color:var(--maj);color:var(--maj)}
+.exnav{display:flex;gap:10px;margin-top:26px}
+.exnav .btn,.exnav .btn-ghost{flex:1;padding:13px 16px;font-size:1em}
+.exnav .btn{background:var(--ink);color:var(--bg)}
 
 /* ---- word sheet ---- */
 .sheetbg{position:fixed;inset:0;background:rgba(15,18,26,.45);z-index:90;opacity:0;pointer-events:none;transition:opacity .2s}
@@ -3414,12 +3419,35 @@ function textView(id){
   '<div class="prose ar" dir="rtl">'+s.p.map((p,i)=>'<p><button class="say" title="Écouter ce paragraphe" onclick="sayPara('+id+','+i+',this)">🔊</button> '+renderAr(p)+'</p>').join('')+'</div>'+
   '<div class="tabs" id="extabs">'+['Vocabulaire','Association','Texte à trous','Grammaire','Vrai ou faux'].map((n,i)=>'<button class="tab'+(i===0?' active':'')+'" onclick="showEx('+i+')">'+(i+1)+' · '+n+'</button>').join('')+'</div>'+
   '<div id="exbody"></div>'+
-  '<div class="tabs" style="margin-top:30px">'+(prev?'<button class="tab" onclick="go(\'text\','+prev.id+')">← Texte '+prev.id+'</button>':'')+'<button class="tab" onclick="go(\'texts\')">Tous les textes</button>'+(next?'<button class="tab" onclick="go(\'text\','+next.id+')">Texte '+next.id+' →</button>':'')+'</div>';
+  '<div class="exnav"><button class="btn-ghost" onclick="retryEx()">↻ Répéter</button><button class="btn" id="exnext" onclick="nextEx()"></button></div>';
   showEx(EX.cur||0);
+}
+/* navigation entre les 5 exercices : répéter l'exercice courant / passer au suivant (le dernier mène au texte suivant) */
+function updateExNav(){
+  const b=$('#exnext');if(!b)return;
+  const last=EX.cur>=4,next=TEXTS.find(x=>x.id===EX.t.id+1);
+  b.textContent=!last?'Exo suivant →':next?'Texte suivant →':'Tous les textes';
+}
+function nextEx(){
+  if(EX.cur<4){showEx(EX.cur+1);window.scrollTo({top:$('#extabs').offsetTop-70,behavior:'smooth'});return;}
+  const next=TEXTS.find(x=>x.id===EX.t.id+1);
+  if(next)go('text',next.id);else go('texts');
+}
+function retryEx(){
+  const D=EX.data,i=EX.cur;
+  const redo=items=>items.forEach(it=>{delete it.picked;it.opts=shuffle(it.opts);});
+  if(i===0)redo(D.q1);
+  else if(i===1){EX.matched.clear();D.mL=shuffle(D.mL);D.mR=shuffle(D.mR);}
+  else if(i===2)redo(D.holes);
+  else if(i===3){D.gq.splice(0,D.gq.length,...drawGrammarQ());}
+  else if(i===4)D.tf.forEach(it=>delete it.picked);
+  EX.scores[i]=null;
+  showEx(i);window.scrollTo({top:$('#extabs').offsetTop-70,behavior:'smooth'});
 }
 function showEx(i){
   document.querySelectorAll('#extabs .tab').forEach((b,j)=>b.classList.toggle('active',i===j));
   EX.cur=i;
+  updateExNav();
   $('#exbody').innerHTML=EX.render[i]();
   applyVocalDOM($('#exbody'));
 }
@@ -3429,6 +3457,7 @@ function frOf(w){const r=lookup(w);return r?r.e[0].split('/')[0].split('·')[0].
 function vf(w){if(/\s/.test(w.trim()))return w.trim().split(/\s+/).map(vf).join(' ');const n=norm(w);return (typeof VBASE!=='undefined'&&VBASE[n])||(typeof VMAP!=='undefined'&&VMAP[n])||w;} /* forme vocalisée, indépendante du mode */
 function dv(plain,voc){return vocalOn&&voc?voc:plain;} /* choix d'affichage selon le mode */
 function splitSents(p){return p.split(/([^.؟!]+[.؟!]?)/).filter(x=>x.trim()).map(x=>x.trim());}
+function drawGrammarQ(){return shuffle(GRAMMAR_POOL).slice(0,5).map(g=>({fr:g.q,note:g.note,kv:g.kv,opts:shuffle(g.opts.map((o,i)=>({t:g.kv?o:stripHarakat(o),tv:o,ok:i===g.a})))}));}
 function buildExercises(t){
   const VP=(typeof VOCAL!=='undefined'&&VOCAL[t.id])||null;
   const vocab=t.v.map(w=>({ar:w,arv:vf(w),fr:frOf(w)}));
@@ -3476,7 +3505,7 @@ function buildExercises(t){
     }
   }
   /* ex4 : grammaire — options mélangées une seule fois */
-  const gq=shuffle(GRAMMAR_POOL).slice(0,5).map(g=>({fr:g.q,note:g.note,kv:g.kv,opts:shuffle(g.opts.map((o,i)=>({t:g.kv?o:stripHarakat(o),tv:o,ok:i===g.a})))}));
+  const gq=drawGrammarQ();
   /* ex5 : vrai/faux */
   const tf=t.tf.map((x,i)=>({s:x[0],sv:VP?VP.tf[i]:x[0],v:x[1]}));
   const ex={cur:0,scores:[null,null,null,null,null],t,matched:new Set()};
