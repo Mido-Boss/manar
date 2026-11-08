@@ -262,6 +262,21 @@ footer{max-width:min(calc(880px*var(--zoom)),100%);margin:0 auto;padding:0 18px 
 .hl-al{background:#2B4BC933;outline:2px solid #2B4BC9}
 .hl-ta{background:#B3382F33;outline:2px solid #B3382F}
 .hl-pr{background:#2E7D5B33;outline:2px solid #2E7D5B}
+.hl-fam{background:#2B4BC933;outline:2px solid #2B4BC9}
+.hl-avo{background:#2E7D5B33;outline:2px solid #2E7D5B}
+.hl-pos{background:#B3382F33;outline:2px solid #B3382F}
+/* arbre de la famille (leçon 2) : bleu = masculin, rouge = féminin */
+.ctree{display:flex;flex-direction:column;align-items:center;gap:4px;margin:12px 0;direction:ltr}
+.ctree-row{display:flex;justify-content:center;align-items:stretch;gap:8px;flex-wrap:wrap}
+.ctree-arrow{color:var(--ink2);font-weight:700;line-height:1}
+.ctree-gap{width:18px}
+.cnode{background:var(--panel);border:2px solid var(--line);border-radius:12px;padding:6px 12px;text-align:center;min-width:120px}
+.cnode.m{border-color:#2B4BC9}
+.cnode.f{border-color:#B3382F}
+.cnode.me{background:var(--maj);border-color:var(--maj);color:#fff}
+.cnode.me .cfr{color:rgba(255,255,255,.85)}
+.cnode .ar{font-size:1.5em;line-height:1.6}
+.cnode .cfr{font-size:.78em}
 .cpause{text-align:center;padding:26px 0}
 .cpause-i{font-size:4em}
 .cdlg{display:flex;align-items:center;gap:10px;padding:4px 0;border-bottom:1px dashed var(--line)}
@@ -1502,6 +1517,37 @@ const DICT={
 "كثيرون":["nombreux (pluriel masculin)","adjectif, pluriel","Singulier","كَثِير — nombreux"],
 "كلوا":["mangez ! (impératif pluriel)","verbe, impératif","Verbe","أَكَلَ — manger"],
 "يجرون":["ils courent","verbe, présent (هم)","Verbe","جَرَى / يَجْرِي — courir"],
+/* ---- ajouts : salutations, famille, noms propres des leçons en classe ---- */
+"سلام":["paix, salut","nom masculin","",""],
+"عليكم":["sur vous","préposition + suffixe","",""],
+"مرحبا":["bonjour, salut","interjection","",""],
+"أهلا":["bienvenue (formule d'accueil)","interjection","",""],
+"عفوا":["de rien, pardon","formule de politesse","",""],
+"لقاء":["rencontre (إِلَى اللِّقَاءِ : au revoir)","nom masculin","",""],
+"سلامة":["paix, sécurité (مَعَ السَّلَامَةِ : au revoir)","nom féminin","",""],
+"رحمة":["miséricorde","nom féminin","",""],
+"ممتاز":["excellent","adjectif","",""],
+"أستاذ":["professeur, maître","nom masculin","Pluriel","أَسَاتِذَة — brisé"],
+"يا":["ô (pour appeler quelqu'un)","particule vocative","",""],
+"نعم":["oui","particule","",""],
+"سبورة":["tableau (de classe)","nom féminin","Pluriel","سَبُّورَات — féminin sain"],
+"خطأ":["erreur, faux","nom masculin","Pluriel","أَخْطَاء — brisé"],
+"زوج":["mari, époux","nom masculin","Pluriel","أَزْوَاج — brisé"],
+"أهل":["famille, proches","nom masculin","",""],
+"متقاعد":["retraité","adjectif ou nom","Féminin","مُتَقَاعِدَة"],
+"تاجر":["commerçant","nom masculin","Pluriel","تُجَّار — brisé"],
+"عامل":["ouvrier / travailleur","nom masculin","Pluriel","عُمَّال — brisé"],
+"محمد":["Mohamed (prénom)","nom propre","",""],
+"آدم":["Adam (prénom)","nom propre","",""],
+"إبراهيم":["Ibrahim (prénom)","nom propre","",""],
+"خديجة":["Khadija (prénom)","nom propre","",""],
+"فاس":["Fès (ville du Maroc)","nom propre","",""],
+"تونس":["Tunis / la Tunisie","nom propre","",""],
+"فوارون":["Voiron (ville de l'Isère)","nom propre","",""],
+"ليون":["Lyon (ville de France)","nom propre","",""],
+"غرونوبل":["Grenoble (ville de France)","nom propre","",""],
+"مغرب":["Maroc (الْمَغْرِب) / coucher du soleil","nom propre ou nom","",""],
+"جزائر":["Algérie (الْجَزَائِر) / îles","nom propre ou pluriel","",""],
 };
 const THEMES=["Vie quotidienne","En ville","Les gens","Voyages et saisons","Loisirs et santé"];
 const TEXTS=[
@@ -3462,6 +3508,26 @@ const STORY=[
 ];
 function storyPara(p){return p.l.map(([s,t])=>s==='n'?t:'«'+t+'»').join(' ');}
 
+/* ---- leçon 2 : « صُورَةُ الْعَائِلَةِ » (même troupe que la leçon 1) ---- */
+const STORY2=[
+{l:[['n','الْيَوْمُ هُوَ الدَّرْسُ الثَّانِي. الْأُسْتَاذُ عُمَرُ فِي الصَّفِّ، وَيَقُولُ:'],['o','السَّلَامُ عَلَيْكُمْ! أَهْلًا وَسَهْلًا! الْيَوْمُ الدَّرْسُ عَنِ الْعَائِلَةِ.'],['n','يَقُولُ الطُّلَّابُ:'],['t','وَعَلَيْكُمُ السَّلَامُ يَا أُسْتَاذُ!']],
+ fr:"Aujourd'hui, c'est la deuxième leçon. Le professeur Omar est dans la classe et il dit : « Que la paix soit sur vous ! Bienvenue ! Aujourd'hui, la leçon porte sur la famille. » Les élèves répondent : « Et sur vous la paix, professeur ! »"},
+{l:[['n','يَقُولُ الْأُسْتَاذُ:'],['o','هَذِهِ صُورَةُ عَائِلَتِي. هَذَا أَبِي وَهَذِهِ أُمِّي. أَبِي وَأُمِّي فِي فَاسَ. وَهَذَا أَخِي وَهَذِهِ أُخْتِي. عِنْدِي أَخٌ وَأُخْتٌ.']],
+ fr:"Le professeur dit : « Voici la photo de ma famille. Voici mon père et voici ma mère. Mon père et ma mère sont à Fès. Et voici mon frère et voici ma sœur. J'ai un frère et une sœur. »"},
+{l:[['n','ثُمَّ يَسْأَلُ الْأُسْتَاذُ:'],['o','يَا يُوسُفُ، هَلْ عِنْدَكَ أَخٌ أَوْ أُخْتٌ؟'],['n','يَقُولُ يُوسُفُ:'],['y','عِنْدِي أَخٌ صَغِيرٌ، اِسْمُهُ آدَمُ. هُوَ طَالِبٌ فِي الْمَدْرَسَةِ. لَيْسَ عِنْدِي أُخْتٌ. أَبِي تَاجِرٌ، وَأُمِّي مُوَظَّفَةٌ.']],
+ fr:"Puis le professeur demande : « Youssef, as-tu un frère ou une sœur ? » Youssef répond : « J'ai un petit frère, il s'appelle Adam. Il est élève à l'école. Je n'ai pas de sœur. Mon père est commerçant et ma mère est employée. »"},
+{l:[['n','ثُمَّ يَقُولُ الْأُسْتَاذُ:'],['o','وَأَنْتِ يَا مَرْيَمُ؟ هَلْ عِنْدَكِ أَوْلَادٌ؟ وَهَلْ زَوْجُكِ طَبِيبٌ؟'],['n','تَقُولُ مَرْيَمُ:'],['m','نَعَمْ، عِنْدِي اِبْنٌ وَبِنْتٌ. لَا، زَوْجِي مُعَلِّمٌ، وَاسْمُهُ إِبْرَاهِيمُ. اِبْنُنَا صَغِيرٌ، وَبِنْتُنَا كَبِيرَةٌ.']],
+ fr:"Puis le professeur dit : « Et toi, Mariam ? As-tu des enfants ? Ton mari est-il médecin ? » Mariam répond : « Oui, j'ai un fils et une fille. Non, mon mari est instituteur, il s'appelle Ibrahim. Notre fils est petit et notre fille est grande. »"},
+{l:[['n','يَقُولُ كَرِيمٌ:'],['k','هَذِهِ صُورَةُ عَائِلَتِنَا. أَبُونَا مُتَقَاعِدٌ، وَأُمُّنَا مُعَلِّمَةٌ. عِنْدَنَا أَخٌ كَبِيرٌ، اِسْمُهُ مُحَمَّدٌ.'],['n','وَتَقُولُ سَارَةُ:'],['s','وَهَذِهِ جَدَّتُنَا! اِسْمُهَا خَدِيجَةُ، وَبَيْتُهَا فِي تُونِسَ. هِيَ سَعِيدَةٌ جِدًّا!']],
+ fr:"Karim dit : « Voici la photo de notre famille. Notre père est retraité et notre mère est enseignante. Nous avons un grand frère, il s'appelle Mohamed. » Et Sara dit : « Et voici notre grand-mère ! Elle s'appelle Khadija et sa maison est en Tunisie. Elle est très heureuse ! »"},
+{l:[['n','تَضْحَكُ فَاطِمَةُ وَتَقُولُ:'],['f','وَأَنَا أَيْضًا جَدَّةٌ! عِنْدِي أَوْلَادٌ وَبَنَاتٌ وَأَحْفَادٌ. عَائِلَتِي كَبِيرَةٌ، وَبَيْتِي قَرِيبٌ مِنَ الْمَسْجِدِ.']],
+ fr:"Fatima rit et dit : « Moi aussi, je suis grand-mère ! J'ai des fils, des filles et des petits-enfants. Ma famille est grande et ma maison est près de la mosquée. »"},
+{l:[['n','يَنْظُرُ الْأُسْتَاذُ إِلَى الصُّوَرِ وَيَقُولُ:'],['o','مَا شَاءَ اللَّهُ! عَائِلَاتٌ جَمِيلَةٌ!'],['n','ثُمَّ يَكْتُبُ عَلَى السَّبُّورَةِ: بَيْتِي، بَيْتُكَ، بَيْتُكِ، بَيْتُهُ، بَيْتُهَا، بَيْتُنَا. وَيَقُولُ:'],['o','هَذَا هُوَ الدَّرْسُ الثَّانِي!']],
+ fr:"Le professeur regarde les photos et dit : « Mâ shâ' Allâh ! Quelles belles familles ! » Puis il écrit au tableau : ma maison, ta maison (à un homme), ta maison (à une femme), sa maison (à lui), sa maison (à elle), notre maison. Et il dit : « Voici la deuxième leçon ! »"},
+{l:[['n','فِي نِهَايَةِ الدَّرْسِ، يَقُولُ الطُّلَّابُ:'],['t','شُكْرًا يَا أُسْتَاذُ!'],['n','يَقُولُ الْأُسْتَاذُ:'],['o','عَفْوًا! إِلَى اللِّقَاءِ، مَعَ السَّلَامَةِ!'],['n','الْيَوْمُ الثَّانِي أَيْضًا يَوْمٌ سَعِيدٌ.']],
+ fr:"À la fin de la leçon, les élèves disent : « Merci, professeur ! » Le professeur répond : « De rien ! Au revoir, à bientôt ! » Le deuxième jour est, lui aussi, un jour heureux."}
+];
+
 /* petits outils de mise en page */
 const cA=(s,big)=>'<span class="ar'+(big?' cbig':'')+'">'+esc(s)+'</span>';
 const cSay=t=>'<button class="say" title="Écouter" data-t="'+esc(t)+'" onclick="say(this.dataset.t,{rate:0.8,el:this.parentElement})">🔊</button>';
@@ -3469,6 +3535,22 @@ const cRv=(html)=>'<span class="rv" title="Toucher pour révéler" onclick="this
 const cNote=html=>'<details class="cnote"><summary>👩‍🏫 Notes pour l\'animateur</summary>'+html+'</details>';
 const cAsk=html=>'<div class="cask"><span class="cask-i">❓</span><div>'+html+'</div></div>';
 const cTeam=html=>'<div class="cteam"><span class="cask-i">👥</span><div>'+html+'</div></div>';
+
+/* étape « texte » commune à toutes les leçons : lecture par paragraphes ou lecture théâtrale (rôles).
+   before / after = questions (cAsk) placées avant et après le texte */
+function readHTML(story,before,after){
+  const theatre=CL.theatre;
+  let body;
+  if(!theatre){
+    body=story.map((p,i)=>'<div class="cpara"><div class="cpara-h"><span class="badge">Lecteur '+(i+1)+'</span>'+cSay(storyPara(p))+'</div><p class="ar cread">'+renderAr(storyPara(p))+'</p><div class="cfr">'+cRv('🇫🇷 '+esc(p.fr))+'</div></div>').join('');
+  }else{
+    const used=new Set(story.flatMap(p=>p.l.map(x=>x[0])));
+    const roles=Object.keys(SPK).filter(k=>used.has(k)).map(k=>'<span class="crole" style="--c:'+SPK[k][2]+'">'+SPK[k][0]+' · <span class="ar">'+SPK[k][1]+'</span></span>').join('');
+    body='<div class="croles">'+roles+'</div>'+story.map(p=>p.l.map(([s,t])=>'<div class="cline" style="--c:'+SPK[s][2]+'"><span class="cwho">'+SPK[s][0]+'</span><span class="ar cread">'+renderAr(t)+'</span></div>').join('')).join('<hr class="csep">');
+  }
+  return '<div class="ctoggle"><button class="'+(theatre?'btn-ghost':'btn')+'" onclick="CL.theatre=false;coursStep()">📖 Lecture par paragraphes</button><button class="'+(theatre?'btn':'btn-ghost')+'" onclick="CL.theatre=true;coursStep()">🎭 Lecture théâtrale (rôles)</button></div>'+
+  before+'<div class="cstory">'+body+'</div>'+after;
+}
 
 const COURS=[{
   id:'jour1',ta:'الْيَوْمُ الْأَوَّلُ',t:'Le premier jour',
@@ -3486,20 +3568,10 @@ const COURS=[{
     cAsk('Pourquoi dit-on <span class="ar">حَالُكَ</span> à un homme et <span class="ar">حَالُكِ</span> à une femme ? Qu\'est-ce qui change ? '+cRv('Seule la petite voyelle sur le ك change : ـكَ (« ka ») pour un homme, ـكِ (« ki ») pour une femme. L\'arabe distingue souvent masculin et féminin, même pour « tu » !'))+
     cNote('<p>Objectif : mettre tout le monde à l\'aise et faire parler chacun dès la première minute. Faites écouter chaque formule avec 🔊, faites répéter deux fois, puis faites saluer les participants deux par deux. Gardez la question sur ـكَ / ـكِ pour la fin : elle prépare la grammaire de l\'étape 5.</p>');}},
 
-  {ar:'الْيَوْمُ الْأَوَّلُ',t:'Le texte : on lit ensemble',h:()=>{
-    const theatre=CL.theatre;
-    let body;
-    if(!theatre){
-      body=STORY.map((p,i)=>'<div class="cpara"><div class="cpara-h"><span class="badge">Lecteur '+(i+1)+'</span>'+cSay(storyPara(p))+'</div><p class="ar cread">'+renderAr(storyPara(p))+'</p><div class="cfr">'+cRv('🇫🇷 '+esc(p.fr))+'</div></div>').join('');
-    }else{
-      const roles=Object.keys(SPK).map(k=>'<span class="crole" style="--c:'+SPK[k][2]+'">'+SPK[k][0]+' · <span class="ar">'+SPK[k][1]+'</span></span>').join('');
-      body='<div class="croles">'+roles+'</div>'+STORY.map(p=>p.l.map(([s,t])=>'<div class="cline" style="--c:'+SPK[s][2]+'"><span class="cwho">'+SPK[s][0]+'</span><span class="ar cread">'+renderAr(t)+'</span></div>').join('')).join('<hr class="csep">');
-    }
-    return '<div class="ctoggle"><button class="'+(theatre?'btn-ghost':'btn')+'" onclick="CL.theatre=false;coursStep()">📖 Lecture par paragraphes</button><button class="'+(theatre?'btn':'btn-ghost')+'" onclick="CL.theatre=true;coursStep()">🎭 Lecture théâtrale (rôles)</button></div>'+
-    cAsk('<strong>Avant de lire :</strong> regardez le texte sans le lire. Combien y a-t-il de paragraphes ? Repérez les guillemets « » : que nous disent-ils ? '+cRv('10 paragraphes. Les guillemets « » montrent que quelqu\'un parle : il y a donc des dialogues, comme au théâtre.'))+
-    '<div class="cstory">'+body+'</div>'+
-    cAsk('Quel est le titre de l\'histoire ? Que veut dire <span class="ar">الْأَوَّلُ</span> ? Devinez à partir du texte. '+cRv('<span class="ar">الْيَوْمُ الْأَوَّلُ</span> = « le premier jour ».'));
-  },note:'<p><strong>1re lecture, par paragraphes :</strong> pour chaque paragraphe, faites d\'abord écouter avec 🔊, puis un participant différent le lit à voix haute (Lecteur 1, Lecteur 2…). Avant de révéler la traduction, demandez aux participants ce qu\'ils ont compris : des noms ? des villes ? des métiers ?</p><p><strong>2e lecture, théâtrale :</strong> distribuez les 8 rôles (le narrateur, le professeur Omar, Youssef, Mariam, Karim, Sara, Fatima, et « tous les élèves » pour tout le monde). Chacun ne lit que ses répliques, en jouant le ton. Les mots du texte se touchent pour afficher leur traduction.</p>'},
+  {ar:'الْيَوْمُ الْأَوَّلُ',t:'Le texte : on lit ensemble',h:()=>readHTML(STORY,
+    cAsk('<strong>Avant de lire :</strong> regardez le texte sans le lire. Combien y a-t-il de paragraphes ? Repérez les guillemets « » : que nous disent-ils ? '+cRv('10 paragraphes. Les guillemets « » montrent que quelqu\'un parle : il y a donc des dialogues, comme au théâtre.')),
+    cAsk('Quel est le titre de l\'histoire ? Que veut dire <span class="ar">الْأَوَّلُ</span> ? Devinez à partir du texte. '+cRv('<span class="ar">الْيَوْمُ الْأَوَّلُ</span> = « le premier jour ».'))),
+   note:'<p><strong>1re lecture, par paragraphes :</strong> pour chaque paragraphe, faites d\'abord écouter avec 🔊, puis un participant différent le lit à voix haute (Lecteur 1, Lecteur 2…). Avant de révéler la traduction, demandez aux participants ce qu\'ils ont compris : des noms ? des villes ? des métiers ?</p><p><strong>2e lecture, théâtrale :</strong> distribuez les 8 rôles (le narrateur, le professeur Omar, Youssef, Mariam, Karim, Sara, Fatima, et « tous les élèves » pour tout le monde). Chacun ne lit que ses répliques, en jouant le ton. Les mots du texte se touchent pour afficher leur traduction.</p>'},
 
   {ar:'هَلْ فَهِمْتُمْ؟',t:'Avez-vous compris ?',h:()=>{
     const qui=[['هِيَ طَبِيبَةٌ مِنْ لِيُون.','مَرْيَمُ'],['هُوَ مِنَ الْمَغْرِبِ، مِنْ مَدِينَةِ فَاسَ.','الْأُسْتَاذُ عُمَرُ'],['هُوَ طَالِبٌ فِي الْجَامِعَةِ.','يُوسُفُ'],['هِيَ جَدَّةٌ، وَبَيْتُهَا قَرِيبٌ مِنَ الْمَسْجِدِ.','فَاطِمَةُ'],['هُوَ مُهَنْدِسٌ مِنْ تُونِسَ.','كَرِيمٌ'],['هِيَ طَالِبَةٌ فِي الْمَدْرَسَةِ.','سَارَةُ']];
@@ -3569,7 +3641,134 @@ const COURS=[{
     '<div class="ccard"><h3>📝 Pour la prochaine fois</h3><p>1. Écrivez <strong>4 phrases</strong> sur vous : '+cA('اِسْمِي … · أَنَا مِنْ … · أَنَا … · أَنَا سَعِيدٌ / سَعِيدَةٌ.')+'</p><p>2. Présentez un membre de votre famille en <strong>2 phrases</strong>, avec '+cA('هُوَ')+' ou '+cA('هِيَ')+'.</p><p>3. Relisez l\'histoire <span class="ar">الْيَوْمُ الْأَوَّلُ</span> à la maison, avec le bouton 🔊.</p></div>'+
     '<div class="cpause"><div class="cpause-i">👋</div>'+cA('شُكْرًا، وَإِلَى اللِّقَاءِ!',1)+'<p class="cbigfr">Merci, et à la prochaine !</p></div>';
   },note:'<p>Lisez chaque phrase de la liste : les participants répondent « oui » et vous cochez. S\'il reste un point fragile, faites un dernier exemple oral. Terminez comme le professeur Omar dans l\'histoire : les participants disent <span class="ar">شُكْرًا يَا أُسْتَاذُ</span>, vous répondez <span class="ar">عَفْوًا، مَعَ السَّلَامَةِ</span>.</p>'}
-  ]}];
+  ]},
+
+/* ================= LEÇON 2 : « عَائِلَتِي » — Ma famille ================= */
+{
+  id:'famille',ta:'عَائِلَتِي',t:'Ma famille',
+  sub:'Le vocabulaire de la famille ; mon, ton, son (les suffixes possessifs) ; dire « j\'ai » avec عِنْدَ ; présenter sa famille.',
+  steps:[
+  {ar:'مَرْحَبًا مِنْ جَدِيدٍ!',t:'Retrouvailles : un rappel de la leçon 1',h:()=>{
+    const R=[['Dites « bonjour », puis répondez à ce bonjour.','السَّلَامُ عَلَيْكُمْ — وَعَلَيْكُمُ السَّلَامُ'],
+      ['Demandez à une femme comment elle va.','كَيْفَ حَالُكِ؟'],
+      ['Demandez son nom à un homme.','مَا اسْمُكَ؟'],
+      ['Dites : « Je suis étudiante. »','أَنَا طَالِبَةٌ.'],
+      ['Dites : « Il est de Tunisie. »','هُوَ مِنْ تُونِسَ.'],
+      ['Dites « merci », puis répondez à ce merci.','شُكْرًا — عَفْوًا']];
+    return cAsk(`<strong>Rappel éclair :</strong> qu'avez-vous retenu de la leçon 1 ? Chaque question appelle une réponse en arabe, puis on révèle.`)+
+    `<div class="cgrid2">`+R.map(r=>`<div class="ccard"><div class="cfr">${r[0]}</div><div class="cans">${cRv(cA(r[1],1))}</div></div>`).join('')+`</div>`+
+    cTeam(`<strong>Les devoirs :</strong> chacun présente à voix haute un membre de sa famille, en deux phrases, avec <span class="ar">هُوَ</span> ou <span class="ar">هِيَ</span>. Pour cela, vous avez peut-être cherché des mots comme « frère » ou « sœur » : c'est justement le thème d'aujourd'hui.`)+
+    cAsk(`<strong>Un petit mystère pour la suite :</strong> <span class="ar cbig">هَذَا أَخِي.</span> = « Voici mon frère. » Combien de mots en arabe ? en français ? <strong>Où est passé « mon » ?</strong> `+cRv(`Il est <strong>collé à la fin du mot</strong> : <span class="ar">أَخٌ</span> (un frère) + <span class="ar">ـِي</span> (mon) = <span class="ar">أَخِي</span> (mon frère). Nous le découvrons aujourd'hui.`));
+  },note:`<p>Objectif : se retrouver, remettre la leçon 1 en mémoire, puis ouvrir le thème du jour. Posez chaque question, laissez répondre à voix haute, puis révélez. Si une réponse est fragile, refaites-la une fois à l'oral avant de continuer. Pour les devoirs, deux ou trois présentations suffisent : l'essentiel est que chacun sente qu'il manquait des mots, ce que la leçon va combler.</p>`},
+
+  {ar:'أَفْرَادُ الْعَائِلَةِ',t:'Le vocabulaire de la famille',h:()=>{
+    const PAIRS=[['أَبٌ','père','أُمٌّ','mère'],['أَخٌ','frère','أُخْتٌ','sœur'],['اِبْنٌ','fils','بِنْتٌ','fille'],['جَدٌّ','grand-père','جَدَّةٌ','grand-mère'],['زَوْجٌ','mari','زَوْجَةٌ','épouse'],['عَمٌّ','oncle (frère du père)','عَمَّةٌ','tante (sœur du père)'],['خَالٌ','oncle (frère de la mère)','خَالَةٌ','tante (sœur de la mère)']];
+    const MORE=[['عَائِلَةٌ','une famille'],['أَهْلٌ','les proches, la famille'],['أَوْلَادٌ','les enfants'],['إِخْوَةٌ','frères et sœurs'],['أَحْفَادٌ','petits-enfants']];
+    const N=(ar,fr,g)=>`<div class="cnode ${g}">${cRv(cA(ar))}<div class="cfr">${fr}</div></div>`;
+    const tree=`<div class="ctree" id="ctree">`+
+      `<div class="ctree-row">${N('جَدٌّ','grand-père','m')}${N('جَدَّةٌ','grand-mère','f')}</div><div class="ctree-arrow">↓</div>`+
+      `<div class="ctree-row">${N('عَمٌّ','oncle (côté du père)','m')}${N('عَمَّةٌ','tante (côté du père)','f')}<span class="ctree-gap"></span>${N('أَبٌ','père','m')}${N('أُمٌّ','mère','f')}<span class="ctree-gap"></span>${N('خَالٌ','oncle (côté de la mère)','m')}${N('خَالَةٌ','tante (côté de la mère)','f')}</div><div class="ctree-arrow">↓</div>`+
+      `<div class="ctree-row">${N('أَخٌ','frère','m')}<div class="cnode me">${cA('أَنَا')}<div class="cfr">moi</div></div>${N('أُخْتٌ','sœur','f')}<span class="ctree-gap"></span><div class="cnode">${cRv(cA('زَوْجٌ / زَوْجَةٌ'))}<div class="cfr">mari / épouse</div></div></div><div class="ctree-arrow">↓</div>`+
+      `<div class="ctree-row">${N('اِبْنٌ','fils','m')}${N('بِنْتٌ','fille','f')}</div></div>`;
+    return `<div class="cgrid2">`+PAIRS.map(p=>`<div class="ccard"><div class="cpair"><div>${cSay(p[0])}${cA(p[0],1)}<div class="cfr">${p[1]}</div></div><div class="carrow">↔</div><div>${cSay(p[2])}${cA(p[2],1)}<div class="cfr">${p[3]}</div></div></div></div>`).join('')+
+    `<div class="ccard"><div class="cfr">Pour parler de plusieurs</div>`+MORE.map(m=>`<div class="cword">${cSay(m[0])}${cA(m[0])} <span class="cfr">${m[1]}</span></div>`).join('')+`</div></div>`+
+    cAsk(`<strong>Observez les paires.</strong> Dans lesquelles reconnaissez-vous la règle de la leçon 1 (masculin + <span class="ar">ة</span> = féminin) ? Lesquelles ne la suivent pas ? `+cRv(`La règle fonctionne pour <span class="ar">جَدٌّ ← جَدَّةٌ</span>, <span class="ar">زَوْجٌ ← زَوْجَةٌ</span>, <span class="ar">عَمٌّ ← عَمَّةٌ</span>, <span class="ar">خَالٌ ← خَالَةٌ</span>. Les trois autres paires sont à apprendre telles quelles : <span class="ar">أَبٌ / أُمٌّ</span> (deux mots différents), <span class="ar">أَخٌ / أُخْتٌ</span> et <span class="ar">اِبْنٌ / بِنْتٌ</span> (le féminin est un peu transformé).`))+
+    cAsk(`<strong><span class="ar">عَمٌّ</span> et <span class="ar">خَالٌ</span> :</strong> en français, « oncle » suffit. Qu'est-ce que l'arabe précise en plus ? `+cRv(`Le <strong>côté de la famille</strong> : <span class="ar">عَمٌّ</span> est le frère du père, <span class="ar">خَالٌ</span> le frère de la mère. Même chose pour <span class="ar">عَمَّةٌ</span> et <span class="ar">خَالَةٌ</span>.`))+
+    `<h3>L'arbre de la famille <span class="ar">شَجَرَةُ الْعَائِلَةِ</span></h3><p class="cfr">Bleu : masculin · rouge : féminin. Toucher un mot pour le révéler.</p>`+tree+
+    `<div class="ctoggle"><button class="btn-ghost" onclick="document.querySelectorAll('#ctree .rv').forEach(e=>e.classList.add('on'))">👁 Tout révéler</button></div>`+
+    cTeam(`<strong>À vous :</strong> par deux, l'un désigne une personne de l'arbre en français, l'autre dit le mot en arabe. Puis on échange les rôles.`);
+  },note:`<p>Faites écouter chaque paire avec 🔊 et faites répéter deux fois. La question sur les paires prépare la suite : le <span class="ar">ة</span> du féminin va bientôt « s'ouvrir » en <span class="ar">ت</span>. Pour l'arbre, laissez d'abord les participants deviner avant de révéler. Si certains parlent une langue où l'on distingue aussi l'oncle paternel et l'oncle maternel (turc, berbère, dialectes arabes…), invitez-les à le dire : c'est un bon moment d'échange.</p>`},
+
+  {ar:'صُورَةُ الْعَائِلَةِ',t:'Le texte : on lit ensemble',h:()=>readHTML(STORY2,
+    cAsk(`<strong>Avant de lire :</strong> regardez le texte sans le lire. Combien y a-t-il de paragraphes ? Quels petits mots reviennent très souvent au début des phrases ? `+cRv(`8 paragraphes. On voit revenir <span class="ar">هَذَا / هَذِهِ</span> (voici), <span class="ar">عِنْدِي</span> et <span class="ar">عِنْدَنَا</span> (j'ai, nous avons), et beaucoup de mots terminés par <span class="ar">ـِي</span> : tout le thème du jour est dans cette histoire.`)),
+    cAsk(`Quel est le titre de l'histoire ? Que veut dire <span class="ar">صُورَةُ الْعَائِلَةِ</span> ? Devinez à partir du texte. `+cRv(`<span class="ar">صُورَةُ الْعَائِلَةِ</span> = « la photo de la famille » (<span class="ar">صُورَةٌ</span> = photo, image).`))),
+   note:`<p><strong>1re lecture, par paragraphes :</strong> pour chaque paragraphe, faites d'abord écouter avec 🔊, puis un participant différent le lit à voix haute (Lecteur 1, Lecteur 2…). Avant de révéler la traduction, demandez ce qui a été compris : des membres de la famille ? des métiers ? des « j'ai » ?</p><p><strong>2e lecture, théâtrale :</strong> distribuez les 8 rôles (le narrateur, le professeur Omar, Youssef, Mariam, Karim, Sara, Fatima, et « tous les élèves »). Les personnages sont les mêmes qu'à la leçon 1 : les participants les retrouvent avec plaisir. Les mots du texte se touchent pour afficher leur traduction.</p>`},
+
+  {ar:'هَلْ فَهِمْتُمْ؟',t:'Avez-vous compris ?',h:()=>{
+    const qui=[['زَوْجِي مُعَلِّمٌ، وَاسْمُهُ إِبْرَاهِيمُ.','مَرْيَمُ'],['لَيْسَ عِنْدِي أُخْتٌ.','يُوسُفُ'],['هَذِهِ صُورَةُ عَائِلَتِنَا. أَبُونَا مُتَقَاعِدٌ.','كَرِيمٌ'],['أَنَا جَدَّةٌ، وَعِنْدِي أَحْفَادٌ.','فَاطِمَةُ'],['أَبِي وَأُمِّي فِي فَاسَ.','الْأُسْتَاذُ عُمَرُ'],['جَدَّتُنَا اسْمُهَا خَدِيجَةُ.','سَارَةُ']];
+    const vf=[['يُوسُفُ: «عِنْدِي أُخْتٌ.»',0,'Faux : يُوسُفُ dit « لَيْسَ عِنْدِي أُخْتٌ ». Il a un petit frère, آدَمُ.'],['مَرْيَمُ: «زَوْجِي مُعَلِّمٌ.»',1,'Vrai : son mari, إِبْرَاهِيمُ, est مُعَلِّمٌ.'],['كَرِيمٌ: «أَبُونَا طَبِيبٌ.»',0,'Faux : أَبُونَا مُتَقَاعِدٌ (retraité). C\'est leur mère qui est مُعَلِّمَةٌ.'],['فَاطِمَةُ: «عِنْدِي أَحْفَادٌ.»',1,'Vrai : elle a des fils, des filles et des petits-enfants.'],['سَارَةُ: «جَدَّتُنَا فِي فُوَارُون.»',0,'Faux : جَدَّتُنَا فِي تُونِسَ.'],['الْأُسْتَاذُ: «أَبِي وَأُمِّي فِي فَاسَ.»',1,'Vrai.']];
+    const qs=[['مَنْ آدَمُ؟','Qui est Adam ?','هُوَ أَخُو يُوسُفَ. هُوَ طَالِبٌ فِي الْمَدْرَسَةِ.'],['مَنْ إِبْرَاهِيمُ؟','Qui est Ibrahim ?','هُوَ زَوْجُ مَرْيَمَ. هُوَ مُعَلِّمٌ.'],['أَيْنَ جَدَّةُ كَرِيمٍ وَسَارَةَ؟','Où est la grand-mère de Karim et de Sara ?','هِيَ فِي تُونِسَ.'],['كَيْفَ عَائِلَةُ فَاطِمَةَ؟','Comment est la famille de Fatima ?','عَائِلَتُهَا كَبِيرَةٌ.']];
+    return `<h3>1. Qui parle ? <span class="ar">مَنْ يَقُولُ هَذَا؟</span></h3><div class="cgrid3">`+qui.map(q=>`<div class="ccard">${cSay(q[0])}${cA(q[0],1)}<div class="cans">← ${cRv(cA(q[1],1))}</div></div>`).join('')+`</div>`+
+    `<h3>2. Vrai ou faux ? <span class="ar">صَحِيحٌ أَمْ خَطَأٌ؟</span></h3><p class="cfr">Que dit chaque personnage ? Est-ce vrai d'après l'histoire ? Chacun répond « vrai » ou « faux », puis on révèle.</p><div class="cgrid2">`+vf.map(v=>`<div class="ccard">${cA(v[0],1)}<div class="cans">${cRv((v[1]?'✅ ':'❌ ')+esc(v[2]))}</div></div>`).join('')+`</div>`+
+    `<h3>3. Questions en arabe</h3>`+cTeam(`Par deux : lisez la question, cherchez la réponse dans le texte, puis répondez <strong>en arabe</strong> à voix haute.`)+
+    qs.map(q=>`<div class="ccard crow">${cSay(q[0])}${cA(q[0],1)}<span class="cfr">${q[1]}</span><div class="cans">${cRv(cA(q[2],1))}</div></div>`).join('');
+  },note:`<p>« Qui parle ? » : lisez la phrase, laissez les participants donner le prénom, puis révélez. Pour le vrai / faux, demandez à quelqu'un qui a répondu « faux » de corriger la phrase en arabe. Les questions de la partie 3 se font en binômes. Deux détails à relever sans les expliquer encore : <span class="ar">أَخُو يُوسُفَ</span> (le frère de Youssef) a un <span class="ar">و</span> qu'<span class="ar">أَخِي</span> n'avait pas, et <span class="ar">عَائِلَتُهَا</span> montre un <span class="ar">ت</span> à la place du <span class="ar">ة</span> : les deux seront expliqués à l'étape 6.</p>`},
+
+  {ar:'لُعْبَةُ الْبَحْثِ',t:'La chasse aux indices',h:()=>{
+    const all=STORY2.map(storyPara).join(' ');
+    const btn=(k,lab,col)=>`<button class="chunt" style="--c:${col}" onclick="huntHL('${k}',this)">${lab}</button>`;
+    return cTeam(`<strong>Par équipes de deux ou trois.</strong> Cherchez dans le texte, comptez, puis comparez vos résultats.`)+
+    `<div class="chunts">${btn('fam','1. Les mots de la famille','#2B4BC9')}${btn('avo','2. Les mots avec عِنْدَ : « j\'ai », « nous avons »…','#2E7D5B')}${btn('pos','3. Les mots avec un suffixe : mon, notre, son…','#B3382F')}</div><div id="huntRes" class="cfr"></div>`+
+    `<div class="cstory ar cread" id="huntText">${renderAr(all)}</div>`+
+    cAsk(`<strong>1.</strong> Regardez les mots qui se terminent par <span class="ar">ـِي</span> : <span class="ar">أَبِي، أُمِّي، أَخِي، أُخْتِي، عَائِلَتِي</span>. Que veut dire ce petit <span class="ar">ـِي</span> ? `+cRv(`« mon / ma ». C'est le « moi » collé à la fin du mot : <span class="ar">أَخِي</span> = mon frère.`))+
+    cAsk(`<strong>2.</strong> Comparez <span class="ar">عِنْدِي</span> (dit par Youssef) et <span class="ar">عِنْدَنَا</span> (dit par Karim) : qui parle de qui ? `+cRv(`<span class="ar">عِنْدِي</span> = j'ai (« chez moi »), <span class="ar">عِنْدَنَا</span> = nous avons (« chez nous »). Le petit morceau final est le même que pour « mon » et « notre » !`))+
+    cAsk(`<strong>3.</strong> Dans <span class="ar">اِسْمُهُ آدَمُ</span> et <span class="ar">اِسْمُهَا خَدِيجَةُ</span> : lequel parle d'un homme, lequel d'une femme ? `+cRv(`<span class="ar">ـهُ</span> = « son » (à lui) · <span class="ar">ـهَا</span> = « son » (à elle). Le suffixe suit le propriétaire, comme <span class="ar">هُوَ / هِيَ</span>.`))+
+    cAsk(`<strong>4.</strong> Cherchez <span class="ar">جَدَّةٌ</span> puis <span class="ar">جَدَّتُنَا</span> : que s'est-il passé pour le <span class="ar">ة</span> ? `+cRv(`Il est devenu <span class="ar">ت</span> : devant un suffixe, le <span class="ar">ة</span> « s'ouvre ». Nous y revenons à l'étape 6.`));
+  },note:`<p>Laissez un temps de recherche, puis cliquez sur chaque bouton pour surligner les réponses dans le texte et afficher le total. Les mots surlignés peuvent se chevaucher (par exemple <span class="ar">أَبِي</span> est à la fois un mot de la famille et un mot à suffixe) : activez un seul bouton à la fois pour bien voir. L'équipe la plus proche gagne un point pour le grand jeu (notez-le). Ne donnez pas encore de règle : on découvre, la grammaire vient juste après.</p>`},
+
+  {ar:'بَيْتِي، بَيْتُكَ، بَيْتُهُ',t:'Grammaire 1 : mon, ton, son',h:()=>{
+    const P=[['أَنَا','je','ـِي','بَيْتِي','ma maison'],['أَنْتَ','tu (homme)','ـكَ','بَيْتُكَ','ta maison'],['أَنْتِ','tu (femme)','ـكِ','بَيْتُكِ','ta maison'],['هُوَ','il','ـهُ','بَيْتُهُ','sa maison (à lui)'],['هِيَ','elle','ـهَا','بَيْتُهَا','sa maison (à elle)'],['نَحْنُ','nous','ـنَا','بَيْتُنَا','notre maison']];
+    const ex=[['أَنَا + أُمٌّ','moi + mère','أُمِّي','ma mère'],['هِيَ + بَيْتٌ','elle + maison','بَيْتُهَا','sa maison (à elle)'],['أَنْتَ + اِسْمٌ','toi (homme) + nom','اِسْمُكَ','ton nom'],['نَحْنُ + عَائِلَةٌ','nous + famille','عَائِلَتُنَا','notre famille'],['أَنْتِ + زَوْجٌ','toi (femme) + mari','زَوْجُكِ','ton mari'],['أَنَا + جَدَّةٌ','moi + grand-mère','جَدَّتِي','ma grand-mère']];
+    const F=[['أَبٌ','père',['أَبِي','أَبُوكَ','أَبُوكِ','أَبُوهُ','أَبُوهَا','أَبُونَا']],['أَخٌ','frère',['أَخِي','أَخُوكَ','أَخُوكِ','أَخُوهُ','أَخُوهَا','أَخُونَا']]];
+    return cAsk(`<strong>Enquête :</strong> dans la leçon 1, vous avez déjà rencontré <span class="ar">اِسْمِي</span>, <span class="ar">مَا اسْمُكَ؟</span>, <span class="ar">مَا اسْمُكِ؟</span>, <span class="ar">كَيْفَ حَالُكَ؟</span>, <span class="ar">اِسْمُهُ</span>, <span class="ar">اِسْمُهَا</span>. Qu'ont-ils en commun ? Que faut-il ajouter à <span class="ar">اِسْمٌ</span> (un nom) pour obtenir chacun d'eux ? `+cRv(`Un petit morceau est <strong>collé à la fin</strong> du nom : c'est un <strong>suffixe possessif</strong>. <span class="ar">اِسْمٌ</span> + <span class="ar">ـِي</span> = <span class="ar">اِسْمِي</span> (mon nom). Et il y en a un pour chaque personne : moi, toi (homme), toi (femme), lui, elle, nous. Ce sont les mêmes distinctions que pour les pronoms de la leçon 1 !`))+
+    `<div class="cgrid3">`+P.map(p=>`<div class="ccard ccenter">${cSay(p[3])}<div class="cfr"><span class="ar">${p[0]}</span> · ${p[1]}</div><div>${cA(p[2],1)}</div><div>${cA(p[3],1)}</div><div class="cfr">${p[4]}</div></div>`).join('')+`</div>`+
+    `<div class="gnote"><strong>1. Pas d'article avec un possessif.</strong> On dit <span class="ar">أُمِّي</span> (ma mère), jamais <span class="ar">الْأُمِّي</span> : le suffixe « remplace » le <span class="ar">الْ</span>.</div>`+
+    `<div class="gnote"><strong>2. Le <span class="ar">ة</span> devient <span class="ar">ت</span>.</strong> Un nom féminin en <span class="ar">ة</span> ouvre son <span class="ar">ة</span> en <span class="ar">ت</span> devant le suffixe : <span class="ar">جَدَّةٌ ← جَدَّتِي</span> · <span class="ar">عَائِلَةٌ ← عَائِلَتُنَا</span> · <span class="ar">زَوْجَةٌ ← زَوْجَتُهُ</span>. Si vous croisez un <span class="ar">ت</span> inattendu en fin de mot, c'est souvent un ancien <span class="ar">ة</span>.</div>`+
+    `<div class="gnote"><strong>3. Deux petites voyelles à imiter.</strong> Pour « mon », la dernière lettre du nom prend une kasra (<span class="ar">بَيْتِي</span>) ; pour les autres suffixes, une ḍamma (<span class="ar">بَيْتُكَ</span>). La raison viendra avec la leçon de grammaire sur l'iʿrāb : pour l'instant, imitez.</div>`+
+    `<h3>Complétez avec le bon possessif</h3>`+cTeam(`Chaque carte donne un pronom et un nom. Dites le groupe complet à voix haute, puis on révèle.`)+
+    `<div class="cgrid2">`+ex.map(e=>`<div class="ccard">${cA(e[0],1)}<div class="cfr">${e[1]}</div><div class="cans">${cRv(cA(e[2],1)+' <span class="cfr">'+e[3]+'</span>')}</div></div>`).join('')+`</div>`+
+    cTeam(`<strong>Le jeu des possessifs :</strong> l'animateur donne un nom (<span class="ar">أُمٌّ</span>, <span class="ar">بَيْتٌ</span>, <span class="ar">عَائِلَةٌ</span>, <span class="ar">اِبْنٌ</span>…) et désigne quelqu'un (lui-même, un participant, une participante, le groupe…) ; on répond avec le bon possessif. Puis un participant prend la place de l'animateur.`)+
+    `<h3>Deux mots à part : <span class="ar">أَبٌ</span> et <span class="ar">أَخٌ</span></h3><p class="cfr">Avec « mon », rien de spécial. Avec tous les autres suffixes, ils gagnent un <span class="ar">و</span> : on dit <span class="ar">أَبُوهُ</span>, pas <span class="ar">أَبُهُ</span>.</p>`+
+    `<table class="gtable keepv"><tr><th></th>`+['أَنَا','أَنْتَ','أَنْتِ','هُوَ','هِيَ','نَحْنُ'].map(x=>`<th class="ar">${x}</th>`).join('')+`</tr>`+F.map(f=>`<tr><td>${f[1]} · <span class="ar">${f[0]}</span></td>`+f[2].map(x=>`<td class="ar">${x}</td>`).join('')+`</tr>`).join('')+`</table>`+
+    `<div class="gnote"><strong>Le saviez-vous ?</strong> C'est la même forme <span class="ar">أَبُو</span> qui sert à appeler un parent par le nom de son enfant : <span class="ar">أَبُو يُوسُفَ</span> = « le père de Youssef », <span class="ar">أُمُّ يُوسُفَ</span> = « la mère de Youssef ». Dans beaucoup de pays arabes, c'est une marque de respect.</div>`;
+  },note:`<p>Commencez par l'enquête : laissez les participants découvrir que les formes de la leçon 1 contenaient déjà ces suffixes. Présentez ensuite les six cartes en les faisant répéter, puis fixez les trois remarques (pas d'article, ة → ت, voyelles à imiter). Le jeu des possessifs doit être rapide ; en cas d'hésitation, revenez au tableau des six cartes. Gardez <span class="ar">أَبٌ</span> et <span class="ar">أَخٌ</span> pour la fin : ils reprennent ce qui a été vu dans « Avez-vous compris ? » (<span class="ar">أَخُو يُوسُفَ</span>).</p>`},
+
+  {ar:'اِسْتِرَاحَةٌ',t:'Pause',h:()=>
+    `<div class="cpause"><div class="cpause-i">☕</div>${cA('اِسْتِرَاحَةٌ',1)}<p class="cbigfr">C'est la pause !</p></div>`+
+    cAsk(`<strong>Défi de la pause :</strong> pensez à deux personnes de votre famille et préparez, en arabe, une phrase pour chacune. Au retour, quelques volontaires la disent !`)+
+    `<div class="ccard ccenter"><div class="cfr">Modèles</div>${cA('هَذَا أَبِي · هَذِهِ أُمِّي · هَذَا أَخِي · هَذِهِ أُخْتِي',1)}</div>`,
+   note:`<p>Pendant la pause, aidez ceux qui cherchent un mot. Rappel : « mon père » se dit <span class="ar">أَبِي</span>, « ma mère » <span class="ar">أُمِّي</span>, « mon frère » <span class="ar">أَخِي</span>, « ma sœur » <span class="ar">أُخْتِي</span>.</p>`},
+
+  {ar:'عِنْدِي أَخٌ',t:'Grammaire 2 : dire « j\'ai »',h:()=>{
+    const A=[['أَنَا','j\'ai','عِنْدِي','عِنْدِي أَخٌ.','J\'ai un frère.'],['أَنْتَ','tu as (homme)','عِنْدَكَ','عِنْدَكَ أُخْتٌ.','Tu as une sœur.'],['أَنْتِ','tu as (femme)','عِنْدَكِ','عِنْدَكِ اِبْنٌ.','Tu as un fils.'],['هُوَ','il a','عِنْدَهُ','عِنْدَهُ بِنْتٌ.','Il a une fille.'],['هِيَ','elle a','عِنْدَهَا','عِنْدَهَا بَيْتٌ كَبِيرٌ.','Elle a une grande maison.'],['نَحْنُ','nous avons','عِنْدَنَا','عِنْدَنَا عَائِلَةٌ كَبِيرَةٌ.','Nous avons une grande famille.']];
+    const ex=[['J\'ai une sœur.','عِنْدِي أُخْتٌ.'],['Elle a un fils.','عِنْدَهَا اِبْنٌ.'],['Nous avons un grand frère.','عِنْدَنَا أَخٌ كَبِيرٌ.'],['As-tu un frère ? (à une femme)','هَلْ عِنْدَكِ أَخٌ؟'],['Il a une fille.','عِنْدَهُ بِنْتٌ.'],['Je n\'ai pas de frère.','لَيْسَ عِنْدِي أَخٌ.']];
+    const D=[['أَخٌ صَغِيرٌ','أُخْتٌ صَغِيرَةٌ','un petit frère / une petite sœur'],['بَيْتٌ كَبِيرٌ','عَائِلَةٌ كَبِيرَةٌ','une grande maison / une grande famille']];
+    return cAsk(`<span class="ar cbig">عِنْدِي أَخٌ.</span> = « J'ai un frère. » Combien de mots en arabe ? <strong>Où sont passés « j'ai » et « un » ?</strong> `+cRv(`Il n'y a <strong>pas de verbe « avoir »</strong> ! <span class="ar">عِنْدَ</span> veut dire « chez » : <span class="ar">عِنْدِي أَخٌ</span> = « chez moi, un frère ». Quant à « un », il est porté par le petit <span class="ar">ـٌ</span> de <span class="ar">أَخٌ</span>. Après « être » à la leçon 1, voici un deuxième verbe qui n'existe pas au présent !`))+
+    `<div class="cgrid3">`+A.map(a=>`<div class="ccard ccenter">${cSay(a[3])}<div class="cfr"><span class="ar">${a[0]}</span> · ${a[1]}</div><div>${cA(a[2],1)}</div><div>${cA(a[3])}</div><div class="cfr">${a[4]}</div></div>`).join('')+`</div>`+
+    `<div class="gnote">Le suffixe est exactement le même que pour « mon, ton, son » : <span class="ar">ـِي</span> · <span class="ar">ـكَ</span> · <span class="ar">ـكِ</span> · <span class="ar">ـهُ</span> · <span class="ar">ـهَا</span> · <span class="ar">ـنَا</span>. Une seule série de suffixes à retenir, pour les noms et pour <span class="ar">عِنْدَ</span>.</div>`+
+    `<h3>Poser la question et répondre</h3><div class="ccard">`+
+      `<div class="cdlg"><span class="cwho ar">أ</span>${cSay('هَلْ عِنْدَكَ أَخٌ؟')}${cA('هَلْ عِنْدَكَ أَخٌ؟ / هَلْ عِنْدَكِ أَخٌ؟',1)}</div>`+
+      `<div class="cdlg"><span class="cwho ar">ب</span>${cSay('نَعَمْ، عِنْدِي أَخٌ.')}${cA('نَعَمْ، عِنْدِي أَخٌ.',1)}</div>`+
+      `<div class="cdlg"><span class="cwho ar">ب</span>${cSay('لَا، لَيْسَ عِنْدِي أَخٌ.')}${cA('لَا، لَيْسَ عِنْدِي أَخٌ.',1)}</div>`+
+      `<p class="cfr"><span class="ar">هَلْ</span> = est-ce que (question oui / non) · <span class="ar">نَعَمْ</span> = oui · <span class="ar">لَا، لَيْسَ عِنْدِي…</span> = non, je n'ai pas… (formule à retenir telle quelle : la négation sera étudiée plus tard).</p></div>`+
+    `<h3>Décrire : l'adjectif suit le nom et s'accorde</h3><div class="cgrid2">`+D.map(d=>`<div class="ccard ccenter"><div>${cA(d[0],1)}</div><div>${cA(d[1],1)}</div><div class="cfr">${d[2]}</div></div>`).join('')+`</div>`+
+    `<h3>Dites en arabe</h3>`+cTeam(`Chacun traduit à voix haute, puis on révèle.`)+
+    `<div class="cgrid2">`+ex.map(e=>`<div class="ccard"><div class="cbigfr">${e[0]}</div><div class="cans">${cRv(cA(e[1],1))}</div></div>`).join('')+`</div>`;
+  },note:`<p>Partez de la phrase d'Omar à l'étape 3 (<span class="ar">عِنْدِي أَخٌ وَأُخْتٌ</span>). Faites remarquer le parallèle avec la leçon 1 : pas de « être », et maintenant pas de « avoir » non plus. Insistez sur <span class="ar">عِنْدَكَ</span> / <span class="ar">عِنْدَكِ</span> : c'est la même différence a / i que pour « tu » (<span class="ar">أَنْتَ / أَنْتِ</span>). La formule <span class="ar">لَيْسَ عِنْدِي</span> est donnée comme un bloc : ne détaillez pas <span class="ar">لَيْسَ</span> maintenant.</p>`},
+
+  {ar:'حِوَارٌ عَنِ الْعَائِلَةِ',t:'Atelier en binômes : parlons de nos familles',h:()=>{
+    const D=[['أ','هَلْ عِنْدَكَ أَخٌ؟ / هَلْ عِنْدَكِ أَخٌ؟'],['ب','نَعَمْ، عِنْدِي أَخٌ. / لَا، لَيْسَ عِنْدِي أَخٌ.'],['أ','مَا اسْمُهُ؟ / مَا اسْمُهَا؟'],['ب','اِسْمُهُ … / اِسْمُهَا …'],['أ','هَلْ عِنْدَكَ أَوْلَادٌ؟ / هَلْ عِنْدَكِ أَوْلَادٌ؟'],['ب','نَعَمْ، عِنْدِي … / لَا، لَيْسَ عِنْدِي أَوْلَادٌ.'],['أ','هَلْ عَائِلَتُكَ كَبِيرَةٌ؟ / هَلْ عَائِلَتُكِ كَبِيرَةٌ؟'],['ب','نَعَمْ، عَائِلَتِي كَبِيرَةٌ. / لَا، عَائِلَتِي صَغِيرَةٌ.']];
+    const adj=[['كَبِيرٌ / كَبِيرَةٌ','grand·e'],['صَغِيرٌ / صَغِيرَةٌ','petit·e'],['سَعِيدٌ / سَعِيدَةٌ','heureux·se'],['جَمِيلٌ / جَمِيلَةٌ','beau / belle'],['قَرِيبٌ / قَرِيبَةٌ','proche']];
+    return `<div class="cgrid2"><div class="ccard"><h3>Le dialogue</h3>`+D.map(d=>`<div class="cdlg"><span class="cwho ar">${d[0]}</span>${cSay(d[1].split(' / ')[0].replace('…',''))}${cA(d[1],1)}</div>`).join('')+
+    `<p class="cfr">tu (homme) <span class="ar">ـكَ</span> · tu (femme) <span class="ar">ـكِ</span> · <span class="ar">اِسْمُهُ</span> = il s'appelle · <span class="ar">اِسْمُهَا</span> = elle s'appelle</p></div>`+
+    `<div class="ccard"><h3>Banque de mots</h3><p class="cfr">Adjectifs (masculin / féminin)</p>`+adj.map(a=>`<div class="cword">${cA(a[0])} <span class="cfr">${a[1]}</span></div>`).join('')+
+    `<p class="cfr" style="margin-top:10px">Les membres de la famille</p><div class="cchips">`+['أَبٌ','أُمٌّ','أَخٌ','أُخْتٌ','اِبْنٌ','بِنْتٌ','جَدٌّ','جَدَّةٌ','زَوْجٌ','زَوْجَةٌ','عَمٌّ','خَالٌ'].map(w=>`<span class="cchip">${cA(w)}</span>`).join('')+`</div></div></div>`+
+    cTeam(`<strong>1.</strong> Par deux, jouez le dialogue avec vos vraies informations, puis échangez les rôles <span class="ar">أ</span> et <span class="ar">ب</span>. Attention au masculin / féminin : <span class="ar">ـكَ</span> ou <span class="ar">ـكِ</span> ? <span class="ar">اِسْمُهُ</span> ou <span class="ar">اِسْمُهَا</span> ?`)+
+    cTeam(`<strong>2.</strong> Chacun présente la famille de son binôme aux autres, avec <span class="ar">هُوَ</span> ou <span class="ar">هِيَ</span> :<br>`+cA('هَذَا صَدِيقِي. اِسْمُهُ … عِنْدَهُ أَخٌ وَأُخْتٌ. عَائِلَتُهُ كَبِيرَةٌ.',1)+`<br>`+cA('هَذِهِ صَدِيقَتِي. اِسْمُهَا … عِنْدَهَا أَخٌ. عَائِلَتُهَا صَغِيرَةٌ.',1)+`<br><span class="cfr">Voici mon ami / mon amie. Il / elle s'appelle… Il / elle a… Sa famille est grande / petite.</span>`)+
+    cTeam(`<strong>Bonus :</strong> dessinez l'arbre de votre famille et nommez chaque personne en arabe : <span class="ar">هَذَا أَبِي، هَذِهِ أُمِّي…</span>`);
+  },note:`<p>Faites d'abord jouer le dialogue par deux volontaires. Pendant le travail en binômes, corrigez surtout trois points : le genre (<span class="ar">ـكَ</span> / <span class="ar">ـكِ</span>, <span class="ar">اِسْمُهُ</span> / <span class="ar">اِسْمُهَا</span>), le <span class="ar">ت</span> de <span class="ar">عَائِلَتُكَ</span>, et l'accord de l'adjectif. Pour les présentations, la troisième personne (<span class="ar">عِنْدَهُ / عِنْدَهَا</span>) est le vrai test : accueillez les erreurs avec bienveillance. Si quelqu'un n'a pas de frère ou de sœur, il répond <span class="ar">لَيْسَ عِنْدِي</span> : c'est un bon exercice aussi.</p>`},
+
+  {ar:'الْمُسَابَقَةُ الْكُبْرَى',t:'Le grand jeu : équipe Soleil contre équipe Lune',h:()=>gameHTML(),
+   note:`<p>Divisez les participants en deux équipes : <span class="ar">الشَّمْسُ</span> (le Soleil) et <span class="ar">الْقَمَرُ</span> (la Lune). Les équipes répondent à tour de rôle ; si une équipe se trompe, l'autre peut « voler » la question. Cliquez sur « Réponse » pour vérifier, puis donnez le point avec les boutons +1. Pensez au point gagné pendant la chasse aux indices ! Les scores repartent de zéro à chaque leçon.</p>`},
+
+  {ar:'مَاذَا تَعَلَّمْنَا؟',t:'Bilan : qu\'avons-nous appris ?',h:()=>{
+    const C=[`Je connais les mots de la famille : <span class="ar">أَبِي، أُمِّي، أَخِي، أُخْتِي…</span>`,`Je sais dire « mon, ton, son, notre » avec un suffixe : <span class="ar">ـِي · ـكَ · ـكِ · ـهُ · ـهَا · ـنَا</span>`,`Je sais que le <span class="ar">ة</span> devient <span class="ar">ت</span> devant un suffixe : <span class="ar">جَدَّةٌ ← جَدَّتِي</span>`,`Je sais dire « j'ai », « tu as », « il a » : <span class="ar">عِنْدِي · عِنْدَكَ · عِنْدَهُ</span>`,`Je sais poser la question : <span class="ar">هَلْ عِنْدَكَ …؟ / هَلْ عِنْدَكِ …؟</span>`,`Je sais répondre « non, je n'ai pas… » : <span class="ar">لَيْسَ عِنْدِي …</span>`,`Je sais présenter ma famille en quelques phrases`];
+    return `<div class="cchecks">`+C.map(c=>`<div class="ccheck" onclick="this.classList.toggle('on')"><span class="cbox"></span><span>${c}</span></div>`).join('')+`</div>`+
+    `<div class="ccard"><h3>📝 Pour la prochaine fois</h3><p>1. Écrivez <strong>5 phrases</strong> sur votre famille : ${cA('هَذَا أَبِي … · هَذِهِ أُمِّي … · عِنْدِي … · عَائِلَتِي كَبِيرَةٌ / صَغِيرَةٌ.')}</p><p>2. Préparez la <strong>présentation d'une photo</strong> (ou d'un dessin) de votre famille, avec ${cA('هَذَا …')} et ${cA('هَذِهِ …')}.</p><p>3. Réécoutez l'histoire <span class="ar">صُورَةُ الْعَائِلَةِ</span> avec le bouton 🔊, et relisez la leçon 1.</p></div>`+
+    `<div class="cpause"><div class="cpause-i">👋</div>${cA('شُكْرًا، وَإِلَى اللِّقَاءِ!',1)}<p class="cbigfr">Merci, et à la prochaine !</p></div>`;
+  },note:`<p>Lisez chaque phrase de la liste : les participants répondent « oui » et vous cochez. S'il reste un point fragile, faites un dernier exemple oral (le plus souvent : le <span class="ar">ت</span> à la place du <span class="ar">ة</span>, ou <span class="ar">عِنْدَكَ</span> / <span class="ar">عِنْدَكِ</span>). Terminez comme dans l'histoire : les participants disent <span class="ar">شُكْرًا يَا أُسْتَاذُ</span>, vous répondez <span class="ar">عَفْوًا، مَعَ السَّلَامَةِ</span>.</p>`}
+  ]}
+];
 
 /* questions du grand jeu */
 const GAMEQ=[
@@ -3588,24 +3787,71 @@ const GAMEQ=[
  ['Comment dit-on « au revoir » ? (deux façons)','مَعَ السَّلَامَةِ · إِلَى اللِّقَاءِ'],
  ['Corrigez : هُوَ طَالِبَةٌ.','هُوَ طَالِبٌ. (ou : هِيَ طَالِبَةٌ.)']
 ];
+/* questions du grand jeu — leçon 2 */
+const GAMEQ2=[
+ ['Dites « mon père » et « ma mère ».','أَبِي · أُمِّي'],
+ ['Dites « mon frère » et « ma sœur ».','أَخِي · أُخْتِي'],
+ ['Traduisez : « J\'ai un fils et une fille. »','عِنْدِي اِبْنٌ وَبِنْتٌ.'],
+ ['Quel est le féminin de جَدٌّ ?','جَدَّةٌ'],
+ ['Demandez à une femme : « As-tu un frère ? »','هَلْ عِنْدَكِ أَخٌ؟'],
+ ['Traduisez : « Notre maison est grande. »','بَيْتُنَا كَبِيرٌ.'],
+ ['Quelle différence y a-t-il entre عَمٌّ et خَالٌ ?','عَمٌّ = le frère du père · خَالٌ = le frère de la mère'],
+ ['Que devient عَائِلَةٌ avec « notre » ?','عَائِلَتُنَا (le ة devient ت)'],
+ ['Dites « sa mère » (celle de Youssef), puis « sa mère » (celle de Mariam).','أُمُّهُ · أُمُّهَا'],
+ ['Traduisez : « Elle a un petit frère. »','عِنْدَهَا أَخٌ صَغِيرٌ.'],
+ ['Traduisez : « Je n\'ai pas de sœur. »','لَيْسَ عِنْدِي أُخْتٌ.'],
+ ['Dites « ton nom » à une femme, puis à un homme.','اِسْمُكِ · اِسْمُكَ'],
+ ['Comment dit-on « Voici ma grand-mère. » ?','هَذِهِ جَدَّتِي.'],
+ ['Comment dit-on « son père » (celui de Karim) ?','أَبُوهُ'],
+ ['Traduisez : « Ma famille est grande. »','عَائِلَتِي كَبِيرَةٌ.'],
+ ['Corrigez : عِنْدِي أُخْتٌ كَبِيرٌ.','عِنْدِي أُخْتٌ كَبِيرَةٌ. (l\'adjectif s\'accorde avec le nom)']
+];
+const GAMES=[GAMEQ,GAMEQ2];
 function gameHTML(){
-  const G=CL.game,q=GAMEQ[G.q];
+  const GQ=GAMES[CL.c],G=CL.game,q=GQ[G.q];
   const team=(i,n,ar,ic)=>'<div class="cteamscore"><div class="cteamname"><span>'+ic+' '+n+'</span><span class="ar">'+ar+'</span></div><div class="cscore">'+G.s[i]+'</div><div><button class="btn-ghost" onclick="gameScore('+i+',-1)">−1</button> <button class="btn" onclick="gameScore('+i+',1)">+1</button></div></div>';
   return '<div class="cscores">'+team(0,'Soleil','الشَّمْسُ','☀️')+team(1,'Lune','الْقَمَرُ','🌙')+'</div>'+
-  '<div class="ccard cgame"><div class="cfr">Question '+(G.q+1)+' / '+GAMEQ.length+'</div><div class="cgameq">'+arSpans(q[0])+'</div>'+
+  '<div class="ccard cgame"><div class="cfr">Question '+(G.q+1)+' / '+GQ.length+'</div><div class="cgameq">'+arSpans(q[0])+'</div>'+
   (G.show?'<div class="cgamea">'+arSpans(q[1])+'</div>':'<button class="btn" onclick="CL.game.show=true;coursStep()">👁 Réponse</button>')+'</div>'+
-  '<div class="exnav"><button class="btn-ghost" onclick="gameNav(-1)" '+(G.q?'':'disabled')+'>← Question précédente</button><button class="btn" onclick="gameNav(1)" '+(G.q<GAMEQ.length-1?'':'disabled')+'>Question suivante →</button></div>';
+  '<div class="exnav"><button class="btn-ghost" onclick="gameNav(-1)" '+(G.q?'':'disabled')+'>← Question précédente</button><button class="btn" onclick="gameNav(1)" '+(G.q<GQ.length-1?'':'disabled')+'>Question suivante →</button></div>';
 }
 function gameScore(i,d){CL.game.s[i]=Math.max(0,CL.game.s[i]+d);coursStep();}
-function gameNav(d){CL.game.q=Math.min(GAMEQ.length-1,Math.max(0,CL.game.q+d));CL.game.show=false;coursStep();}
+function gameNav(d){CL.game.q=Math.min(GAMES[CL.c].length-1,Math.max(0,CL.game.q+d));CL.game.show=false;coursStep();}
+/* chasse aux indices : un test par type d'indice (t = mot sans voyelles, b = mot sans و/ف de liaison)
+   leçon 1 : al, ta, pr — leçon 2 : fam, avo, pos */
+const FAMN=['أب','أبو','أم','أخ','أخو','أخت','جد','جدة','ابن','بنت','زوج','زوجة','عم','عمة','خال','خالة','عائلة','عائلات','ولد','أولاد','بنات','أحفاد','حفيد','إخوة','أهل'];
+const POSN=FAMN.concat(['اسم','بيت','صورة']);
+/* t = nom (éventuellement avec و/ف, الْـ) + éventuellement un suffixe possessif -> {base,suf} ou null */
+function famWord(t,names){
+  const c=[t];
+  if(/^[وف]./.test(t))c.push(t.slice(1));
+  c.slice().forEach(x=>{if(x.startsWith('ال'))c.push(x.slice(2));});
+  for(const x of c){
+    if(names.includes(x))return{base:x,suf:''};
+    for(const s of ['نا','ها','ي','ك','ه']){
+      if(x.length>s.length+1&&x.endsWith(s)){
+        const base=x.slice(0,-s.length);
+        if(names.includes(base)||names.includes(base.replace(/ت$/,'ة')))return{base,suf:s};
+      }
+    }
+  }
+  return null;
+}
+const HUNT={
+  al:(t,b)=>/^(ال|لل|بال)/.test(b)&&!/^(الله|لله)$/.test(b),
+  ta:(t,b)=>/ة$/.test(t),
+  pr:(t,b)=>['أنا','أنت','هو','هي','نحن'].includes(b),
+  fam:t=>{const f=famWord(t,FAMN);return !!f;},
+  avo:t=>/^[وف]?عند/.test(t),
+  pos:t=>{const f=famWord(t,POSN);return !!(f&&f.suf);}
+};
 function huntHL(k,btn){
   const box=$('#huntText');if(!box)return;
   const on=!btn.classList.contains('on');btn.classList.toggle('on',on);
   let n=0;
   box.querySelectorAll('.w').forEach(w=>{
     const t=norm(w.dataset.w),b=t.replace(/^[وف](?=ال|أن|ه|نح)/,'');
-    const hit=k==='al'?(/^(ال|لل|بال)/.test(b)&&!/^(الله|لله)$/.test(b)):k==='ta'?/ة$/.test(t):['أنا','أنت','هو','هي','نحن'].includes(b);
-    if(hit){w.classList.toggle('hl-'+k,on);n++;}
+    if(HUNT[k](t,b)){w.classList.toggle('hl-'+k,on);n++;}
   });
   $('#huntRes').innerHTML=on?btn.textContent.replace(/^\d\.\s*/,'')+' : <strong>'+n+'</strong> trouvés.':'';
 }
