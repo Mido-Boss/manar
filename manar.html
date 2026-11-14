@@ -2259,17 +2259,17 @@ const GRAMMAR=[
 <tr><td class="ar">أَنَا</td><td>je / moi</td></tr>
 <tr><td class="ar">أَنْتَ</td><td>tu (à un homme)</td></tr>
 <tr><td class="ar">أَنْتِ</td><td>tu (à une femme)</td></tr>
-<tr><td class="ar">هُوَ</td></tr>
-<tr><td class="ar">هِيَ</td></tr>
+<tr><td class="ar">هُوَ</td><td>il / lui</td></tr>
+<tr><td class="ar">هِيَ</td><td>elle</td></tr>
 <tr><th colspan="2">Duel (exactement deux personnes)</th></tr>
 <tr><td class="ar">أَنْتُمَا</td><td>vous deux (homme ou femme)</td></tr>
 <tr><td class="ar">هُمَا</td><td>eux deux / elles deux</td></tr>
 <tr><th colspan="2">Pluriel (trois personnes ou plus)</th></tr>
-<tr><td class="ar">نَحْنُ</td></tr>
+<tr><td class="ar">نَحْنُ</td><td>nous</td></tr>
 <tr><td class="ar">أَنْتُمْ</td><td>vous (plusieurs hommes / groupe mixte)</td></tr>
 <tr><td class="ar">أَنْتُنَّ</td><td>vous (plusieurs femmes)</td></tr>
-<tr><td class="ar">هُمْ</td></tr>
-<tr><td class="ar">هُنَّ</td></tr></table>
+<tr><td class="ar">هُمْ</td><td>ils / eux</td></tr>
+<tr><td class="ar">هُنَّ</td><td>elles</td></tr></table>
 <p>Remarquez que le duel est plus simple que le reste : <span class="ar">أَنْتُمَا</span> et <span class="ar">هُمَا</span> servent au masculin <em>et</em> au féminin. Autre différence avec le français : il n'y a pas de « vous » de politesse. On s'adresse à un professeur ou un inconnu avec la même forme qu'à un ami — le respect passe par le ton et les formules, pas par le pronom.</p>
 <div class="gnote">Détail utile pour la lecture : sans les petites voyelles, <span class="ar keepv nov">أنت</span> peut être « tu » masculin (<span class="ar keepv">أَنْتَ</span>) ou féminin (<span class="ar keepv">أَنْتِ</span>). Seul le contexte (ou la vocalisation — le bouton ـَـّ en haut) permet de trancher. C'est un premier exemple d'une règle générale de l'arabe écrit : beaucoup d'ambiguïtés se résolvent par le contexte.</div>
 <div class="gex"><span class="ar">هِيَ طَبِيبَةٌ وَهُوَ مُعَلِّمٌ.</span> — Elle est médecin et il est enseignant.<br><span class="ar">نَحْنُ فِي الْبَيْتِ وَهُمْ فِي الْمَدْرَسَةِ.</span> — Nous sommes à la maison et ils sont à l'école.<br><span class="ar">أَنْتُمَا صَدِيقَانِ.</span> — Vous deux, vous êtes amis.</div>
@@ -2381,32 +2381,41 @@ const GRAMMAR=[
 <p>Observez aussi la fin des mots : dans une phrase nominale simple, le mubtada' et le khabar se terminent tous les deux par une ḍamma (<span class="ar">ـُ</span> ou, avec le tanwīn, <span class="ar">ـٌ</span>). La raison de cette voyelle est expliquée dans {{L:cas}}.</p>
 <div class="gnote">Et au passé ? Et à la négation ? Pour dire « la maison <em>était</em> grande » ou « la maison <em>n'est pas</em> grande », il faut des verbes spéciaux, <span class="ar">كَانَ</span> et <span class="ar">لَيْسَ</span>, présentés dans {{L:kana}}, une fois que les verbes et les terminaisons auront été vus.</div>
 <div class="gex"><span class="ar">مَدْرَسَتِي قَرِيبَةٌ مِنَ الْبَيْتِ.</span> — Mon école est proche de la maison.<br><span class="ar">أَخِي مُهَنْدِسٌ وَأُخْتِي طَبِيبَةٌ.</span> — Mon frère est ingénieur et ma sœur est médecin.<br><span class="ar">هَذِهِ الْغُرْفَةُ صَغِيرَةٌ.</span> — Cette pièce est petite.</div>`},
-{id:"prepositions",ta:"حروف الجر",tav:"حُرُوفُ الْجَرِّ",t:"Les prépositions, « avoir » et « il y a »",h:`
-<p>Les prépositions arabes (<span class="ar">حُرُوفُ الْجَرِّ</span>) sont courtes, très fréquentes, et certaines se collent au mot suivant. Le nom qui suit une préposition se termine par une <strong>kasra</strong> (<span class="ar">ـِ</span>, ou <span class="ar">ـٍ</span> avec le tanwīn) : <span class="ar keepv">فِي الْبَيْتِ، فِي بَيْتٍ</span>. Retenez-le comme un réflexe ; la règle générale des terminaisons sera expliquée dans {{L:cas}}.</p>
+{id:"prepositions",ta:"حروف الجر والظروف",tav:"حُرُوفُ الْجَرِّ وَالظُّرُوفُ",t:"Les prépositions, « avoir » et « il y a »",h:`
+<p>En français, on appelle « prépositions » tous les petits mots comme <em>dans, sur, avec, chez, avant, devant</em>… La grammaire arabe, elle, les range en <strong>deux familles</strong> différentes :</p>
+<p>1) Les <strong>vraies prépositions</strong>, appelées <span class="ar">حُرُوفُ الْجَرِّ</span> (au singulier <span class="ar">حَرْفُ جَرٍّ</span>) : de petits mots-outils (des <span class="ar">حُرُوف</span>, {{L:mots}}) qui ne changent jamais de forme ; certaines se collent au mot suivant.</p>
+<p>2) Des <strong>noms de lieu et de temps</strong>, appelés <span class="ar">الظُّرُوفُ</span> (au singulier <span class="ar">ظَرْف</span>) : <span class="ar">عِنْدَ، مَعَ، قَبْلَ، بَعْدَ، فَوْقَ، تَحْتَ، أَمَامَ</span>… Ce ne sont pas des <span class="ar">حُرُوف</span> mais des <span class="ar">أَسْمَاء</span> ; c'est pour cela qu'ils se terminent par une fatḥa (<span class="ar">عِنْدَ، قَبْلَ</span>). En français, on les traduit pourtant par des prépositions.</p>
+<p>Dans les deux cas, le nom qui suit se termine par une <strong>kasra</strong> (<span class="ar">ـِ</span>, ou <span class="ar">ـٍ</span> avec le tanwīn) : <span class="ar keepv">فِي الْبَيْتِ، فِي بَيْتٍ، عِنْدَ الْبَابِ</span>. Après un <span class="ar">حَرْفُ جَرٍّ</span>, ce nom s'appelle <span class="ar">اِسْمٌ مَجْرُورٌ</span> ; après un <span class="ar">ظَرْف</span>, c'est un <span class="ar">مُضَافٌ إِلَيْهِ</span>, comme dans une iḍāfa ({{L:idafa}}). Retenez-le comme un réflexe ; la règle générale des terminaisons sera expliquée dans {{L:cas}}.</p>
+
+<h3>1. Les vraies prépositions : حُرُوفُ الْجَرِّ</h3>
 <table class="gtable"><tr><th>Arabe</th><th>Sens</th><th>Exemple</th></tr>
 <tr><td class="ar">فِي</td><td>dans, à</td><td><span class="ar">فِي الْبَيْتِ</span> — à la maison</td></tr>
 <tr><td class="ar">إِلَى</td><td>vers, à (direction)</td><td><span class="ar">إِلَى الْمَدْرَسَةِ</span> — à l'école</td></tr>
 <tr><td class="ar">مِنْ</td><td>de, depuis (point de départ)</td><td><span class="ar">مِنَ السُّوقِ</span> — du marché</td></tr>
 <tr><td class="ar">عَنْ</td><td>au sujet de, de (éloignement)</td><td><span class="ar">تَكَلَّمْنَا عَنِ الْعُطْلَةِ</span> — nous avons parlé des vacances</td></tr>
 <tr><td class="ar">عَلَى</td><td>sur</td><td><span class="ar">عَلَى الْمَكْتَبِ</span> — sur le bureau</td></tr>
-<tr><td class="ar">مَعَ</td><td>avec (en compagnie de)</td><td><span class="ar">مَعَ أَصْدِقَائِي</span> — avec mes amis</td></tr>
 <tr><td><span class="ar">بِـ</span> (collée)</td><td>par, avec (moyen), en</td><td><span class="ar">بِالْحَافِلَةِ</span> — en bus</td></tr>
 <tr><td><span class="ar">لِـ</span> (collée)</td><td>pour, à (appartenance)</td><td><span class="ar">هَذَا الْكِتَابُ لِأُخْتِي</span> — ce livre est à ma sœur</td></tr>
 <tr><td><span class="ar">كَـ</span> (collée)</td><td>comme</td><td><span class="ar">كَالْبَحْرِ</span> — comme la mer</td></tr>
-<tr><td class="ar">مِثْلَ</td><td>comme, pareil à</td><td><span class="ar">مِثْلَ أَبِي</span> — comme mon père</td></tr>
-<tr><td class="ar">عِنْدَ</td><td>chez, auprès de</td><td><span class="ar">عِنْدَ جَدَّتِي</span> — chez ma grand-mère</td></tr>
-<tr><td class="ar">قَبْلَ / بَعْدَ</td><td>avant / après</td><td><span class="ar">بَعْدَ الظُّهْرِ</span> — après midi</td></tr>
 <tr><td class="ar">مُنْذُ</td><td>depuis (durée)</td><td><span class="ar">مُنْذُ سَنَةٍ</span> — depuis un an</td></tr>
-<tr><td class="ar">حَتَّى</td><td>jusqu'à</td><td><span class="ar">حَتَّى اللَّيْلِ</span> — jusqu'à la nuit</td></tr>
+<tr><td class="ar">حَتَّى</td><td>jusqu'à</td><td><span class="ar">حَتَّى اللَّيْلِ</span> — jusqu'à la nuit</td></tr></table>
+<div class="gnote">Remarquez <span class="ar">مِنَ السُّوقِ</span> et <span class="ar">عَنِ الْعُطْلَةِ</span> : devant l'article, <span class="ar">مِنْ</span> prend une fatḥa et <span class="ar">عَنْ</span> une kasra pour enchaîner (voyelle d'appui, {{L:lire}}). Et <span class="ar">لِـ</span> + <span class="ar">الْ</span> donne <span class="ar">لِلْـ</span> ({{L:article}}). La liste complète des <span class="ar">حُرُوفُ الْجَرِّ</span> compte encore quelques mots plus rares, comme <span class="ar">رُبَّ</span> (« bien des… ») ou le <span class="ar">وَ</span> du serment : <span class="ar">وَاللَّهِ</span> (par Dieu).</div>
+
+<h3>2. Les ظُرُوف : des noms qui se traduisent par une préposition</h3>
+<table class="gtable"><tr><th>Arabe</th><th>Sens</th><th>Exemple</th></tr>
+<tr><td class="ar">عِنْدَ</td><td>chez, auprès de</td><td><span class="ar">عِنْدَ جَدَّتِي</span> — chez ma grand-mère</td></tr>
+<tr><td class="ar">مَعَ</td><td>avec (en compagnie de)</td><td><span class="ar">مَعَ أَصْدِقَائِي</span> — avec mes amis</td></tr>
+<tr><td class="ar">قَبْلَ / بَعْدَ</td><td>avant / après</td><td><span class="ar">بَعْدَ الظُّهْرِ</span> — après midi</td></tr>
 <tr><td class="ar">تَحْتَ / فَوْقَ</td><td>sous / au-dessus de</td><td><span class="ar">تَحْتَ الشَّجَرَةِ</span> — sous l'arbre</td></tr>
 <tr><td class="ar">أَمَامَ / وَرَاءَ</td><td>devant / derrière</td><td><span class="ar">أَمَامَ الْبَيْتِ</span> — devant la maison</td></tr>
 <tr><td class="ar">بَيْنَ</td><td>entre</td><td><span class="ar">بَيْنَ الْبَيْتِ وَالْمَدْرَسَةِ</span> — entre la maison et l'école</td></tr></table>
-<div class="gnote">Remarquez <span class="ar">مِنَ السُّوقِ</span> et <span class="ar">عَنِ الْعُطْلَةِ</span> : devant l'article, <span class="ar">مِنْ</span> prend une fatḥa et <span class="ar">عَنْ</span> une kasra pour enchaîner (voyelle d'appui, {{L:lire}}). Et <span class="ar">لِـ</span> + <span class="ar">الْ</span> donne <span class="ar">لِلْـ</span> ({{L:article}}).</div>
+<div class="gnote">Même famille, même construction : <span class="ar">مِثْلَ</span> (« comme, pareil à ») n'est pas un <span class="ar">حَرْف</span> mais un nom (« pareil »), suivi lui aussi d'un nom à la kasra : <span class="ar">مِثْلَ أَبِي</span> — comme mon père. Pour « comme », le vrai <span class="ar">حَرْفُ جَرٍّ</span> est <span class="ar">كَـ</span> : <span class="ar">كَالْبَحْرِ</span>.</div>
 
 <h3>Les prépositions avec un pronom</h3>
-<p>Les prépositions acceptent les suffixes de {{L:possessifs}} : <span class="ar">مَعَهُ</span> (avec lui), <span class="ar">عِنْدَنَا</span> (chez nous), <span class="ar">بِكُمْ</span> (avec vous). Quelques-unes changent un peu de forme :</p>
+<p>Les <span class="ar">حُرُوفُ الْجَرِّ</span> comme les <span class="ar">ظُرُوف</span> acceptent les suffixes de {{L:possessifs}} : <span class="ar">بِكُمْ</span> (avec vous), <span class="ar">مَعَهُ</span> (avec lui), <span class="ar">عِنْدَنَا</span> (chez nous). Les <span class="ar">ظُرُوف</span> prennent simplement le suffixe (<span class="ar">عِنْدِي، عِنْدَهُ، عِنْدَهَا</span>) ; quelques <span class="ar">حُرُوف</span> changent un peu de forme :</p>
 <table class="gtable keepv"><tr><th>Préposition</th><th>+ moi</th><th>+ lui</th><th>+ elle</th><th>Remarque</th></tr>
 <tr><td class="ar">لِـ</td><td class="ar">لِي</td><td class="ar">لَهُ</td><td class="ar">لَهَا</td><td>la kasra devient fatḥa (sauf avec « moi »)</td></tr>
+<tr><td class="ar">بِـ</td><td class="ar">بِي</td><td class="ar">بِهِ</td><td class="ar">بِهَا</td><td>ـهُ devient ـهِ après la kasra</td></tr>
 <tr><td class="ar">عَلَى</td><td class="ar">عَلَيَّ</td><td class="ar">عَلَيْهِ</td><td class="ar">عَلَيْهَا</td><td>le ى devient ي</td></tr>
 <tr><td class="ar">إِلَى</td><td class="ar">إِلَيَّ</td><td class="ar">إِلَيْهِ</td><td class="ar">إِلَيْهَا</td><td>le ى devient ي</td></tr>
 <tr><td class="ar">فِي</td><td class="ar">فِيَّ</td><td class="ar">فِيهِ</td><td class="ar">فِيهَا</td><td>ـهُ devient ـهِ après un « i »</td></tr>
@@ -2414,7 +2423,7 @@ const GRAMMAR=[
 <tr><td class="ar">عَنْ</td><td class="ar">عَنِّي</td><td class="ar">عَنْهُ</td><td class="ar">عَنْهَا</td><td>idem</td></tr></table>
 
 <h3>Dire « avoir »</h3>
-<p>Point capital : l'arabe n'a <strong>pas de verbe « avoir »</strong>. On le remplace par une préposition + possesseur, en tête de phrase :</p>
+<p>Point capital : l'arabe n'a <strong>pas de verbe « avoir »</strong>. On le remplace par <span class="ar">عِنْدَ</span>, <span class="ar">لِـ</span> ou <span class="ar">مَعَ</span> + possesseur, en tête de phrase :</p>
 <table class="gtable"><tr><th>Arabe</th><th>Littéralement</th><th>Sens</th></tr>
 <tr><td class="ar">عِنْدِي أَخٌ صَغِيرٌ</td><td>chez-moi un petit frère</td><td>j'ai un petit frère</td></tr>
 <tr><td class="ar">عِنْدَ جَدِّي بَقَرَةٌ</td><td>chez mon grand-père une vache</td><td>mon grand-père a une vache</td></tr>
@@ -2428,7 +2437,7 @@ const GRAMMAR=[
 <tr><td class="ar">فِي الْمَكْتَبَةِ كُتُبٌ كَثِيرَةٌ</td><td>dans la bibliothèque des livres nombreux</td><td>il y a beaucoup de livres à la bibliothèque</td></tr>
 <tr><td class="ar">فِي الصَّفِّ عِشْرُونَ طَالِبًا</td><td>dans la classe vingt étudiants</td><td>il y a vingt étudiants dans la classe</td></tr></table>
 <p>Comparez : <span class="ar">الْكِتَابُ عَلَى الطَّاوِلَةِ</span> (sujet défini en tête) = « <em>le</em> livre est sur la table ». On peut aussi utiliser <span class="ar">هُنَاكَ</span> (« là-bas », d'où « il y a ») en tête : <span class="ar">هُنَاكَ مَطْعَمٌ قَرِيبٌ</span> — il y a un restaurant tout près.</p>
-<div class="gnote">Réflexe de lecture : une phrase qui commence par une préposition (<span class="ar">فِي، عَلَى، عِنْدَ، لِـ</span>…) suivie d'un nom <strong>indéfini</strong> se traduit presque toujours par « il y a » ou par « avoir ».</div>
+<div class="gnote">Réflexe de lecture : une phrase qui commence par une préposition (<span class="ar">فِي، عَلَى، لِـ</span>… ou un <span class="ar">ظَرْف</span> comme <span class="ar">عِنْدَ</span>) suivie d'un nom <strong>indéfini</strong> se traduit presque toujours par « il y a » ou par « avoir ».</div>
 <div class="gex"><span class="ar">عِنْدَنَا فِي الْبَيْتِ قِطَّةٌ صَغِيرَةٌ.</span> — Nous avons à la maison une petite chatte.<br><span class="ar">جَلَسْتُ عَلَى كُرْسِيٍّ تَحْتَ شَجَرَةٍ.</span> — Je me suis assis sur une chaise sous un arbre.<br><span class="ar">فِي قَرْيَتِنَا مَسْجِدٌ جَمِيلٌ.</span> — Il y a une belle mosquée dans notre village.</div>`},
 {id:"present",part:"4 · Le verbe",ta:"الفعل المضارع",tav:"الْفِعْلُ الْمُضَارِعُ",t:"Le présent : préfixes et terminaisons",h:`
 <p>Le verbe arabe au présent (<span class="ar">الْمُضَارِع</span>) se conjugue surtout <strong>par l'avant</strong> : c'est un préfixe qui indique la personne. C'est l'inverse du français, qui conjugue par la fin. Le duel et certains pluriels ajoutent en plus une terminaison. Une fois ce tableau connu, vous identifiez la personne de n'importe quel verbe au premier coup d'œil :</p>
@@ -2486,7 +2495,7 @@ const GRAMMAR=[
 {id:"verbale",ta:"الجملة الفعلية",tav:"الْجُمْلَةُ الْفِعْلِيَّةُ",t:"La phrase verbale : l'ordre verbe – sujet",h:`
 <p>À côté de la phrase nominale, l'arabe possède un deuxième modèle de phrase : la <strong>phrase verbale</strong> (<span class="ar">الْجُمْلَةُ الْفِعْلِيَّةُ</span>), qui commence par un verbe. Et là, surprise : l'ordre de base n'est pas « sujet – verbe » comme en français, mais <strong>verbe – sujet – complément</strong>.</p>
 <p>Chaque élément a un nom technique qu'il faut connaître : le verbe est le <span class="ar">فِعْل</span>, le sujet du verbe est le <span class="ar">فَاعِل</span> (« celui qui fait ») et le complément d'objet direct (COD) est le <span class="ar">مَفْعُول بِه</span> (« ce qui subit l'action »). Regardez la fin des mots dans les exemples : le <span class="ar">فَاعِل</span> se termine par une ḍamma (<span class="ar">أَحْمَدُ، الْبِنْتُ</span>) et le <span class="ar">مَفْعُول بِه</span> par une fatḥa (<span class="ar">رِسَالَةً</span>). Ce n'est pas un hasard : {{L:cas}} l'explique.</p>
-<div class="gex"><span class="ar">ذَهَبَ أَحْمَدُ إِلَى السُّوقِ.</span> — litt. « est-allé Ahmed au marché » = Ahmed est allé au marché.<br><span class="ar">كَتَبَتِ الْبِنْتُ رِسَالَةً.</span> — litt. « a-écrit la fille une lettre » = la fille a écrit une lettre.<br><span class="ar">وَصَلَ الْقِطَارُ فِي الظُّهْرِ.</span> — litt. « est-arrivé le train à midi ».</div>
+<div class="gex"><span class="ar">ذَهَبَ أَحْمَدُ إِلَى السُّوقِ.</span> — litt. « est-allé Ahmed au marché » = Ahmed est allé au marché.<br><span class="ar">كَتَبَتِ الْبِنْتُ رِسَالَةً.</span> — litt. « a-écrit la fille une lettre » = la fille a écrit une lettre.<br><span class="ar">وَصَلَ الْقِطَارُ عِنْدَ الظُّهْرِ.</span> — litt. « est-arrivé le train à midi ».</div>
 <p>C'est extrêmement fréquent dans les récits : dès qu'une phrase commence par un verbe au passé (<span class="ar">ذَهَبَ، جَاءَ، قَالَ، وَصَلَ، جَلَسَ…</span>), attendez-vous à trouver le sujet <em>juste après</em>. Prenez l'habitude de lire ainsi : verbe → qui ? → quoi / où ?</p>
 <p>Règle d'accord importante et contre-intuitive : quand le verbe est <strong>devant</strong> le sujet, il reste au <strong>singulier</strong>, même si le sujet est au duel ou au pluriel. Il s'accorde seulement en genre :</p>
 <table class="gtable"><tr><th>Arabe</th><th>Analyse</th></tr>
@@ -2530,7 +2539,7 @@ const GRAMMAR=[
 <h3>1. Le schéma d'un mot arabe</h3>
 <table class="gtable"><tr><th>① liaison</th><th>② question</th><th>③ petit mot collé</th><th>④ article</th><th>⑤ le mot</th><th>⑥ suffixe</th></tr>
 <tr><td><span class="ar">وَ</span> et<br><span class="ar">فَ</span> alors</td><td><span class="ar">أَ</span> est-ce que</td><td><span class="ar">بِـ</span> par, en<br><span class="ar">لِـ</span> pour<br><span class="ar">كَـ</span> comme<br><span class="ar">سَـ</span> futur</td><td><span class="ar">الْـ</span> le, la</td><td>nom ou verbe</td><td>pronom :<br><span class="ar">ـِي ـنِي ـكَ ـهُ ـهَا ـنَا ـهُمْ</span>…</td></tr></table>
-<p>Les cases sont toujours dans cet ordre, et la plupart du temps seules une ou deux sont remplies. Deux règles : l'article <span class="ar">الْـ</span> et les prépositions <span class="ar">بِـ لِـ كَـ</span> ne vont qu'avec des noms ; <span class="ar">سَـ</span> ne va qu'avec un verbe au présent ({{L:futur}}). Un nom qui porte <span class="ar">الْـ</span> ne prend pas de suffixe possessif : c'est l'un ou l'autre.</p>
+<p>Les cases sont toujours dans cet ordre, et la plupart du temps seules une ou deux sont remplies. Deux règles : l'article <span class="ar">الْـ</span> et les prépositions <span class="ar">بِـ لِـ كَـ</span> ne vont qu'avec des noms (seule exception : <span class="ar">لِـ</span> + verbe au présent = « pour… », <span class="ar">لِأَشْتَرِيَ</span>, {{L:modes}}) ; <span class="ar">سَـ</span> ne va qu'avec un verbe au présent ({{L:futur}}). Un nom qui porte <span class="ar">الْـ</span> ne prend pas de suffixe possessif : c'est l'un ou l'autre.</p>
 
 <h3>2. Exemples décomposés</h3>
 <table class="gtable"><tr><th>Mot écrit</th><th>Découpage</th><th>Sens</th></tr>
@@ -2672,7 +2681,8 @@ const GRAMMAR=[
 <tr><td class="ar">خَبَر</td><td>attribut de la phrase nominale</td><td class="ar">مَرْفُوع</td><td class="ar">الْبَيْتُ كَبِيرٌ</td></tr>
 <tr><td class="ar">فَاعِل</td><td>sujet du verbe ({{L:verbale}})</td><td class="ar">مَرْفُوع</td><td class="ar">ذَهَبَ الْوَلَدُ</td></tr>
 <tr><td class="ar">مَفْعُول بِه</td><td>complément d'objet direct (COD)</td><td class="ar">مَنْصُوب</td><td class="ar">قَرَأْتُ الْكِتَابَ</td></tr>
-<tr><td class="ar">اِسْم مَجْرُور</td><td>nom après une préposition ({{L:prepositions}})</td><td class="ar">مَجْرُور</td><td class="ar">فِي الْبَيْتِ</td></tr></table>
+<tr><td class="ar">اِسْم مَجْرُور</td><td>nom après un <span class="ar">حَرْفُ جَرٍّ</span> ({{L:prepositions}})</td><td class="ar">مَجْرُور</td><td class="ar">فِي الْبَيْتِ</td></tr>
+<tr><td class="ar">مُضَاف إِلَيْهِ</td><td>2e nom d'une iḍāfa ({{L:idafa}}), et nom après un <span class="ar">ظَرْف</span> comme <span class="ar">عِنْدَ، قَبْلَ</span></td><td class="ar">مَجْرُور</td><td class="ar">بَابُ الْبَيْتِ · عِنْدَ الْبَابِ</td></tr></table>
 <p>L'<strong>adjectif</strong> prend toujours le même cas que son nom : <span class="ar keepv">فِي الْبَيْتِ الْكَبِيرِ</span> (dans la grande maison), <span class="ar keepv">رَأَيْتُ بَيْتًا كَبِيرًا</span> (j'ai vu une grande maison).</p>
 
 <h3>Analyse d'une phrase complète</h3>
@@ -2810,7 +2820,7 @@ const GRAMMAR=[
 <tr><td class="ar">كُرَةُ الْقَدَمِ</td><td>balle le-pied</td><td>le football</td></tr>
 <tr><td class="ar">بَابُ الْبَيْتِ</td><td>porte la-maison</td><td>la porte de la maison</td></tr>
 <tr><td class="ar">مَدِينَةٌ كَبِيرَةٌ</td><td>—</td><td>⚠ ceci n'est PAS une iḍāfa : c'est nom + adjectif</td></tr></table>
-<p>Trois règles de forme à connaître :</p>
+<p>Quatre règles de forme à connaître :</p>
 <p>1) Le <strong>premier</strong> nom ne porte <strong>jamais</strong> <span class="ar">ال</span>, même si l'ensemble est défini. « La porte de la maison » = <span class="ar">بَابُ الْبَيْتِ</span>, jamais <span class="ar">الْبَابُ الْبَيْتُ</span>. C'est le deuxième nom qui porte la définition pour tout le groupe.</p>
 <p>2) Si le premier nom se termine par <span class="ar">ة</span>, ce <span class="ar">ة</span> se prononce « t » ({{L:lire}}) : <span class="ar">غُرْفَةُ الْجُلُوسِ</span> se lit « ghourfatou l-joulous ». (À l'écrit, rien ne change.)</p>
 <p>3) Le <strong>deuxième</strong> nom est toujours <span class="ar">مَجْرُور</span> (kasra finale, {{L:cas}}) : <span class="ar keepv">بَابُ الْبَيْتِ</span>. Le premier nom, lui, prend le cas exigé par sa fonction dans la phrase, mais <strong>sans tanwīn</strong> : <span class="ar keepv">رَأَيْتُ بَابَ الْبَيْتِ</span> (COD → fatḥa), <span class="ar keepv">فِي بَابِ الْبَيْتِ</span> (après une préposition → kasra).</p>
@@ -2959,7 +2969,7 @@ const GRAMMAR=[
 <table class="gtable keepv"><tr><th>20</th><th>30</th><th>40</th><th>50</th><th>60</th><th>70</th><th>80</th><th>90</th></tr>
 <tr><td class="ar">عِشْرُونَ</td><td class="ar">ثَلَاثُونَ</td><td class="ar">أَرْبَعُونَ</td><td class="ar">خَمْسُونَ</td><td class="ar">سِتُّونَ</td><td class="ar">سَبْعُونَ</td><td class="ar">ثَمَانُونَ</td><td class="ar">تِسْعُونَ</td></tr></table>
 <p>Pour 21, 35, 99…, on dit d'abord les <strong>unités</strong>, puis <span class="ar">وَ</span>, puis les dizaines (comme « un-et-vingt ») : <span class="ar">وَاحِدٌ وَعِشْرُونَ</span> (21), <span class="ar">خَمْسَةٌ وَثَلَاثُونَ</span> (35).</p>
-<div class="gex keepv"><span class="ar">فِي الصَّفِّ عِشْرُونَ طَالِبًا.</span> — Il y a vingt étudiants dans la classe.<br><span class="ar">صَارَتْ لَيْلَى عِشْرِينَ سَنَةً.</span> — Leïla a eu vingt ans (<span class="ar">ـِينَ</span> : attribut de <span class="ar">صَارَ</span>, {{L:kana}}).</div>
+<div class="gex keepv"><span class="ar">فِي الصَّفِّ عِشْرُونَ طَالِبًا.</span> — Il y a vingt étudiants dans la classe.<br><span class="ar">صَارَ عُمْرُ لَيْلَى عِشْرِينَ سَنَةً.</span> — Leïla a eu vingt ans (litt. « l'âge de Leïla est devenu vingt ans » ; <span class="ar">ـِينَ</span> : attribut de <span class="ar">صَارَ</span>, {{L:kana}}).</div>
 
 <h3>4. 100 et 1000 : nom au singulier en iḍāfa</h3>
 <p><span class="ar">مِئَة</span> (100, aussi écrit <span class="ar">مِائَة</span>) et <span class="ar">أَلْف</span> (1000) sont suivis d'un nom au <strong>singulier</strong> et au <strong>majrūr</strong> : <span class="ar">مِئَةُ كِتَابٍ</span> (cent livres), <span class="ar">أَلْفُ سَنَةٍ</span> (mille ans). Au duel : <span class="ar">مِئَتَانِ</span> (200), <span class="ar">أَلْفَانِ</span> (2000).</p>
@@ -3086,11 +3096,12 @@ nominale:[
 ],
 prepositions:[
 {q:"« Sur la table » se dit :",opts:["عَلَى الطَّاوِلَةِ","فِي الطَّاوِلَةِ","إِلَى الطَّاوِلَةِ"],a:0,note:"عَلَى = sur · فِي = dans · إِلَى = vers."},
-{q:"« Chez le médecin » se dit :",opts:["عِنْدَ الطَّبِيبِ","عَلَى الطَّبِيبِ","مِنَ الطَّبِيبِ"],a:0,note:"عِنْدَ = chez."},
+{q:"« Chez le médecin » se dit :",opts:["عِنْدَ الطَّبِيبِ","عَلَى الطَّبِيبِ","مِنَ الطَّبِيبِ"],a:0,note:"عِنْدَ = chez (un ظَرْف, pas un حَرْفُ جَرٍّ)."},
+{q:"Lequel de ces mots est un vrai حَرْفُ جَرٍّ ?",opts:["فِي","عِنْدَ","قَبْلَ"],a:0,note:"فِي est un حَرْفُ جَرٍّ ; عِنْدَ et قَبْلَ sont des ظُرُوف (des noms), d'où leur fatḥa finale."},
 {q:"عِنْدِي سَيَّارَةٌ signifie :",opts:["j'ai une voiture","je suis dans la voiture","c'est ma voiture préférée"],a:0,note:"عِنْدَ + suffixe = avoir. Litt. « chez moi une voiture »."},
 {q:"« En bus » se dit :",opts:["بِالْحَافِلَةِ","فِي حَافِلَةٍ إِلَى","عَلَى الْحَافِلَةِ"],a:0,note:"بِـ + الْـ = بِالْـ : moyen de transport."},
 {q:"عِنْدَ جَدِّي بَقَرَةٌ se traduit :",opts:["mon grand-père a une vache","chez ma vache un grand-père","mon grand-père est une vache"],a:0,note:"عِنْدَ + possesseur = avoir."},
-{q:"فِي الْمَكْتَبَةِ كُتُبٌ كَثِيرَةٌ signifie :",opts:["il y a beaucoup de livres à la bibliothèque","les livres de la bibliothèque sont nombreux","la bibliothèque est dans les livres"],a:0,note:"Préposition + nom indéfini en tête = « il y a »."},
+{q:"فِي الْمَكْتَبَةِ كُتُبٌ كَثِيرَةٌ signifie :",opts:["il y a beaucoup de livres à la bibliothèque","les livres de la bibliothèque sont nombreux","la bibliothèque est dans les livres"],a:0,note:"حَرْفُ جَرٍّ + nom indéfini en tête = « il y a »."},
 {q:"« Sur lui » se dit :",opts:["عَلَيْهِ","عَلَاهُ","عَلَىهُ"],a:0,note:"Devant un suffixe, le ى de عَلَى devient ي."}
 ],
 present:[
@@ -3155,7 +3166,7 @@ formes:[
 {q:"اِنْتَظَرَ (attendre) est une forme VIII de la racine :",opts:["ن ظ ر","ا ن ت","ت ظ ر"],a:0,note:"اِفْتَعَلَ : un ت s'insère après la 1re lettre (ن)."},
 {q:"Un présent en يَسْتَـ (يَسْتَعْمِلُ) est une forme :",opts:["X","V","II"],a:0,note:"Forme X : اِسْتَفْعَلَ / يَسْتَفْعِلُ."},
 {q:"مُعَلِّم (enseignant) est le participe de la forme :",opts:["II (عَلَّمَ)","I (عَلِمَ)","X (اِسْتَعْلَمَ)"],a:0,note:"عَلَّمَ / يُعَلِّمُ → مُعَلِّم « celui qui enseigne »."},
-{q:"تَعَلَّمَ (apprendre) est le réfléchi de :",opts:["عَلَّمَ (enseigner)","عَمِلَ (travailler)","عَلِمَ (savoir), forme X"],a:0,note:"Forme V = réfléchi de II : « se faire enseigner »."}
+{q:"تَعَلَّمَ (apprendre) est le réfléchi de :",opts:["عَلَّمَ (enseigner)","عَمِلَ (travailler)","عَلِمَ (savoir)"],a:0,note:"Forme V = réfléchi de II : « se faire enseigner »."}
 ],
 cas:[
 {kv:1,q:"Un nom مَرْفُوع se termine en principe par :",opts:["une ḍamma ( ُ )","une kasra ( ِ )","une fatḥa ( َ )"],a:0,note:"مَرْفُوع → ḍamma · مَنْصُوب → fatḥa · مَجْرُور → kasra."},
@@ -3334,7 +3345,7 @@ function fin(h,notes){if(h.pl)notes.unshift('Forme plurielle — voir le singuli
    ex. AUDIO={'texte-1':'audio/texte-1.mp3','texte-1-p2':'audio/texte-1-p2.mp3'} */
 const AUDIO={};
 const TTS=typeof window!=='undefined'&&'speechSynthesis' in window?window.speechSynthesis:null;
-let arVoice=null,voicesChecked=false,curAudio=null;
+let arVoice=null,voicesChecked=false,curAudio=null,ttsSeq=0,ttsWasBusy=false;
 function pickVoice(){
   if(!TTS)return;
   const vs=TTS.getVoices();if(!vs.length)return;
@@ -3349,6 +3360,7 @@ function toast(msg){
   t.textContent=msg;t.classList.add('show');clearTimeout(toast._h);toast._h=setTimeout(()=>t.classList.remove('show'),6000);
 }
 function stopSay(){
+  ttsWasBusy=!!(TTS&&(TTS.speaking||TTS.pending));ttsSeq++; /* annule aussi une lecture différée pas encore partie */
   if(TTS)TTS.cancel();
   if(curAudio){curAudio.pause();curAudio=null;}
   document.querySelectorAll('.saying').forEach(e=>e.classList.remove('saying'));
@@ -3369,21 +3381,40 @@ function ttsFail(err){
   const vs=TTS?TTS.getVoices():[];
   toast('La lecture en arabe a échoué ('+err+'). Voix détectées : '+(vs.length?vs.map(v=>v.lang).filter((x,i,a)=>a.indexOf(x)===i).slice(0,12).join(', '):'aucune')+'. Vérifie dans les réglages de l\'appareil qu\'une voix arabe est installée (Android : Synthèse vocale Google › Installer les données vocales › Arabe).');
 }
+const ttsLive=[]; /* références aux énoncés en cours : sans elles, Chrome peut les libérer avant la fin (onend jamais appelé, surlignage bloqué) */
 function sayTTS(text,opts){
   if(!TTS){toast('Ce navigateur ne sait pas lire à voix haute. Essaie avec Chrome, Edge ou Safari.');return;}
-  if(!arVoice)pickVoice();
-  const clean=text.replace(/ـ/g,'').replace(/[«»"()]/g,' ').trim();
+  const seq=++ttsSeq;
+  /* les symboles des tableaux (/ ← + · …) ne doivent pas être lus à voix haute : ils deviennent de simples pauses */
+  const clean=text.replace(/ـ/g,'').replace(/[«»"()\[\]]/g,' ').replace(/[\/←→+·|=;…]/g,'، ').replace(/\s+/g,' ').replace(/^[\s،]+|[\s،]+$/g,'');
   /* une phrase par énoncé : évite que les longues lectures soient coupées (Chrome) */
   const parts=(clean.match(/[^.؟!:]+[.؟!:]*/g)||[]).map(x=>x.trim()).filter(x=>/[\u0621-\u064A]/.test(x));
   if(!parts.length)return;
-  parts.forEach((p,i)=>{
-    const u=new SpeechSynthesisUtterance(p);
-    u.lang=arVoice?arVoice.lang:'ar-SA';if(arVoice)u.voice=arVoice;
-    u.rate=opts.rate||0.9;
-    u.onerror=ev=>{if(opts.el)opts.el.classList.remove('saying');if(ev&&ev.error&&ev.error!=='interrupted'&&ev.error!=='canceled')ttsFail(ev.error);};
-    if(opts.el){if(i===0)u.onstart=()=>opts.el.classList.add('saying');if(i===parts.length-1){u.onend=()=>opts.el.classList.remove('saying');}}
-    TTS.speak(u);
-  });
+  const run=()=>{
+    if(seq!==ttsSeq)return; /* une autre lecture a été demandée entre-temps */
+    if(!arVoice)pickVoice();
+    if(TTS.paused)TTS.resume(); /* Chrome Android reste parfois bloqué en pause */
+    ttsLive.length=0;
+    parts.forEach((p,i)=>{
+      const u=new SpeechSynthesisUtterance(p);
+      u.lang=arVoice?arVoice.lang:'ar-SA';if(arVoice)u.voice=arVoice;
+      u.rate=opts.rate||0.9;
+      u.onerror=ev=>{if(opts.el)opts.el.classList.remove('saying');if(ev&&ev.error&&ev.error!=='interrupted'&&ev.error!=='canceled')ttsFail(ev.error);};
+      if(opts.el){if(i===0)u.onstart=()=>opts.el.classList.add('saying');if(i===parts.length-1){u.onend=()=>opts.el.classList.remove('saying');}}
+      ttsLive.push(u);TTS.speak(u);
+    });
+  };
+  if(!arVoice&&!TTS.getVoices().length){
+    /* premières secondes (Chrome) : la liste des voix n'est pas encore chargée ; sans attendre, le mot serait lu
+       avec la voix par défaut (française ou anglaise), ou pas du tout */
+    let done=false;const go=()=>{if(done)return;done=true;pickVoice();run();};
+    if(TTS.addEventListener)TTS.addEventListener('voiceschanged',go,{once:true});
+    setTimeout(go,1000);
+  }
+  /* juste après cancel(), Chrome et Safari ignorent parfois l'énoncé suivant : on laisse un court délai
+     quand une lecture était en cours (sinon on parle tout de suite, pour rester dans le geste de l'utilisateur sur iOS) */
+  else if(ttsWasBusy)setTimeout(run,80);
+  else run();
 }
 /* forme vocalisée d'un texte : les textes ont leur version VOCAL, les mots isolés passent par vf */
 function sayParagraphs(id,rate){
@@ -3923,8 +3954,71 @@ function lesson(i){
   app.innerHTML='<div class="hero"><div class="eyebrow"><span class="kufi">'+esc(dv(g.ta,g.tav))+'</span> leçon '+(i+1)+' / '+GRAMMAR.length+'</div><h1>'+arSpans(g.t)+'</h1></div><div class="lesson">'+'<p class="hint">Touche un mot ou une phrase arabe de la leçon pour l\'entendre.</p>'+lessonRefs(g.h)+'</div>'+quiz+'<div class="tabs">'+prev+'<button class="tab" onclick="go(\'grammar\')">Toutes les leçons</button>'+next+'</div>';
   markSayable($('.lesson'));
 }
+/* ---- lecture à voix haute dans les leçons : chaque mot ou groupe arabe devient touchable séparément ---- */
+const AR_RUN=/[\u0621-\u064A\u064B-\u0652\u0670]+(?:[ \u00A0\u060C\u061B]*[\u0621-\u064A\u064B-\u0652\u0670]+)*[.\u061F!]?/g;
+const LETTER_NAMES={'ا':'أَلِف','أ':'هَمْزَةٌ عَلَى الْأَلِف','إ':'هَمْزَةٌ تَحْتَ الْأَلِف','آ':'أَلِفٌ مَمْدُودَة','ء':'هَمْزَة','ؤ':'هَمْزَةٌ عَلَى الْوَاو','ئ':'هَمْزَةٌ عَلَى نَبْرَة','ب':'بَاء','ت':'تَاء','ة':'تَاءٌ مَرْبُوطَة','ث':'ثَاء','ج':'جِيم','ح':'حَاء','خ':'خَاء','د':'دَال','ذ':'ذَال','ر':'رَاء','ز':'زَاي','س':'سِين','ش':'شِين','ص':'صَاد','ض':'ضَاد','ط':'طَاء','ظ':'ظَاء','ع':'عَيْن','غ':'غَيْن','ف':'فَاء','ق':'قَاف','ك':'كَاف','ل':'لَام','م':'مِيم','ن':'نُون','ه':'هَاء','و':'وَاو','ي':'يَاء','ى':'أَلِفٌ مَقْصُورَة'};
+const SIGN_NAMES={'\u064E':'فَتْحَة','\u064F':'ضَمَّة','\u0650':'كَسْرَة','\u0652':'سُكُون','\u0651':'شَدَّة','\u064C':'تَنْوِينُ الضَّمِّ','\u064B':'تَنْوِينُ الْفَتْحِ','\u064D':'تَنْوِينُ الْكَسْرِ'};
+const SIGN_CARRIER={'\u064E':'\u0623\u064E','\u064F':'\u0623\u064F','\u0650':'\u0625\u0650'}; /* أَ أُ إِ */
+/* texte réellement envoyé à la synthèse pour un fragment arabe ('' = rien à lire) :
+   une lettre seule est lue par son nom (ب → بَاء), un signe seul par son nom (ـَ → فَتْحَة),
+   un suffixe qui commence par une voyelle reçoit un appui pour être prononçable
+   (ـُونَ → أُونَ « ūna », ـَانِ → آنِ « āni », ـْنَ → نَ), et le tatweel ـ est retiré */
+function speakForm(s){
+  s=s.replace(/ـ/g,'').replace(/\s+/g,' ').trim();
+  if(!s)return '';
+  return s.split(' ').map(w=>{
+    const core=w.replace(/[\u060C\u061B.\u061F!]/g,''),bare=stripHarakat(core);
+    if(!core)return '';
+    if(!bare)return [...core].map(c=>SIGN_NAMES[c]).filter(Boolean).join(' ');
+    if(core==='\u064B\u0627')return SIGN_NAMES['\u064B']; /* ـًا */
+    if(bare.length===1&&core===bare)return LETTER_NAMES[bare]||core;
+    const lead=w.match(/^[\u064B-\u0652]+/);
+    if(lead){
+      const rest=w.slice(lead[0].length),v=lead[0][0];
+      if(v==='\u064E'&&rest[0]==='ا')return '\u0622'+rest.slice(1); /* ـَا… → آ… */
+      return (SIGN_CARRIER[v]||'')+rest;
+    }
+    return HARAKAT_RE.test(core)?w:vf(core)+w.slice(core.length);
+  }).filter(Boolean).join(' ');
+}
+/* « فِي، عَلَى، لِـ » : une liste de mots courts est découpée mot par mot ; une phrase reste entière */
+function arPieces(run){
+  if(!/\u060C/.test(run)||/[.\u061F!]$/.test(run))return [run];
+  const ps=run.split('\u060C').map(x=>x.trim()).filter(Boolean);
+  return ps.every(x=>x.split(/\s+/).length<=2)?ps:[run];
+}
+function sayableSpan(t){const sp=document.createElement('span');sp.className='sayable';sp.dataset.say=speakForm(t);sp.textContent=t;return sp;}
+/* remplace un nœud texte par le même texte, où chaque mot ou groupe arabe est un <span class="sayable"> */
+function wrapArabic(node){
+  const v=node.nodeValue,frag=document.createDocumentFragment();let last=0,m;
+  const put=t=>{const c=t.trim();if(!c){frag.append(t);return;}const i=t.indexOf(c);frag.append(t.slice(0,i));frag.append(speakForm(c)?sayableSpan(c):c);frag.append(t.slice(i+c.length));};
+  AR_RUN.lastIndex=0;
+  while((m=AR_RUN.exec(v))){
+    frag.append(v.slice(last,m.index));
+    if(arPieces(m[0]).length>1)m[0].split('\u060C').forEach((x,i)=>{if(i)frag.append('\u060C');put(x);});
+    else put(m[0]);
+    last=m.index+m[0].length;
+  }
+  frag.append(v.slice(last));node.replaceWith(frag);
+}
 /* mémorise la forme vocalisée de chaque passage arabe avant que le mode sans voyelles ne la retire */
-function markSayable(root){root.querySelectorAll('.ar').forEach(e=>{const tx=e.textContent.split('—')[0].replace(/[A-Za-zÀ-ÿ'’;…]+/g,' ').replace(/\s+/g,' ').trim();if(!e.closest('.nov')&&!e.querySelector('.ar')&&/[\u0621-\u064A]{2}/.test(stripHarakat(tx).replace(/\u0640/g,''))){e.dataset.say=tx;e.classList.add('sayable');}});}
+function markSayable(root){
+  root.querySelectorAll('.ar').forEach(e=>{
+    if(e.closest('.nov')||e.querySelector('.ar'))return;
+    const tx=e.textContent,runs=tx.match(AR_RUN)||[];
+    /* un seul mot ou une seule phrase, sans rien autour : tout l'élément est touchable */
+    if(runs.length===1&&arPieces(runs[0]).length===1&&!/[^\s«»"()…\-–—]/.test(tx.replace(runs[0],''))){
+      const f=speakForm(runs[0]);if(f){e.dataset.say=f;e.classList.add('sayable');}
+      return;
+    }
+    /* sinon (« كِتَاب — livre ; بَاب — porte », « مِنْ + السُّوقِ ← مِنَ السُّوقِ », listes…) : un span par mot ou groupe */
+    [...e.childNodes].filter(n=>n.nodeType===3).forEach(wrapArabic);
+  });
+  /* l'arabe écrit hors des .ar (titres, en-têtes de tableaux, phrases françaises) est lui aussi touchable */
+  const tw=document.createTreeWalker(root,NodeFilter.SHOW_TEXT),loose=[];let n;
+  while((n=tw.nextNode())){const pe=n.parentElement;if(/[\u0621-\u064A]/.test(n.nodeValue)&&!pe.closest('.ar,.sayable,.nov,a,button'))loose.push(n);}
+  loose.forEach(wrapArabic);
+}
 function lessonQuizHTML(){
   let right=0,done=0;
   const body=LQ.items.map((it,qi)=>{
