@@ -265,6 +265,22 @@ footer{max-width:min(calc(880px*var(--zoom)),100%);margin:0 auto;padding:0 18px 
 .hl-fam{background:#2B4BC933;outline:2px solid #2B4BC9}
 .hl-avo{background:#2E7D5B33;outline:2px solid #2E7D5B}
 .hl-pos{background:#B3382F33;outline:2px solid #B3382F}
+.hl-lieu{background:#2B4BC933;outline:2px solid #2B4BC9}
+.hl-mai{background:#2E7D5B33;outline:2px solid #2E7D5B}
+.hl-adj{background:#B3382F33;outline:2px solid #B3382F}
+/* plan de la maison et schémas (leçon 3) */
+.cplan{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:680px;margin:12px auto;direction:ltr}
+.croom{background:var(--panel);border:2px solid var(--line);border-radius:12px;padding:8px;text-align:center;min-height:104px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2px}
+.croom .ico{font-size:2em;line-height:1.1}
+.croom .ar{font-size:1.45em;line-height:1.5}
+.croom.wide{grid-column:span 2}
+.croom.garden{grid-column:1/-1;border-style:dashed;border-color:#2E7D5B;background:#2E7D5B14}
+.cico{font-size:2em;line-height:1.1}
+.cdia{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-size:1.9rem;line-height:1.15;direction:ltr;min-height:84px}
+.cdia.v{flex-direction:column;gap:2px}
+.cbx{border:3px solid #8B5E3C;border-radius:8px;padding:2px 12px;background:#8B5E3C22}
+.cbar{display:block;width:76px;height:9px;border-radius:4px;background:#8B5E3C}
+.cgap{display:block;height:14px}
 /* arbre de la famille (leçon 2) : bleu = masculin, rouge = féminin */
 .ctree{display:flex;flex-direction:column;align-items:center;gap:4px;margin:12px 0;direction:ltr}
 .ctree-row{display:flex;justify-content:center;align-items:stretch;gap:8px;flex-wrap:wrap}
@@ -352,6 +368,7 @@ const DICT={
 "قرب":["près de","préposition","",""],
 "قريبا":["bientôt / prochainement","adverbe","",""],
 "أمام":["devant","préposition","",""],
+"خلف":["derrière","préposition","",""],
 "وراء":["derrière","préposition","",""],
 "تحت":["sous","préposition","",""],
 "فوق":["au-dessus de, sur","préposition","",""],
@@ -3559,6 +3576,28 @@ const STORY2=[
  fr:"À la fin de la leçon, les élèves disent : « Merci, professeur ! » Le professeur répond : « De rien ! Au revoir, à bientôt ! » Le deuxième jour est, lui aussi, un jour heureux."}
 ];
 
+/* ---- leçon 3 : « بُيُوتُنَا » (même troupe que les leçons 1 et 2) ---- */
+const STORY3=[
+{l:[['n','الْيَوْمُ هُوَ الدَّرْسُ الثَّالِثُ. الْأُسْتَاذُ عُمَرُ فِي الصَّفِّ، وَيَقُولُ:'],['o','السَّلَامُ عَلَيْكُمْ! أَهْلًا وَسَهْلًا! الْيَوْمُ الدَّرْسُ عَنِ الْبَيْتِ.'],['n','يَقُولُ الطُّلَّابُ:'],['t','وَعَلَيْكُمُ السَّلَامُ يَا أُسْتَاذُ!']],
+ fr:"Aujourd'hui, c'est la troisième leçon. Le professeur Omar est dans la classe et il dit : « Que la paix soit sur vous ! Bienvenue ! Aujourd'hui, la leçon porte sur la maison. » Les élèves répondent : « Et sur vous la paix, professeur ! »"},
+{l:[['n','يَقُولُ الْأُسْتَاذُ:'],['o','بَيْتِي صَغِيرٌ وَجَمِيلٌ. فِي الْبَيْتِ غُرْفَةُ جُلُوسٍ وَمَطْبَخٌ وَحَمَّامٌ وَغُرْفَةُ نَوْمٍ. أَمَامَ الْبَيْتِ حَدِيقَةٌ صَغِيرَةٌ، وَفِي الْحَدِيقَةِ طَاوِلَةٌ وَكُرْسِيٌّ.']],
+ fr:"Le professeur dit : « Ma maison est petite et jolie. Dans la maison, il y a un salon, une cuisine, une salle de bain et une chambre. Devant la maison, il y a un petit jardin, et dans le jardin, il y a une table et une chaise. »"},
+{l:[['n','ثُمَّ يَسْأَلُ الْأُسْتَاذُ:'],['o','وَأَنْتَ يَا يُوسُفُ؟ كَيْفَ بَيْتُكَ؟'],['n','يَقُولُ يُوسُفُ:'],['y','بَيْتُنَا كَبِيرٌ وَقَرِيبٌ مِنَ الْجَامِعَةِ. غُرْفَتِي بِجَانِبِ غُرْفَةِ أَخِي آدَمَ. فِي غُرْفَتِي سَرِيرٌ وَمَكْتَبٌ، وَعَلَى الْمَكْتَبِ حَاسُوبٌ وَكُتُبٌ.']],
+ fr:"Puis le professeur demande : « Et toi, Youssef ? Comment est ta maison ? » Youssef répond : « Notre maison est grande et proche de l'université. Ma chambre est à côté de la chambre de mon frère Adam. Dans ma chambre, il y a un lit et un bureau, et sur le bureau, il y a un ordinateur et des livres. »"},
+{l:[['n','وَتَقُولُ مَرْيَمُ:'],['m','بَيْتِي فِي لِيُون، وَهُوَ قَرِيبٌ مِنَ الْمُسْتَشْفَى. مَطْبَخِي كَبِيرٌ وَنَظِيفٌ، وَفِي الْمَطْبَخِ طَاوِلَةٌ جَمِيلَةٌ. خَلْفَ الْبَيْتِ حَدِيقَةٌ صَغِيرَةٌ.']],
+ fr:"Mariam dit : « Ma maison est à Lyon, et elle est proche de l'hôpital. Ma cuisine est grande et propre, et dans la cuisine, il y a une jolie table. Derrière la maison, il y a un petit jardin. »"},
+{l:[['n','يَقُولُ كَرِيمٌ:'],['k','بَيْتُنَا جَدِيدٌ، وَعِنْدَنَا غُرْفَةُ جُلُوسٍ وَاسِعَةٌ.'],['n','وَتَقُولُ سَارَةُ:'],['s','وَهَذِهِ صُورَةُ غُرْفَتِي! الْمِرْآةُ بِجَانِبِ الْبَابِ، وَالْخِزَانَةُ بَيْنَ النَّافِذَةِ وَالسَّرِيرِ.']],
+ fr:"Karim dit : « Notre maison est neuve, et nous avons un salon spacieux. » Et Sara dit : « Voici la photo de ma chambre ! Le miroir est à côté de la porte, et l'armoire est entre la fenêtre et le lit. »"},
+{l:[['n','يَسْأَلُ كَرِيمٌ:'],['k','أَيْنَ دَفْتَرُكِ يَا سَارَةُ؟'],['n','تَضْحَكُ سَارَةُ وَتَقُولُ:'],['s','دَفْتَرِي تَحْتَ السَّرِيرِ!']],
+ fr:"Karim demande : « Où est ton cahier, Sara ? » Sara rit et dit : « Mon cahier est sous le lit ! »"},
+{l:[['n','ثُمَّ تَقُولُ فَاطِمَةُ:'],['f','بَيْتِي كَبِيرٌ وَقَدِيمٌ، وَهُوَ قَرِيبٌ مِنَ الْمَسْجِدِ. أَمَامَ الْبَيْتِ حَدِيقَةٌ جَمِيلَةٌ، وَفِي الْحَدِيقَةِ طَاوِلَةٌ وَكَرَاسِي لِلْأَحْفَادِ. أَهْلًا بِكُمْ فِي بَيْتِي!']],
+ fr:"Puis Fatima dit : « Ma maison est grande et ancienne, et elle est proche de la mosquée. Devant la maison, il y a un joli jardin, et dans le jardin, il y a une table et des chaises pour les petits-enfants. Soyez les bienvenus chez moi ! »"},
+{l:[['n','يَنْظُرُ الْأُسْتَاذُ إِلَى الصُّوَرِ وَيَقُولُ:'],['o','مَا شَاءَ اللَّهُ! بُيُوتٌ جَمِيلَةٌ!'],['n','ثُمَّ يَكْتُبُ عَلَى السَّبُّورَةِ: فِي، عَلَى، تَحْتَ، فَوْقَ، أَمَامَ، خَلْفَ، بَيْنَ، بِجَانِبِ. وَيَقُولُ:'],['o','هَذَا هُوَ الدَّرْسُ الثَّالِثُ!']],
+ fr:"Le professeur regarde les photos et dit : « Mâ shâ' Allâh ! Quelles belles maisons ! » Puis il écrit au tableau : dans, sur, sous, au-dessus de, devant, derrière, entre, à côté de. Et il dit : « Voici la troisième leçon ! »"},
+{l:[['n','فِي نِهَايَةِ الدَّرْسِ، يَقُولُ الطُّلَّابُ:'],['t','شُكْرًا يَا أُسْتَاذُ!'],['n','يَقُولُ الْأُسْتَاذُ:'],['o','عَفْوًا! إِلَى اللِّقَاءِ، مَعَ السَّلَامَةِ!'],['n','الْيَوْمُ الثَّالِثُ أَيْضًا يَوْمٌ سَعِيدٌ.']],
+ fr:"À la fin de la leçon, les élèves disent : « Merci, professeur ! » Le professeur répond : « De rien ! Au revoir, à bientôt ! » Le troisième jour est, lui aussi, un jour heureux."}
+];
+
 /* petits outils de mise en page */
 const cA=(s,big)=>'<span class="ar'+(big?' cbig':'')+'">'+esc(s)+'</span>';
 const cSay=t=>'<button class="say" title="Écouter" data-t="'+esc(t)+'" onclick="say(this.dataset.t,{rate:0.8,el:this.parentElement})">🔊</button>';
@@ -3798,6 +3837,140 @@ const COURS=[{
     `<div class="ccard"><h3>📝 Pour la prochaine fois</h3><p>1. Écrivez <strong>5 phrases</strong> sur votre famille : ${cA('هَذَا أَبِي … · هَذِهِ أُمِّي … · عِنْدِي … · عَائِلَتِي كَبِيرَةٌ / صَغِيرَةٌ.')}</p><p>2. Préparez la <strong>présentation d'une photo</strong> (ou d'un dessin) de votre famille, avec ${cA('هَذَا …')} et ${cA('هَذِهِ …')}.</p><p>3. Réécoutez l'histoire <span class="ar">صُورَةُ الْعَائِلَةِ</span> avec le bouton 🔊, et relisez la leçon 1.</p></div>`+
     `<div class="cpause"><div class="cpause-i">👋</div>${cA('شُكْرًا، وَإِلَى اللِّقَاءِ!',1)}<p class="cbigfr">Merci, et à la prochaine !</p></div>`;
   },note:`<p>Lisez chaque phrase de la liste : les participants répondent « oui » et vous cochez. S'il reste un point fragile, faites un dernier exemple oral (le plus souvent : le <span class="ar">ت</span> à la place du <span class="ar">ة</span>, ou <span class="ar">عِنْدَكَ</span> / <span class="ar">عِنْدَكِ</span>). Terminez comme dans l'histoire : les participants disent <span class="ar">شُكْرًا يَا أُسْتَاذُ</span>, vous répondez <span class="ar">عَفْوًا، مَعَ السَّلَامَةِ</span>.</p>`}
+  ]},
+/* ================= LEÇON 3 : « بَيْتُنَا » — Notre maison ================= */
+{
+  id:'maison',ta:'بَيْتُنَا',t:'Notre maison',
+  sub:'Le vocabulaire de la maison ; dire où se trouve quelque chose (فِي، عَلَى، تَحْتَ…) et « il y a » ; décrire avec l\'adjectif ; décrire sa maison.',
+  steps:[
+  {ar:'مَرْحَبًا مِنْ جَدِيدٍ!',t:'Retrouvailles : un rappel de la leçon 2',h:()=>{
+    const R=[[`Dites « mon père » et « ma mère ».`,'أَبِي · أُمِّي'],
+      [`Dites : « Notre famille est grande. »`,'عَائِلَتُنَا كَبِيرَةٌ.'],
+      [`Dites : « J'ai un frère. »`,'عِنْدِي أَخٌ.'],
+      [`Demandez à un homme s'il a une sœur.`,'هَلْ عِنْدَكَ أُخْتٌ؟'],
+      [`Dites « sa mère » (la mère d'une femme).`,'أُمُّهَا'],
+      [`Dites : « Je n'ai pas de fils. »`,'لَيْسَ عِنْدِي اِبْنٌ.']];
+    return cAsk(`<strong>Rappel éclair :</strong> qu'avez-vous retenu de la leçon 2 ? Chaque question appelle une réponse en arabe, puis on révèle.`)+
+    `<div class="cgrid2">`+R.map(r=>`<div class="ccard"><div class="cfr">${r[0]}</div><div class="cans">${cRv(cA(r[1],1))}</div></div>`).join('')+`</div>`+
+    cTeam(`<strong>Les devoirs :</strong> chacun présente à voix haute la photo (ou le dessin) de sa famille, avec <span class="ar">هَذَا …</span> et <span class="ar">هَذِهِ …</span>. Deux ou trois volontaires suffisent.`)+
+    cAsk(`<strong>Un petit mystère pour la suite :</strong> <span class="ar cbig">الْكِتَابُ عَلَى الطَّاوِلَةِ.</span> = « Le livre est sur la table. » Combien de mots en arabe ? en français ? <strong>Où est passé « est » ?</strong> Et quel petit mot veut dire « sur » ? `+cRv(`Il n'y a <strong>pas de verbe « être »</strong> (comme à la leçon 1). Le petit mot <span class="ar">عَلَى</span> (« sur ») suffit : le livre, <em>sur</em> la table. Aujourd'hui, nous découvrons tous les petits mots qui disent <strong>où</strong> se trouve quelque chose.`));
+  },note:`<p>Objectif : se retrouver, remettre la leçon 2 en mémoire (possessifs, عِنْدَ), puis ouvrir le thème du jour. Posez chaque question, laissez répondre à voix haute, puis révélez. Si une réponse est fragile, refaites-la une fois à l'oral. Pour le mystère, ne donnez pas la règle : laissez les participants constater qu'il n'y a ni « est » ni « le » à part le <span class="ar">الْ</span> collé au mot, puis annoncez le thème : la maison.</p>`},
+
+  {ar:'أَجْزَاءُ الْبَيْتِ',t:'Le vocabulaire de la maison',h:()=>{
+    const room=(ic,ar,fr,cls)=>`<div class="croom ${cls||''}"><div class="ico">${ic}</div>${cRv(cA(ar))}<div class="cfr">${fr}</div></div>`;
+    const plan=`<div class="cplan">`+room('🛏️','غُرْفَةُ النَّوْمِ','chambre à coucher')+room('🚿','حَمَّامٌ','salle de bain')+room('🍳','مَطْبَخٌ','cuisine')+room('🛋️','غُرْفَةُ الْجُلُوسِ','salon','wide')+room('🚪','بَابٌ','porte d\'entrée')+room('🌳','حَدِيقَةٌ','jardin','garden')+`</div>`;
+    const T=[['🏠','بَيْتٌ','une maison'],['🚪','غُرْفَةٌ','une pièce, une chambre'],['🚪','بَابٌ','une porte'],['🪟','نَافِذَةٌ','une fenêtre'],['🛏️','سَرِيرٌ','un lit'],['🍽️','طَاوِلَةٌ','une table'],['🪑','كُرْسِيٌّ','une chaise'],['🖥️','مَكْتَبٌ','un bureau'],['🗄️','خِزَانَةٌ','une armoire'],['🪞','مِرْآةٌ','un miroir'],['🔑','مِفْتَاحٌ','une clé'],['📕','كِتَابٌ','un livre']];
+    const MORE=[['بُيُوتٌ','des maisons'],['غُرَفٌ','des pièces'],['أَبْوَابٌ','des portes'],['نَوَافِذُ','des fenêtres'],['كُتُبٌ','des livres']];
+    return `<h3>Le plan de la maison <span class="ar">مُخَطَّطُ الْبَيْتِ</span></h3><p class="cfr">Vue du dessus. Toucher un mot pour le révéler ; 🔊 sur chaque carte ci-dessous pour l'écouter.</p>`+plan+
+    `<div class="ctoggle"><button class="btn-ghost" onclick="document.querySelectorAll('.cplan .rv').forEach(e=>e.classList.add('on'))">👁 Tout révéler</button></div>`+
+    `<div class="cgrid3">`+T.map(p=>`<div class="ccard ccenter"><div class="cico">${p[0]}</div>${cSay(p[1])}${cA(p[1],1)}<div class="cfr">${p[2]}</div></div>`).join('')+
+    `<div class="ccard"><div class="cfr">Au pluriel</div>`+MORE.map(m=>`<div class="cword">${cSay(m[0])}${cA(m[0])} <span class="cfr">${m[1]}</span></div>`).join('')+`</div></div>`+
+    cAsk(`<strong>Masculin ou féminin ?</strong> Parmi ces mots, lesquels sont féminins ? Comment le voit-on ? `+cRv(`Ceux qui se terminent par <span class="ar">ة</span> : <span class="ar">غُرْفَةٌ، نَافِذَةٌ، طَاوِلَةٌ، حَدِيقَةٌ، خِزَانَةٌ، مِرْآةٌ</span>. Les autres (<span class="ar">بَيْتٌ، مَطْبَخٌ، بَابٌ، سَرِيرٌ، مَكْتَبٌ</span>…) sont masculins. La règle de la leçon 1 marche encore !`))+
+    cAsk(`<strong>Deux noms collés :</strong> <span class="ar">غُرْفَةُ النَّوْمِ</span> et <span class="ar">غُرْفَةُ الْجُلُوسِ</span>. Mot à mot, que disent-ils ? `+cRv(`« la pièce du sommeil » = la chambre à coucher ; « la pièce de l'assise » = le salon. Deux noms l'un derrière l'autre, le deuxième avec <span class="ar">الْ</span> : c'est comme <span class="ar">صُورَةُ الْعَائِلَةِ</span> (leçon 2). Cette construction s'appelle l'<em>iḍāfa</em>, nous la verrons plus tard.`))+
+    `<div class="gnote"><strong>Le saviez-vous ?</strong> <span class="ar">الْمَسْجِدُ بَيْتُ اللَّهِ</span> : « la mosquée est la maison de Dieu ». On dit aussi <span class="ar">بُيُوتُ اللَّهِ</span> pour les mosquées.</div>`+
+    cTeam(`<strong>À vous :</strong> l'animateur désigne un objet de la salle (la porte, la fenêtre, une table, une chaise…) ; la classe dit le mot en arabe, avec <span class="ar">الْ</span> : <span class="ar">الْبَابُ، النَّافِذَةُ، الطَّاوِلَةُ، الْكُرْسِيُّ</span>. Puis on échange les rôles.`);
+  },note:`<p>Faites écouter chaque mot avec 🔊 et faites répéter deux fois. Pour le plan, laissez d'abord les participants deviner (ils connaissent souvent « cuisine » ou « porte » dans une autre langue : turc, berbère, dialectes arabes…), puis révélez. La question sur le féminin reprend la leçon 1 ; la question sur <span class="ar">غُرْفَةُ النَّوْمِ</span> prépare l'iḍāfa sans la détailler. Les pluriels (<span class="ar">بُيُوتٌ، غُرَفٌ…</span>) sont donnés à titre d'information : le « pluriel brisé » sera étudié plus tard.</p>`},
+
+  {ar:'بُيُوتُنَا',t:'Le texte : on lit ensemble',h:()=>readHTML(STORY3,
+    cAsk(`<strong>Avant de lire :</strong> regardez le texte sans le lire. Combien y a-t-il de paragraphes ? Quels petits mots reviennent très souvent avant les noms ? `+cRv(`9 paragraphes. On voit revenir <span class="ar">فِي</span> (dans), <span class="ar">أَمَامَ</span> (devant), <span class="ar">خَلْفَ</span> (derrière), <span class="ar">بَيْنَ</span> (entre), <span class="ar">بِجَانِبِ</span> (à côté de), <span class="ar">عَلَى</span> (sur), <span class="ar">تَحْتَ</span> (sous) : les mots de lieu. On y retrouve aussi les possessifs de la leçon 2 : <span class="ar">بَيْتِي، بَيْتُنَا، غُرْفَتِي</span>.`)),
+    cAsk(`Quel est le titre de l'histoire ? Que veut dire <span class="ar">بُيُوتُنَا</span> ? Devinez à partir du texte. `+cRv(`<span class="ar">بُيُوتُنَا</span> = « nos maisons » : <span class="ar">بُيُوتٌ</span> (des maisons, pluriel de <span class="ar">بَيْتٌ</span>) + <span class="ar">ـنَا</span> (notre).`))),
+   note:`<p><strong>1re lecture, par paragraphes :</strong> pour chaque paragraphe, faites d'abord écouter avec 🔊, puis un participant différent le lit à voix haute (Lecteur 1, Lecteur 2…). Avant de révéler la traduction, demandez ce qui a été compris : quelle pièce ? quel objet ? où ?</p><p><strong>2e lecture, théâtrale :</strong> distribuez les 8 rôles (le narrateur, le professeur Omar, Youssef, Mariam, Karim, Sara, Fatima, et « tous les élèves »). Les personnages sont les mêmes qu'aux leçons 1 et 2 : les participants les retrouvent avec plaisir. Les mots du texte se touchent pour afficher leur traduction.</p>`},
+
+  {ar:'هَلْ فَهِمْتُمْ؟',t:'Avez-vous compris ?',h:()=>{
+    const qui=[['بَيْتِي صَغِيرٌ وَجَمِيلٌ. أَمَامَ الْبَيْتِ حَدِيقَةٌ.','الْأُسْتَاذُ عُمَرُ'],['غُرْفَتِي بِجَانِبِ غُرْفَةِ أَخِي.','يُوسُفُ'],['مَطْبَخِي كَبِيرٌ وَنَظِيفٌ.','مَرْيَمُ'],['دَفْتَرِي تَحْتَ السَّرِيرِ!','سَارَةُ'],['بَيْتُنَا جَدِيدٌ.','كَرِيمٌ'],['أَهْلًا بِكُمْ فِي بَيْتِي!','فَاطِمَةُ']];
+    const vf=[['يُوسُفُ: «بَيْتُنَا صَغِيرٌ.»',0,'Faux : يُوسُفُ dit « بَيْتُنَا كَبِيرٌ ».'],['مَرْيَمُ: «خَلْفَ الْبَيْتِ حَدِيقَةٌ.»',1,'Vrai : derrière sa maison, il y a un petit jardin.'],['سَارَةُ: «الْمِرْآةُ بِجَانِبِ الْبَابِ.»',1,'Vrai : le miroir est à côté de la porte.'],['الْأُسْتَاذُ: «بَيْتِي كَبِيرٌ.»',0,'Faux : le professeur dit « بَيْتِي صَغِيرٌ وَجَمِيلٌ ».'],['كَرِيمٌ: «عِنْدَنَا غُرْفَةُ جُلُوسٍ وَاسِعَةٌ.»',1,'Vrai : ils ont un salon spacieux.'],['فَاطِمَةُ: «بَيْتِي بَعِيدٌ مِنَ الْمَسْجِدِ.»',0,'Faux : sa maison est قَرِيبٌ مِنَ الْمَسْجِدِ (près de la mosquée).']];
+    const qs=[['أَيْنَ بَيْتُ مَرْيَمَ؟','Où est la maison de Mariam ?','بَيْتُهَا فِي لِيُون.'],['أَيْنَ دَفْتَرُ سَارَةَ؟','Où est le cahier de Sara ?','دَفْتَرُهَا تَحْتَ السَّرِيرِ.'],['مَاذَا عَلَى مَكْتَبِ يُوسُفَ؟','Qu\'y a-t-il sur le bureau de Youssef ?','عَلَى الْمَكْتَبِ حَاسُوبٌ وَكُتُبٌ.'],['مَاذَا فِي حَدِيقَةِ فَاطِمَةَ؟','Qu\'y a-t-il dans le jardin de Fatima ?','فِي الْحَدِيقَةِ طَاوِلَةٌ وَكَرَاسِي.']];
+    return `<h3>1. Qui parle ? <span class="ar">مَنْ يَقُولُ هَذَا؟</span></h3><div class="cgrid3">`+qui.map(q=>`<div class="ccard">${cSay(q[0])}${cA(q[0],1)}<div class="cans">← ${cRv(cA(q[1],1))}</div></div>`).join('')+`</div>`+
+    `<h3>2. Vrai ou faux ? <span class="ar">صَحِيحٌ أَمْ خَطَأٌ؟</span></h3><p class="cfr">Que dit chaque personnage ? Est-ce vrai d'après l'histoire ? Chacun répond « vrai » ou « faux », puis on révèle.</p><div class="cgrid2">`+vf.map(v=>`<div class="ccard">${cA(v[0],1)}<div class="cans">${cRv((v[1]?'✅ ':'❌ ')+esc(v[2]))}</div></div>`).join('')+`</div>`+
+    `<h3>3. Questions en arabe</h3>`+cTeam(`Par deux : lisez la question, cherchez la réponse dans le texte, puis répondez <strong>en arabe</strong> à voix haute.`)+
+    qs.map(q=>`<div class="ccard crow">${cSay(q[0])}${cA(q[0],1)}<span class="cfr">${q[1]}</span><div class="cans">${cRv(cA(q[2],1))}</div></div>`).join('');
+  },note:`<p>« Qui parle ? » : lisez la phrase, laissez les participants donner le prénom, puis révélez. Pour le vrai / faux, demandez à quelqu'un qui a répondu « faux » de corriger la phrase en arabe. Les questions de la partie 3 se font en binômes : <span class="ar">أَيْنَ</span> demande « où ? », <span class="ar">مَاذَا</span> demande « quoi ? ». Notez la différence de réponse, qui sera expliquée à l'étape 6 : à <span class="ar">أَيْنَ دَفْتَرُ سَارَةَ؟</span> on répond « le cahier est sous le lit » ; à <span class="ar">مَاذَا عَلَى الْمَكْتَبِ؟</span> on répond « sur le bureau, il y a un ordinateur ».</p>`},
+
+  {ar:'لُعْبَةُ الْبَحْثِ',t:'La chasse aux indices',h:()=>{
+    const all=STORY3.map(storyPara).join(' ');
+    const btn=(k,lab,col)=>`<button class="chunt" style="--c:${col}" onclick="huntHL('${k}',this)">${lab}</button>`;
+    return cTeam(`<strong>Par équipes de deux ou trois.</strong> Cherchez dans le texte, comptez, puis comparez vos résultats.`)+
+    `<div class="chunts">${btn('lieu','1. Les mots de lieu : فِي، عَلَى، أَمَامَ…','#2B4BC9')}${btn('mai','2. Les mots de la maison','#2E7D5B')}${btn('adj','3. Les mots qui décrivent : كَبِيرٌ، جَمِيلَةٌ…','#B3382F')}</div><div id="huntRes" class="cfr"></div>`+
+    `<div class="cstory ar cread" id="huntText">${renderAr(all)}</div>`+
+    cAsk(`<strong>1.</strong> Regardez le dernier mot de <span class="ar">الْبَيْتِ</span> dans <span class="ar">فِي الْبَيْتِ</span>. Quelle petite voyelle porte-t-il ? Et dans <span class="ar">تَحْتَ السَّرِيرِ</span>, <span class="ar">بِجَانِبِ الْبَابِ</span> ? `+cRv(`Toujours une <strong>kasra</strong> (<span class="ar">ـِ</span>) : <span class="ar">فِي الْبَيْتِ</span>, <span class="ar">تَحْتَ السَّرِيرِ</span>, <span class="ar">بِجَانِبِ الْبَابِ</span>. Après un mot de lieu, la fin du nom change : <span class="ar">الْبَيْتُ</span> → <span class="ar">فِي الْبَيْتِ</span>.`))+
+    cAsk(`<strong>2.</strong> Comparez <span class="ar">الْمِرْآةُ بِجَانِبِ الْبَابِ</span> et <span class="ar">فِي الْمَطْبَخِ طَاوِلَةٌ</span>. Dans laquelle y a-t-il « il y a » ? Où est le <span class="ar">الْ</span> ? `+cRv(`<span class="ar">فِي الْمَطْبَخِ طَاوِلَةٌ</span> = « dans la cuisine, il y a une table » : le lieu d'abord (avec <span class="ar">الْ</span>), puis la chose <strong>sans <span class="ar">الْ</span></strong> (« une table », nouvelle). Et <span class="ar">الْمِرْآةُ بِجَانِبِ الْبَابِ</span> = « le miroir est à côté de la porte » : on parle d'un miroir connu, avec <span class="ar">الْ</span>.`))+
+    cAsk(`<strong>3.</strong> Cherchez <span class="ar">حَدِيقَةٌ صَغِيرَةٌ</span> et <span class="ar">مَطْبَخِي كَبِيرٌ</span>. Où se place le mot qui décrit ? Pourquoi <span class="ar">ة</span> dans l'un et pas dans l'autre ? `+cRv(`Le mot qui décrit (l'<strong>adjectif</strong>) suit le nom et <strong>s'accorde</strong> avec lui : <span class="ar">حَدِيقَةٌ</span> est féminin donc <span class="ar">صَغِيرَةٌ</span> ; <span class="ar">مَطْبَخٌ</span> est masculin donc <span class="ar">كَبِيرٌ</span>. Même règle qu'à la leçon 2 (<span class="ar">أَخٌ صَغِيرٌ</span> / <span class="ar">أُخْتٌ صَغِيرَةٌ</span>).`));
+  },note:`<p>Laissez un temps de recherche, puis cliquez sur chaque bouton pour surligner les réponses dans le texte et afficher le total. Activez un seul bouton à la fois pour bien voir. L'équipe la plus proche gagne un point pour le grand jeu (notez-le). Ne donnez pas encore de règle complète : on découvre, la grammaire vient juste après. Si on vous demande pourquoi <span class="ar">بُيُوتٌ جَمِيلَةٌ</span> (et non <span class="ar">جَمِيلَةٌ</span> au pluriel), répondez simplement : « pour des choses, l'arabe met l'adjectif au féminin singulier ; c'est à retenir, nous y reviendrons ».</p>`},
+
+  {ar:'أَيْنَ الْكِتَابُ؟',t:'Grammaire 1 : où est… ? (les mots de lieu)',h:()=>{
+    const bar=`<span class="cbar"></span>`;
+    const v=(a,b,gap)=>`<span class="cdia v">${a}${gap?'<span class="cgap"></span>':''}${b}</span>`;
+    const PR=[['فِي',`dans`,'الْكِتَابُ فِي الْخِزَانَةِ.',`Le livre est dans l'armoire.`,`<span class="cdia"><span class="cbx">📕</span></span>`],
+      ['عَلَى',`sur`,'الْكِتَابُ عَلَى الطَّاوِلَةِ.',`Le livre est sur la table.`,v('📕',bar)],
+      ['تَحْتَ',`sous`,'الْكِتَابُ تَحْتَ الطَّاوِلَةِ.',`Le livre est sous la table.`,v(bar,'📕')],
+      ['فَوْقَ',`au-dessus de`,'الصُّورَةُ فَوْقَ السَّرِيرِ.',`La photo est au-dessus du lit.`,v('🖼️','🛏️',1)],
+      ['أَمَامَ',`devant`,'الْحَدِيقَةُ أَمَامَ الْبَيْتِ.',`Le jardin est devant la maison.`,v('🏠','🌳')],
+      ['خَلْفَ',`derrière`,'الْحَدِيقَةُ خَلْفَ الْبَيْتِ.',`Le jardin est derrière la maison.`,v('🌳','🏠')],
+      ['بَيْنَ',`entre`,'الْكِتَابُ بَيْنَ الْبَابِ وَالنَّافِذَةِ.',`Le livre est entre la porte et la fenêtre.`,`<span class="cdia">🚪 📕 🪟</span>`],
+      ['بِجَانِبِ',`à côté de`,'الْمِرْآةُ بِجَانِبِ الْبَابِ.',`Le miroir est à côté de la porte.`,`<span class="cdia">🪞 🚪</span>`]];
+    const K=[['الْبَيْتُ','فِي الْبَيْتِ'],['الطَّاوِلَةُ','عَلَى الطَّاوِلَةِ'],['السَّرِيرُ','تَحْتَ السَّرِيرِ'],['بَيْتٌ','فِي بَيْتٍ'],['بَيْتُكَ','فِي بَيْتِكَ'],['غُرْفَتُنَا','فِي غُرْفَتِنَا']];
+    const IL=[['فِي الْبَيْتِ مَطْبَخٌ.',`Dans la maison, il y a une cuisine.`],['عَلَى الطَّاوِلَةِ كِتَابٌ.',`Sur la table, il y a un livre.`],['أَمَامَ الْبَيْتِ حَدِيقَةٌ.',`Devant la maison, il y a un jardin.`],['فِي غُرْفَتِي سَرِيرٌ.',`Dans ma chambre, il y a un lit.`]];
+    const ex=[[`Le livre est sur la table.`,'الْكِتَابُ عَلَى الطَّاوِلَةِ.'],[`Dans la cuisine, il y a une table.`,'فِي الْمَطْبَخِ طَاوِلَةٌ.'],[`Le jardin est derrière la maison.`,'الْحَدِيقَةُ خَلْفَ الْبَيْتِ.'],[`Mon ordinateur est sur mon bureau.`,'حَاسُوبِي عَلَى مَكْتَبِي.'],[`Sous le lit, il y a un cahier.`,'تَحْتَ السَّرِيرِ دَفْتَرٌ.'],[`Le miroir est à côté de la porte.`,'الْمِرْآةُ بِجَانِبِ الْبَابِ.']];
+    return cAsk(`<strong>Enquête :</strong> vous connaissez déjà <span class="ar">فِي</span>, <span class="ar">عَلَى</span> et <span class="ar">مِنْ</span>. Dans le texte, repérez les autres mots qui disent <strong>où</strong>. Combien en trouvez-vous ? `+cRv(`Huit en tout, tous écrits au tableau par le professeur : <span class="ar">فِي، عَلَى، تَحْتَ، فَوْقَ، أَمَامَ، خَلْفَ، بَيْنَ، بِجَانِبِ</span>. Ce sont des <strong>prépositions</strong> : de petits mots placés devant un nom.`))+
+    `<div class="cgrid2">`+PR.map(p=>`<div class="ccard ccenter">${p[4]}<div>${cA(p[0],1)} <span class="cfr">${p[1]}</span></div><div>${cSay(p[2])}${cA(p[2])}</div><div class="cfr">${cRv(p[3])}</div></div>`).join('')+`</div>`+
+    `<div class="gnote">Pour <span class="ar">أَمَامَ</span> et <span class="ar">خَلْفَ</span>, imaginez la maison vue du dessus, la porte d'entrée en bas ↓ : le jardin « devant » est du côté de la porte, le jardin « derrière » de l'autre côté.</div>`+
+    `<h3>1. Après un mot de lieu, le nom prend une kasra</h3><p class="cfr">La dernière lettre du nom change. Pour l'instant, imitez : la raison viendra avec la leçon de grammaire sur l'iʿrāb.</p>`+
+    `<table class="gtable keepv"><tr><th>Seul</th><th></th><th>Après un mot de lieu</th></tr>`+K.map(k=>`<tr><td class="ar">${k[0]}</td><td>→</td><td class="ar">${k[1]}</td></tr>`).join('')+`</table>`+
+    `<h3>2. « Il y a » : le lieu d'abord, la chose ensuite</h3>`+
+    `<div class="ccard"><div class="cdlg"><span class="cwho ar">؟</span>${cSay('أَيْنَ الْكِتَابُ؟')}${cA('أَيْنَ الْكِتَابُ؟',1)}<span class="cfr">Où est le livre ?</span></div>`+
+      `<div class="cdlg"><span class="cwho ar">!</span>${cSay('الْكِتَابُ عَلَى الطَّاوِلَةِ.')}${cA('الْكِتَابُ عَلَى الطَّاوِلَةِ.',1)}<span class="cfr">Le livre (connu) est sur la table.</span></div>`+
+      `<div class="cdlg"><span class="cwho ar">؟</span>${cSay('مَاذَا عَلَى الطَّاوِلَةِ؟')}${cA('مَاذَا عَلَى الطَّاوِلَةِ؟',1)}<span class="cfr">Qu'y a-t-il sur la table ?</span></div>`+
+      `<div class="cdlg"><span class="cwho ar">!</span>${cSay('عَلَى الطَّاوِلَةِ كِتَابٌ.')}${cA('عَلَى الطَّاوِلَةِ كِتَابٌ.',1)}<span class="cfr">Sur la table, il y a un livre (nouveau).</span></div></div>`+
+    cAsk(`<strong>Comparez</strong> <span class="ar">الْكِتَابُ عَلَى الطَّاوِلَةِ</span> et <span class="ar">عَلَى الطَّاوِلَةِ كِتَابٌ</span>. Qu'est-ce qui a changé : l'ordre ? <span class="ar">الْ</span> ? le sens ? `+cRv(`L'<strong>ordre</strong> est inversé, et le <span class="ar">الْ</span> disparaît (<span class="ar">الْكِتَابُ</span> → <span class="ar">كِتَابٌ</span>). Avec <span class="ar">الْ</span> : « <em>le</em> livre est sur la table » (on sait de quel livre on parle). Sans <span class="ar">الْ</span>, après le lieu : « sur la table, <em>il y a un</em> livre » (une information nouvelle). Il n'y a toujours <strong>aucun verbe</strong> : après « être » (leçon 1) et « avoir » (leçon 2), voici « il y a » sans verbe !`))+
+    `<div class="cgrid2">`+IL.map(i=>`<div class="ccard">${cSay(i[0])}${cA(i[0],1)}<div class="cfr">${i[1]}</div></div>`).join('')+`</div>`+
+    `<h3>Dites en arabe</h3>`+cTeam(`Chacun traduit à voix haute, puis on révèle.`)+
+    `<div class="cgrid2">`+ex.map(e=>`<div class="ccard"><div class="cbigfr">${e[0]}</div><div class="cans">${cRv(cA(e[1],1))}</div></div>`).join('')+`</div>`;
+  },note:`<p>Faites d'abord l'enquête, puis présentez les huit cartes une par une, avec un vrai objet (un livre posé sur, sous, à côté de la table) : les gestes aident beaucoup. Pour <span class="ar">أَمَامَ</span> / <span class="ar">خَلْفَ</span>, utilisez la maison et le jardin. Pour la kasra, ne donnez pas la raison : « on imite ». Le point 2 est le plus important de la leçon : jouez le petit dialogue à deux voix, plusieurs fois, en changeant de place (<span class="ar">أَيْنَ</span> → on répond « le X est… » ; <span class="ar">مَاذَا</span> → on répond « sur / dans… il y a… »). On entend aussi <span class="ar">هُنَاكَ مَطْبَخٌ</span> pour « il y a une cuisine » : la tournure est correcte, mais celle de la leçon suffit. Pour <span class="ar">فِي بَيْتِكَ</span> : le suffixe garde la même forme que pour « ton » (<span class="ar">ـكَ</span> / <span class="ar">ـكِ</span>).</p>`},
+
+  {ar:'اِسْتِرَاحَةٌ',t:'Pause',h:()=>
+    `<div class="cpause"><div class="cpause-i">☕</div>${cA('اِسْتِرَاحَةٌ',1)}<p class="cbigfr">C'est la pause !</p></div>`+
+    cAsk(`<strong>Défi de la pause :</strong> pensez à une pièce de votre maison et préparez, en arabe, deux phrases : « dans cette pièce, il y a… » et « … est à côté de… ». Au retour, quelques volontaires les disent !`)+
+    `<div class="ccard ccenter"><div class="cfr">Modèles</div>${cA('فِي الْمَطْبَخِ طَاوِلَةٌ · عَلَى الْمَكْتَبِ كِتَابٌ · الْبَابُ بِجَانِبِ النَّافِذَةِ',1)}</div>`,
+   note:`<p>Pendant la pause, aidez ceux qui cherchent un mot (<span class="ar">غُرْفَةٌ، مَطْبَخٌ، طَاوِلَةٌ، سَرِيرٌ…</span>). Rappel : après un mot de lieu, la fin du nom prend une kasra ; le « il y a » se dit en mettant le lieu d'abord, puis la chose sans <span class="ar">الْ</span>.</p>`},
+
+  {ar:'بَيْتٌ كَبِيرٌ، الْبَيْتُ كَبِيرٌ',t:'Grammaire 2 : décrire avec l\'adjectif',h:()=>{
+    const T=[['بَيْتٌ كَبِيرٌ',`une grande maison`,`un groupe de mots`],['الْبَيْتُ كَبِيرٌ',`la maison est grande`,`une phrase complète`],['الْبَيْتُ الْكَبِيرُ',`la grande maison`,`un groupe de mots`]];
+    const TF=[['غُرْفَةٌ صَغِيرَةٌ',`une petite pièce`,`un groupe de mots`],['الْغُرْفَةُ صَغِيرَةٌ',`la pièce est petite`,`une phrase complète`],['الْغُرْفَةُ الصَّغِيرَةُ',`la petite pièce`,`un groupe de mots`]];
+    const adj=[['كَبِيرٌ / كَبِيرَةٌ',`grand·e`],['صَغِيرٌ / صَغِيرَةٌ',`petit·e`],['جَمِيلٌ / جَمِيلَةٌ',`beau / belle`],['جَدِيدٌ / جَدِيدَةٌ',`neuf / neuve`],['قَدِيمٌ / قَدِيمَةٌ',`ancien·ne`],['نَظِيفٌ / نَظِيفَةٌ',`propre`],['وَاسِعٌ / وَاسِعَةٌ',`spacieux·se`]];
+    const ex=[[`La cuisine est propre.`,'الْمَطْبَخُ نَظِيفٌ.'],[`Une petite chambre.`,'غُرْفَةٌ صَغِيرَةٌ.'],[`La maison est ancienne.`,'الْبَيْتُ قَدِيمٌ.'],[`Le jardin est beau.`,'الْحَدِيقَةُ جَمِيلَةٌ.'],[`La grande fenêtre.`,'النَّافِذَةُ الْكَبِيرَةُ.'],[`La fenêtre est grande.`,'النَّافِذَةُ كَبِيرَةٌ.']];
+    const rows=L=>`<table class="gtable keepv"><tr><th class="ar">L'arabe</th><th>Le français</th><th>Ce que c'est</th></tr>`+L.map(t=>`<tr><td class="ar cbig">${t[0]}</td><td>${t[1]}</td><td>${t[2]}</td></tr>`).join('')+`</table>`;
+    return cAsk(`À la leçon 2, vous avez vu <span class="ar">أَخٌ صَغِيرٌ</span> / <span class="ar">أُخْتٌ صَغِيرَةٌ</span> : l'adjectif <strong>suit le nom et s'accorde</strong> avec lui. Mais que se passe-t-il quand on met <span class="ar">الْ</span> sur le nom ? Traduisez <span class="ar">بَيْتٌ كَبِيرٌ</span> et <span class="ar">الْبَيْتُ كَبِيرٌ</span>. `+cRv(`<span class="ar">بَيْتٌ كَبِيرٌ</span> = « <em>une grande maison</em> » : juste un groupe de mots. <span class="ar">الْبَيْتُ كَبِيرٌ</span> = « <em>la maison est grande</em> » : une phrase complète, sans « est » ! (comme <span class="ar">أَنَا طَالِبٌ</span> à la leçon 1).`))+
+    `<h3>Trois formes à comparer</h3>`+rows(T)+rows(TF)+
+    `<div class="gnote"><strong>Comment s'y retrouver ?</strong> <span class="ar">الْ</span> sur le nom <em>seulement</em> → c'est une <strong>phrase</strong> (« la maison <em>est</em> grande »). <span class="ar">الْ</span> sur les <em>deux</em> mots (ou sur aucun) → c'est un <strong>groupe</strong> (« la grande maison », « une grande maison »). Bonus : <span class="ar">الْبَيْتُ الْكَبِيرُ جَمِيلٌ</span> = « la grande maison est belle ».</div>`+
+    `<div class="gnote"><strong>Attention : l'adjectif suit le nom, pas la personne qui parle.</strong> Une femme dit <span class="ar">بَيْتِي كَبِيرٌ</span> (et non <span class="ar">كَبِيرَةٌ</span>), car <span class="ar">بَيْتٌ</span> est masculin ; et un homme dit <span class="ar">حَدِيقَتِي جَمِيلَةٌ</span>, car <span class="ar">حَدِيقَةٌ</span> est féminin. Le possessif <span class="ar">ـِي</span> ne change rien à l'accord.</div>`+
+    `<h3>Les mots qui décrivent</h3><div class="ccard"><p class="cfr">Adjectifs (masculin / féminin)</p>`+adj.map(a=>`<div class="cword">${cSay(a[0].split(' / ')[0])}${cA(a[0])} <span class="cfr">${a[1]}</span></div>`).join('')+`</div>`+
+    `<h3>Dites en arabe</h3>`+cTeam(`Chacun traduit à voix haute, puis on révèle. Attention : phrase ou groupe de mots ?`)+
+    `<div class="cgrid2">`+ex.map(e=>`<div class="ccard"><div class="cbigfr">${e[0]}</div><div class="cans">${cRv(cA(e[1],1))}</div></div>`).join('')+`</div>`;
+  },note:`<p>Partez de ce que les participants savent : l'accord de l'adjectif (leçon 2) et la phrase sans « être » (leçon 1). Le tableau des trois formes est le cœur de l'étape : faites-le lire à voix haute, ligne après ligne, en demandant à chaque fois « phrase ou groupe ? ». L'erreur la plus fréquente est de dire <span class="ar">الْبَيْتُ الْكَبِيرُ</span> en pensant « la maison est grande » : rappelez que, si les deux mots portent <span class="ar">الْ</span>, la phrase n'est pas finie. Insistez aussi sur le piège du possessif : l'adjectif s'accorde avec le nom (<span class="ar">بَيْتِي</span> reste masculin, même dans la bouche d'une femme). La mention <span class="ar">الْبَيْتُ الْكَبِيرُ جَمِيلٌ</span> est un bonus : ne la détaillez pas si le groupe hésite.</p>`},
+
+  {ar:'حِوَارٌ عَنِ الْبَيْتِ',t:'Atelier en binômes : parlons de nos maisons',h:()=>{
+    const D=[['أ','أَيْنَ بَيْتُكَ؟ / أَيْنَ بَيْتُكِ؟'],['ب','بَيْتِي فِي … / بَيْتِي قَرِيبٌ مِنَ …'],['أ','هَلْ بَيْتُكَ كَبِيرٌ؟ / هَلْ بَيْتُكِ كَبِيرٌ؟'],['ب','نَعَمْ، بَيْتِي كَبِيرٌ. / لَا، بَيْتِي صَغِيرٌ.'],['أ','مَاذَا فِي بَيْتِكَ؟ / مَاذَا فِي بَيْتِكِ؟'],['ب','فِي بَيْتِي … وَ … وَ …'],['أ','هَلْ عِنْدَكَ حَدِيقَةٌ؟ / هَلْ عِنْدَكِ حَدِيقَةٌ؟'],['ب','نَعَمْ، عِنْدِي حَدِيقَةٌ. / لَا، لَيْسَ عِنْدِي حَدِيقَةٌ.']];
+    const adj=[['كَبِيرٌ / كَبِيرَةٌ',`grand·e`],['صَغِيرٌ / صَغِيرَةٌ',`petit·e`],['جَمِيلٌ / جَمِيلَةٌ',`beau / belle`],['جَدِيدٌ / جَدِيدَةٌ',`neuf / neuve`],['قَدِيمٌ / قَدِيمَةٌ',`ancien·ne`],['نَظِيفٌ / نَظِيفَةٌ',`propre`],['وَاسِعٌ / وَاسِعَةٌ',`spacieux·se`]];
+    return `<div class="cgrid2"><div class="ccard"><h3>Le dialogue</h3>`+D.map(d=>`<div class="cdlg"><span class="cwho ar">${d[0]}</span>${cSay(d[1].split(' / ')[0].replace(/…/g,''))}${cA(d[1],1)}</div>`).join('')+
+    `<p class="cfr"><span class="ar">أَيْنَ</span> = où ? · <span class="ar">مَاذَا</span> = quoi ? · <span class="ar">بَيْتُكَ</span> / <span class="ar">بَيْتُكِ</span> = ta maison (à un homme / à une femme)</p></div>`+
+    `<div class="ccard"><h3>Banque de mots</h3><p class="cfr">Adjectifs (masculin / féminin)</p>`+adj.map(a=>`<div class="cword">${cA(a[0])} <span class="cfr">${a[1]}</span></div>`).join('')+
+    `<p class="cfr" style="margin-top:10px">Les mots de lieu</p><div class="cchips">`+['فِي','عَلَى','تَحْتَ','فَوْقَ','أَمَامَ','خَلْفَ','بَيْنَ','بِجَانِبِ'].map(w=>`<span class="cchip">${cA(w)}</span>`).join('')+`</div>`+
+    `<p class="cfr" style="margin-top:10px">La maison</p><div class="cchips">`+['بَيْتٌ','غُرْفَةٌ','مَطْبَخٌ','حَمَّامٌ','حَدِيقَةٌ','بَابٌ','نَافِذَةٌ','سَرِيرٌ','طَاوِلَةٌ','كُرْسِيٌّ','مَكْتَبٌ','خِزَانَةٌ'].map(w=>`<span class="cchip">${cA(w)}</span>`).join('')+`</div></div></div>`+
+    cTeam(`<strong>1.</strong> Par deux, jouez le dialogue avec vos vraies informations, puis échangez les rôles <span class="ar">أ</span> et <span class="ar">ب</span>. Attention : <span class="ar">ـكَ</span> ou <span class="ar">ـكِ</span> ? la kasra après <span class="ar">فِي</span> ? l'accord de l'adjectif ?`)+
+    cTeam(`<strong>2. Dictée dessinée.</strong> Un participant décrit une pièce en arabe, l'autre la dessine sans la voir : <br>`+cA('فِي الْغُرْفَةِ سَرِيرٌ. عَلَى السَّرِيرِ كِتَابٌ. بِجَانِبِ السَّرِيرِ نَافِذَةٌ كَبِيرَةٌ.',1)+`<br><span class="cfr">Dans la pièce, il y a un lit. Sur le lit, il y a un livre. À côté du lit, il y a une grande fenêtre.</span>`)+
+    cTeam(`<strong>3.</strong> Chacun présente la maison de son binôme aux autres :<br>`+cA('هَذَا بَيْتُ صَدِيقِي. بَيْتُهُ كَبِيرٌ. عِنْدَهُ حَدِيقَةٌ.',1)+`<br>`+cA('هَذَا بَيْتُ صَدِيقَتِي. بَيْتُهَا صَغِيرٌ. عِنْدَهَا حَدِيقَةٌ جَمِيلَةٌ.',1)+`<br><span class="cfr">Voici la maison de mon ami / mon amie. Sa maison est grande / petite. Il / elle a un jardin.</span>`)+
+    cTeam(`<strong>Bonus :</strong> dessinez le plan de votre pièce préférée et nommez chaque objet en arabe : <span class="ar">هَذَا سَرِيرِي، هَذِهِ طَاوِلَتِي…</span>`);
+  },note:`<p>Faites d'abord jouer le dialogue par deux volontaires. Pendant le travail en binômes, corrigez surtout quatre points : le genre (<span class="ar">ـكَ</span> / <span class="ar">ـكِ</span>), la kasra après <span class="ar">فِي</span> (<span class="ar">فِي الْبَيْتِ</span>, pas <span class="ar">فِي الْبَيْتُ</span>), l'accord de l'adjectif, et « il y a » (lieu d'abord, puis la chose sans <span class="ar">الْ</span>). La dictée dessinée est un bon test : si le dessin est faux, c'est la phrase qui n'était pas claire. Si on vous demande « dans sa maison » (<span class="ar">فِي بَيْتِهِ</span>), signalez que le suffixe <span class="ar">ـهُ</span> devient <span class="ar">ـهِ</span> après une kasra : à imiter, on l'expliquera plus tard.</p>`},
+
+  {ar:'الْمُسَابَقَةُ الْكُبْرَى',t:'Le grand jeu : équipe Soleil contre équipe Lune',h:()=>gameHTML(),
+   note:`<p>Divisez les participants en deux équipes : <span class="ar">الشَّمْسُ</span> (le Soleil) et <span class="ar">الْقَمَرُ</span> (la Lune). Les équipes répondent à tour de rôle ; si une équipe se trompe, l'autre peut « voler » la question. Cliquez sur « Réponse » pour vérifier, puis donnez le point avec les boutons +1. Pensez au point gagné pendant la chasse aux indices ! Les scores repartent de zéro à chaque leçon.</p>`},
+
+  {ar:'مَاذَا تَعَلَّمْنَا؟',t:'Bilan : qu\'avons-nous appris ?',h:()=>{
+    const C=[`Je connais les mots de la maison : <span class="ar">بَيْتٌ، غُرْفَةٌ، مَطْبَخٌ، بَابٌ، نَافِذَةٌ…</span>`,`Je sais dire où se trouve quelque chose : <span class="ar">فِي · عَلَى · تَحْتَ · فَوْقَ · أَمَامَ · خَلْفَ · بَيْنَ · بِجَانِبِ</span>`,`Je sais que le nom prend une kasra après ces mots : <span class="ar">الْبَيْتُ ← فِي الْبَيْتِ</span>`,`Je sais dire « il y a » : <span class="ar">فِي الْبَيْتِ مَطْبَخٌ</span> (le lieu d'abord, la chose sans <span class="ar">الْ</span>)`,`Je sais accorder l'adjectif : <span class="ar">غُرْفَةٌ كَبِيرَةٌ · مَطْبَخٌ نَظِيفٌ</span>`,`Je sais faire la différence entre <span class="ar">بَيْتٌ كَبِيرٌ</span> (un groupe) et <span class="ar">الْبَيْتُ كَبِيرٌ</span> (une phrase)`,`Je sais décrire ma maison en quelques phrases`];
+    return `<div class="cchecks">`+C.map(c=>`<div class="ccheck" onclick="this.classList.toggle('on')"><span class="cbox"></span><span>${c}</span></div>`).join('')+`</div>`+
+    `<div class="ccard"><h3>📝 Pour la prochaine fois</h3><p>1. Écrivez <strong>5 phrases</strong> sur votre maison : ${cA('فِي بَيْتِي … · فِي الْمَطْبَخِ … · عَلَى … · بِجَانِبِ … · بَيْتِي كَبِيرٌ / صَغِيرٌ.')}</p><p>2. Dessinez <strong>le plan d'une pièce</strong> (la chambre, le salon…) et nommez chaque objet en arabe ; préparez-vous à la présenter avec ${cA('فِي الْغُرْفَةِ …')} et ${cA('عَلَى … · تَحْتَ … · بِجَانِبِ …')}.</p><p>3. Réécoutez l'histoire <span class="ar">بُيُوتُنَا</span> avec le bouton 🔊, et relisez la leçon 2.</p></div>`+
+    `<div class="cpause"><div class="cpause-i">👋</div>${cA('شُكْرًا، وَإِلَى اللِّقَاءِ!',1)}<p class="cbigfr">Merci, et à la prochaine !</p></div>`;
+  },note:`<p>Lisez chaque phrase de la liste : les participants répondent « oui » et vous cochez. S'il reste un point fragile, faites un dernier exemple oral (le plus souvent : la kasra après <span class="ar">فِي</span>, ou la différence <span class="ar">بَيْتٌ كَبِيرٌ</span> / <span class="ar">الْبَيْتُ كَبِيرٌ</span>). Terminez comme dans l'histoire : les participants disent <span class="ar">شُكْرًا يَا أُسْتَاذُ</span>, vous répondez <span class="ar">عَفْوًا، مَعَ السَّلَامَةِ</span>.</p>`}
   ]}
 ];
 
@@ -3837,7 +4010,27 @@ const GAMEQ2=[
  ['Traduisez : « Ma famille est grande. »','عَائِلَتِي كَبِيرَةٌ.'],
  ['Corrigez : عِنْدِي أُخْتٌ كَبِيرٌ.','عِنْدِي أُخْتٌ كَبِيرَةٌ. (l\'adjectif s\'accorde avec le nom)']
 ];
-const GAMES=[GAMEQ,GAMEQ2];
+/* questions du grand jeu — leçon 3 */
+const GAMEQ3=[
+ ['Dites « ma maison » et « notre maison ».','بَيْتِي · بَيْتُنَا'],
+ ['Traduisez : « Le livre est sur la table. »','الْكِتَابُ عَلَى الطَّاوِلَةِ.'],
+ ['Comment dit-on « sous le lit » ?','تَحْتَ السَّرِيرِ'],
+ ['Traduisez : « Dans la cuisine, il y a une table. »','فِي الْمَطْبَخِ طَاوِلَةٌ.'],
+ ['Quel est le féminin de كَبِيرٌ ?','كَبِيرَةٌ'],
+ ['Que veut dire خَلْفَ ? Donnez son contraire.','derrière · أَمَامَ (devant)'],
+ ['Traduisez : « La cuisine est propre. »','الْمَطْبَخُ نَظِيفٌ.'],
+ ['Demandez à une femme : « Où est ta maison ? »','أَيْنَ بَيْتُكِ؟'],
+ ['Où est le cahier de Sara dans l\'histoire ?','دَفْتَرُهَا تَحْتَ السَّرِيرِ.'],
+ ['Quelle différence y a-t-il entre بَيْتٌ كَبِيرٌ et الْبَيْتُ كَبِيرٌ ?','بَيْتٌ كَبِيرٌ = une grande maison (un groupe) · الْبَيْتُ كَبِيرٌ = la maison est grande (une phrase)'],
+ ['Traduisez : « Mon bureau est à côté de la fenêtre. »','مَكْتَبِي بِجَانِبِ النَّافِذَةِ.'],
+ ['Traduisez : « J\'ai un grand jardin. »','عِنْدِي حَدِيقَةٌ كَبِيرَةٌ.'],
+ ['Corrigez : فِي الْبَيْتُ مَطْبَخٌ.','فِي الْبَيْتِ مَطْبَخٌ. (kasra après فِي)'],
+ ['Corrigez : الْغُرْفَةُ كَبِيرٌ.','الْغُرْفَةُ كَبِيرَةٌ. (غُرْفَةٌ est féminin)'],
+ ['Comment dit-on « la grande maison » ?','الْبَيْتُ الْكَبِيرُ'],
+ ['Traduisez : « La table est entre la porte et la fenêtre. »','الطَّاوِلَةُ بَيْنَ الْبَابِ وَالنَّافِذَةِ.'],
+ ['Mimez, sans parler : فَوْقَ — تَحْتَ — بِجَانِبِ','👆 au-dessus · 👇 en dessous · ↔ à côté']
+];
+const GAMES=[GAMEQ,GAMEQ2,GAMEQ3];
 function gameHTML(){
   const GQ=GAMES[CL.c],G=CL.game,q=GQ[G.q];
   const team=(i,n,ar,ic)=>'<div class="cteamscore"><div class="cteamname"><span>'+ic+' '+n+'</span><span class="ar">'+ar+'</span></div><div class="cscore">'+G.s[i]+'</div><div><button class="btn-ghost" onclick="gameScore('+i+',-1)">−1</button> <button class="btn" onclick="gameScore('+i+',1)">+1</button></div></div>';
@@ -3849,7 +4042,7 @@ function gameHTML(){
 function gameScore(i,d){CL.game.s[i]=Math.max(0,CL.game.s[i]+d);coursStep();}
 function gameNav(d){CL.game.q=Math.min(GAMES[CL.c].length-1,Math.max(0,CL.game.q+d));CL.game.show=false;coursStep();}
 /* chasse aux indices : un test par type d'indice (t = mot sans voyelles, b = mot sans و/ف de liaison)
-   leçon 1 : al, ta, pr — leçon 2 : fam, avo, pos */
+   leçon 1 : al, ta, pr — leçon 2 : fam, avo, pos — leçon 3 : lieu, mai, adj */
 const FAMN=['أب','أبو','أم','أخ','أخو','أخت','جد','جدة','ابن','بنت','زوج','زوجة','عم','عمة','خال','خالة','عائلة','عائلات','ولد','أولاد','بنات','أحفاد','حفيد','إخوة','أهل'];
 const POSN=FAMN.concat(['اسم','بيت','صورة']);
 /* t = nom (éventuellement avec و/ف, الْـ) + éventuellement un suffixe possessif -> {base,suf} ou null */
@@ -3868,13 +4061,18 @@ function famWord(t,names){
   }
   return null;
 }
+/* leçon 3 : mots de la maison, mots de lieu, adjectifs */
+const MAISN=['بيت','بيوت','غرفة','غرف','مطبخ','حمام','حديقة','باب','نافذة','سرير','طاولة','كرسي','كراسي','مكتب','خزانة','مرآة','مفتاح','كتاب','كتب','حاسوب','دفتر','دفاتر'];
 const HUNT={
   al:(t,b)=>/^(ال|لل|بال)/.test(b)&&!/^(الله|لله)$/.test(b),
   ta:(t,b)=>/ة$/.test(t),
   pr:(t,b)=>['أنا','أنت','هو','هي','نحن'].includes(b),
   fam:t=>{const f=famWord(t,FAMN);return !!f;},
   avo:t=>/^[وف]?عند/.test(t),
-  pos:t=>{const f=famWord(t,POSN);return !!(f&&f.suf);}
+  pos:t=>{const f=famWord(t,POSN);return !!(f&&f.suf);},
+  lieu:t=>/^[وف]?(في|على|تحت|فوق|أمام|خلف|بين|بجانب)$/.test(t),
+  mai:t=>!!famWord(t,MAISN),
+  adj:t=>/^[وف]?(ال)?(كبير|صغير|جميل|جديد|قديم|نظيف|واسع|قريب|بعيد|سعيد)ة?$/.test(t)
 };
 function huntHL(k,btn){
   const box=$('#huntText');if(!box)return;
